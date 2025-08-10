@@ -1,0 +1,55 @@
+.account-creation-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+
+  .account-creation-form {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    label {
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 0.75rem;
+      border: none;
+      border-bottom: 1px solid #aaa;
+      background: transparent;
+      outline: none;
+    }
+
+    .row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      .input-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 0.75rem;
+      background-color: #ec6c0d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}

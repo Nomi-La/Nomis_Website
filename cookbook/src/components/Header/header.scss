@@ -1,0 +1,28 @@
+@use '../../sass/colors';
+
+.navbar{
+    background-image: url('../../assets/texture.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    border-radius: 0px;
+    
+    .pre-message{
+        color: rgb(9, 9, 9);
+        font-size: large;
+        border-radius: 1px;
+        background-color: rgba(248, 248, 91, 0.6);
+        padding: 2px 5px;
+        font-weight: 500;
+        text-decoration: none;
+        
+    }
+    
+}

@@ -1,0 +1,41 @@
+@use '../../sass/colors';
+
+.container-left {
+    height: 100%;
+    width: 40%;
+    float: left;
+    background-image:
+        url('../../assets/Ai2.jpg'), colors.$linear-gradient;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    .left-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: colors.$white;
+        max-width: 275px;
+        text-align: center;
+
+        
+
+        h2 {
+            margin-bottom: 4%;
+            font-weight: 700;
+            font-size: 30px;
+            color: rgb(7, 55, 118);
+            box-shadow: -10px -10px 20px rgb(7, 55, 118);
+            background-color: aliceblue;
+            border-radius: 15px;
+        }
+
+        
+    }
+
+    
+}
+

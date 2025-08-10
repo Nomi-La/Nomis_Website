@@ -1,0 +1,3 @@
+services:
+  backend:
+    image: "${CI_REGISTRY_IMAGE}:${CI_PIPELINE_ID}-${SAFE_TAG}"

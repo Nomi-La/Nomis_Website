@@ -1,0 +1,24 @@
+services:
+  backend-cookbook:
+    image: my_website:latest
+    ports:
+      - "8000:8000"
+    command: "sh /scripts/dev.sh"
+    env_file:
+      - ./envs/dev.env
+    volumes:
+      - ./backend-cookbook:/backend-cookbook
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./envs/dev.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

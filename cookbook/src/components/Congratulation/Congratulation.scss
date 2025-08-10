@@ -1,0 +1,47 @@
+.congratulations-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex: 1;
+  background-color: white;
+}
+
+.congratulations-box {
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.congratulations-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.congratulations-box strong {
+  word-break: break-word;
+  color: #333;
+}
+
+.arrow-btn {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 45px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}

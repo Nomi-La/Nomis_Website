@@ -1,0 +1,45 @@
+.form-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    img {
+        width: 20px;
+        margin-right: 10px;
+    }
+
+    // https://www.youtube.com/watch?v=Bu-gXKb9dy8 as a reference
+    .input-wrapper {
+        position: relative;
+        width: 100%;
+
+        input {
+            width: 100%;
+            padding: 10px 5px;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            color: black;
+            font-size: 16px;
+            outline: none;
+
+            &:focus + label,
+            &:valid + label {
+                top: -10px;
+                font-size: 12px;
+                color: #ccc;
+            }
+        }
+
+        label {
+            position: absolute;
+            left: 5px;
+            top: 10px;
+            color: #aaa;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+    }
+}
+

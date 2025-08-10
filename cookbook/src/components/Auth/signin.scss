@@ -1,0 +1,59 @@
+.signin-wrapper {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+
+  .signin-top {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+
+    .signup-link {
+      margin-left: 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+
+  .signin-form {
+    display: flex;
+    flex-direction: column;
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    label {
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    input {
+      padding: 0.75rem;
+      border: none;
+      border-bottom: 1px solid #aaa;
+      background: transparent;
+      outline: none;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 0.75rem;
+      background-color: #ec6c0d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .forgot-link {
+      margin-top: 1rem;
+      text-align: center;
+      color: #666;
+      text-decoration: none;
+    }
+  }
+}

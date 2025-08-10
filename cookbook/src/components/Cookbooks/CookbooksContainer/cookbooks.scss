@@ -1,0 +1,44 @@
+.cookbooks-container{
+    width: 30%;
+    float: right;
+    height: 100%;
+    box-shadow: -10px 0px 10px rgb(217, 217, 217);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: flex-start;
+    overflow-y: auto;
+    .book-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 15%;
+        padding-top: 0px;
+        padding-bottom: 50px;
+        
+    }
+    .plus{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: none;
+        span{
+                font-size: small;
+                width: 100%;
+                text-align: start;
+                padding: 0px 0px 0px 30px;
+            }
+        .plus-button{
+            width: 100%;
+            text-align: start;
+            background-color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: x-large;
+            color: black;
+            padding: 15px 0px 0px 40px;
+            
+        }
+    }
+}
