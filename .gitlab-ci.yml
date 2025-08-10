@@ -13,16 +13,12 @@ before_script:
 
 pull:
   stage: pull
-  tags:
-    - BWGmBAwy
   allow_failure: true
   script:
     - docker pull "$CI_REGISTRY_IMAGE:latest"
 
 build:
   stage: build
-  tags:
-    - BWGmBAwy
   script:
     - SAFE_TAG="${CI_COMMIT_REF_NAME//\//-}"
     - echo "SAFE_TAG=$SAFE_TAG" > .env
@@ -30,8 +26,6 @@ build:
 
 lint:
   stage: lint
-  tags:
-    - BWGmBAwy
   allow_failure: True
   only:
     - main
@@ -42,8 +36,6 @@ lint:
 
 push latest:
   stage: push
-  tags:
-    - BWGmBAwy
   script:
     - SAFE_TAG="${CI_COMMIT_REF_NAME//\//-}"
     - docker tag "$CI_REGISTRY_IMAGE:$CI_PIPELINE_ID-$SAFE_TAG" "$CI_REGISTRY_IMAGE:latest"
@@ -51,11 +43,9 @@ push latest:
 
 push master:
   stage: push
-  tags:
-    - BWGmBAwy
   only:
     - main
-
+    - tags
   script:
     - SAFE_TAG="${CI_COMMIT_REF_NAME//\//-}"
     - docker tag "$CI_REGISTRY_IMAGE:$CI_PIPELINE_ID-$SAFE_TAG" "$CI_REGISTRY_IMAGE:$SAFE_TAG"
@@ -63,8 +53,6 @@ push master:
 
 cleanup:
   stage: cleanup
-  tags:
-    - BWGmBAwy
   when: always
   script:
     - SAFE_TAG="${CI_COMMIT_REF_NAME//\//-}"
@@ -74,8 +62,6 @@ cleanup:
 
 deploy:
   stage: deploy
-  tags:
-    - BWGmBAwy
   only:
     - main
   when: manual
