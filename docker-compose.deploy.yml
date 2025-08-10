@@ -35,6 +35,7 @@ services:
       - static_files:/static-files
       - media_files:/media-files
       - cookbook_build:/cookbook/dist
+      - main_build:/main/dist
 
   postgres:
     image: postgres:latest
