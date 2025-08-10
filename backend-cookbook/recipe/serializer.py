@@ -1,12 +1,10 @@
-from rest_framework import serializers
-from cookbook.models import Cookbook
-from recipe.models import Recipe, RecipeIngredient
 from category.serializer import DietaryCategoryFlexibleField, FoodStyleFlexibleField
-from ingredient.models import Ingredient
-
-from customUser.serializer import CustomUserSerializer
-
 from cookbook.basic_serializer import BasicCookbookSerializer
+from cookbook.models import Cookbook
+from customUser.serializer import CustomUserSerializer
+from ingredient.models import Ingredient
+from recipe.models import Recipe, RecipeIngredient
+from rest_framework import serializers
 
 
 class IngredientFlexibleField(serializers.Field):

@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -23,13 +22,16 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=200)),
                 ('description', models.TextField()),
-                ('difficulty', models.CharField(choices=[('Easy', 'Easy'), ('Medium', 'Medium'), ('Hard', 'Hard')], max_length=10)),
+                ('difficulty',
+                 models.CharField(choices=[('Easy', 'Easy'), ('Medium', 'Medium'), ('Hard', 'Hard')], max_length=10)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
                 ('cookbooks', models.ManyToManyField(blank=True, related_name='recipes', to='cookbook.cookbook')),
-                ('dietary_categories', models.ManyToManyField(blank=True, related_name='recipes', to='category.dietarycategory')),
+                ('dietary_categories',
+                 models.ManyToManyField(blank=True, related_name='recipes', to='category.dietarycategory')),
                 ('food_styles', models.ManyToManyField(blank=True, related_name='recipes', to='category.foodstyle')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='recipes', to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='recipes',
+                                           to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
@@ -37,13 +39,17 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('quantity', models.CharField(max_length=100)),
-                ('ingredient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ingredient.ingredient')),
-                ('recipe', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='recipe_ingredients', to='recipe.recipe')),
+                ('ingredient',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ingredient.ingredient')),
+                ('recipe',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='recipe_ingredients',
+                                   to='recipe.recipe')),
             ],
         ),
         migrations.AddField(
             model_name='recipe',
             name='ingredients',
-            field=models.ManyToManyField(related_name='recipes', through='recipe.RecipeIngredient', to='ingredient.ingredient'),
+            field=models.ManyToManyField(related_name='recipes', through='recipe.RecipeIngredient',
+                                         to='ingredient.ingredient'),
         ),
     ]

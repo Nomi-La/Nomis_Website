@@ -1,15 +1,15 @@
 import json
 import os
-import requests
 import uuid
 
+import requests
+from django.conf import settings
+from drf_yasg.utils import swagger_auto_schema
+from openai import OpenAI
+from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import status
-from openai import OpenAI
-from django.conf import settings
-from drf_yasg.utils import swagger_auto_schema
 
 from .serializers import RecipeRequestSerializer, RecipeResponseSerializer, ImageGenerationRequestSerializer
 
@@ -129,8 +129,9 @@ def generate_image(request):
         user_prompt = serializer.validated_data.get('prompt')
 
         # Build a specialized prompt for DALL·E
-        image_prompt = (f"Photorealistic image of a freshly prepared {user_prompt}, served on a plate, high detail, realistic lighting, studio photography."
-                        f"or When it is mentioned as a cookbook then generate an image for a cookbook with the {user_prompt}")
+        image_prompt = (
+            f"Photorealistic image of a freshly prepared {user_prompt}, served on a plate, high detail, realistic lighting, studio photography."
+            f"or When it is mentioned as a cookbook then generate an image for a cookbook with the {user_prompt}")
 
         try:
             # Generate image with DALL·E-3
@@ -144,7 +145,8 @@ def generate_image(request):
             # Download
             img_response = requests.get(image_url)
             if img_response.status_code != 200:
-                return Response({"error": "Failed to download generated image."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                return Response({"error": "Failed to download generated image."},
+                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
             # Save to media-files/ai_images/
             folder_path = os.path.join(settings.MEDIA_ROOT, "ai_images")

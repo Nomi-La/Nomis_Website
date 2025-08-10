@@ -1,11 +1,10 @@
 # from django.shortcuts import render
 
-from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
-
 from customUser.models import CustomUser
 from customUser.permissions import IsOwnerOrAdmin
 from customUser.serializer import CustomUserSerializer
+from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from utils.fitler_mixin import FilterMixin
 
 

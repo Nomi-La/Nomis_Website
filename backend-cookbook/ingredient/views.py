@@ -1,6 +1,6 @@
+from ingredient.serializer import IngredientSerializer
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
 
-from ingredient.serializer import IngredientSerializer
 from .models import Ingredient
 
 

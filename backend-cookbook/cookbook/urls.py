@@ -1,8 +1,7 @@
-from django.urls import path
-
 from cookbook.views import (
     CookbookListView, CookbookCreateView, CookbookMeListView, CookbookDetailView
 )
+from django.urls import path
 
 urlpatterns = [
     path('', CookbookListView.as_view(), name='cookbooks-list'),

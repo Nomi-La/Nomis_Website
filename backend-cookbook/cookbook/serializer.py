@@ -1,8 +1,7 @@
-from rest_framework import serializers
-
 from cookbook.models import Cookbook
 from customUser.serializer import CustomUserSerializer
 from recipe.basic_serializer import BasicRecipeSerializer
+from rest_framework import serializers
 
 
 class CookbookSerializer(serializers.ModelSerializer):

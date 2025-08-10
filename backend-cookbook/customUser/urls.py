@@ -1,6 +1,5 @@
-from django.urls import path
-
 from customUser.views import UserListView, UserMeGetPostUpdateDeleteView, UserGetPostUpdateDeleteSingleView
+from django.urls import path
 
 urlpatterns = [
     path('', UserListView.as_view(), name='user-list'),

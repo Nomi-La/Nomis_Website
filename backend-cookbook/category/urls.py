@@ -1,9 +1,8 @@
-from django.urls import path
-
 from category.views import (
     DietaryCategoryListCreateView, DietaryCategoryDetailView,
     FoodStyleListCreateView, FoodStyleDetailView
 )
+from django.urls import path
 
 urlpatterns = [
     # dietary category

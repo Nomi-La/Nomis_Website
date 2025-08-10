@@ -1,6 +1,5 @@
-from django.contrib import admin
-
 from cookbook.models import Cookbook
+from django.contrib import admin
 
 
 @admin.register(Cookbook)

@@ -1,9 +1,8 @@
+from authentication.models import CodeModel
+from customUser.serializer import CustomUserSerializer
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-
-from authentication.models import CodeModel
-from customUser.serializer import CustomUserSerializer
 
 CustomUser = get_user_model()
 

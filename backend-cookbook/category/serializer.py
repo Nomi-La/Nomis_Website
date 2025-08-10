@@ -1,6 +1,5 @@
-from rest_framework import serializers
-
 from category.models import DietaryCategory, FoodStyle
+from rest_framework import serializers
 
 
 class DietaryCategorySerializer(serializers.ModelSerializer):

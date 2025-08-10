@@ -1,8 +1,7 @@
-from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
-from rest_framework.permissions import IsAuthenticated
-
 from cookbook.models import Cookbook
 from cookbook.serializer import CookbookSerializer
+from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
+from rest_framework.permissions import IsAuthenticated
 
 
 class CookbookListView(ListAPIView):

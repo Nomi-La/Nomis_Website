@@ -1,6 +1,5 @@
-from django.contrib import admin
-
 from category.models import DietaryCategory, FoodStyle
+from django.contrib import admin
 
 
 @admin.register(DietaryCategory)

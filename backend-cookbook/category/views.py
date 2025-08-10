@@ -1,7 +1,6 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-
 from category.models import DietaryCategory, FoodStyle
 from category.serializer import DietaryCategorySerializer, FoodStyleSerializer
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 
 # DietaryCategory views
