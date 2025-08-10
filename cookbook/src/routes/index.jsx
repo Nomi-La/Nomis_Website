@@ -34,7 +34,7 @@ import UserPage from '../pages/UserModePage.jsx'
 
 const PageRoutes = () => {
   return (
-    <BrowserRouter basename="/receipt-cookbook">
+    <BrowserRouter basename="/cookbook-recipe">
       <Routes>
         <Route path="/" element={<GeneralLayout />}>
           <Route path='' element={<LandingPage/>}/>
