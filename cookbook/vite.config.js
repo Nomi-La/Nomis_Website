@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react-swc'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/receipt-cookbook/',
   build: {
     sourcemap: true, // :white_check_mark: Add this
   },
