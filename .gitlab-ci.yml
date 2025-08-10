@@ -82,5 +82,6 @@ deploy:
   script:
     - docker compose -f docker-compose.deploy.yml pull
     - docker compose -f docker-compose.deploy.yml down --remove-orphans
-    - docker volume rm cookbook_frontend_build || true
+    - docker volume rm nomi-lang_main_build || true
+    - docker volume rm nomi-lang_cookbook_build || true
     - docker compose -f docker-compose.deploy.yml up -d
