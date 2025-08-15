@@ -1,0 +1,14 @@
+.header-sec{
+  background: linear-gradient(102deg, #352b04, #f4a804);
+  width: 100%;
+  height: 7.5vh;
+  display: flex;
+  justify-content: space-between;
+  .name-logo{
+
+    padding: 0px 40px;
+  }
+  .star-logo{
+    padding: 10px 40px;
+  }
+}
