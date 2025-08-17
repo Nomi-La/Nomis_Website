@@ -6,9 +6,11 @@ export default function NotFound(){
     return <>
         <Header/>
         <div className="not-found">
+            <h1>404</h1>
+            {/*<img src="/logo%20(27).png" alt="404" className="not404"/>*/}
             <div className="oops-wrapper">
                 <h2>Oops! you seem a bit lost</h2>
-                 <img className="emoji" src="/logo%20(24).png" alt="emoji"/>
+
                 </div>
 
             <div className="oops-wrapper">
