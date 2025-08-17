@@ -6,10 +6,13 @@ import MainPage from "../pages/MainPage.jsx";
 export default function Router () {
     return <BrowserRouter>
         <Routes>
+
             <Route path='/' element={<Layout/>}>
                 <Route path='' element={<MainPage/>}/>
-                <Route path='*' element={<NotFound/>}/>
             </Route>
+
+            <Route path='*' element={<NotFound/>}/>
+
         </Routes>
     </BrowserRouter>
 }

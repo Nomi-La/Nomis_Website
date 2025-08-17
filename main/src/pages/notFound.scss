@@ -1,0 +1,25 @@
+.not-found{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  .emoji{
+    max-width: 80px;
+  }
+  .emoji2{
+    max-width: 50px;
+  }
+  h2{
+    padding: 50px;
+    font-size: xx-large;
+    color: #686868;
+  }
+  a{
+    text-decoration: None;
+    color: #686868;
+    font-size: x-large;
+    font-weight: 600;
+    padding: 15px;
+    background-color: #e1e1e1;
+  }
+}

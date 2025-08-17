@@ -1,5 +1,6 @@
 import './sidebar.scss'
 import {useState} from "react";
+import {NavLink} from "react-router";
 
 export default function Sidebar(){
     const [image, setImage] = useState(true)
@@ -15,11 +16,11 @@ export default function Sidebar(){
                 <img className="profile" src="/casual%20(2).png" alt="profile"/>
 
             </div>}
-            <p><span className="welcome">Welcome to my website :)</span><br/><br/>Hi, I am <b>Nomi Lang</b>, a <b>Full-Stack developer</b><br/>-And <span className="much-more">so much more</span>! ↓</p>
-            <h3 className="subject">About Me</h3>
-            <h3 className="subject">Why I created this website</h3>
-            <h3 className="subject">Group Projects</h3>
-            <h3 className="subject">Study Projects</h3>
+            <p><span className="welcome">Welcome to my website:)</span><br/><br/>I am <b>Nomi Lang</b>, a <b>Full-Stack developer</b><br/>-And <span className="much-more">so much more</span>! ↓</p>
+            <NavLink className="subject" to="/about-me">About Me</NavLink>
+            <NavLink className="subject" to="/info">Why I created this website</NavLink>
+            <NavLink className="subject" to="/group-projects">Group Projects</NavLink>
+            <NavLink className="subject" to="/study-projects">Study Projects</NavLink>
 
         </div>
     </>
