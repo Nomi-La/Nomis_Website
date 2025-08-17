@@ -30,12 +30,12 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '64.226.106.0',
-    'projects.nomi-lang.ch'
+    'nomilang.ch'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
-    'https://projects.nomi-lang.ch',
+    'https://nomilang.ch',
     'https://64.226.106.0'
 ]
 
