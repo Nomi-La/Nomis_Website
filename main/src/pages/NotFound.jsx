@@ -1,6 +1,7 @@
 import './notFound.scss'
 import Header from "../components/Header/Header.jsx";
 import {Link} from "react-router";
+import Sidebar from "../components/Sidebar/Sidebar.jsx";
 
 export default function NotFound(){
     return <>

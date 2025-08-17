@@ -1,4 +1,6 @@
 .not-found{
+  position: relative;
+  top: 7.5vh;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -29,6 +31,7 @@
       color: black;
     }
     a{
+      border-radius: 5px;
       text-decoration: None;
       color: #686868;
       font-size: x-large;
