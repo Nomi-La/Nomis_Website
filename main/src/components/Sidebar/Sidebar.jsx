@@ -21,6 +21,7 @@ export default function Sidebar(){
             <NavLink className="subject" to="/info">Why I created this website</NavLink>
             <NavLink className="subject" to="/group-projects">Group Projects</NavLink>
             <NavLink className="subject" to="/study-projects">Study Projects</NavLink>
+            <p className="subject">®</p>
 
         </div>
     </>
