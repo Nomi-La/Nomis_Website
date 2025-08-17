@@ -3,7 +3,6 @@ import ProjectsContainer from "../components/Projects/ProjectsContainer/Projects
 
 export default function MainPage(){
     return <>
-        <Sidebar/>
         <ProjectsContainer/>
     </>
 }

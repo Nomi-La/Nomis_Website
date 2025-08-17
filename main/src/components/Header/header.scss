@@ -1,5 +1,6 @@
 .header-sec{
-  //background: linear-gradient(102deg, #352b04, #f4a804);
+  //background: linear-gradient(102deg, #f4a804, #595302);
+  //background: linear-gradient(102deg, #0eaf8d, #04c5d6);
   background-color: #029797;
   //background-image: url("public/backg.jpg");
   //background-repeat: no-repeat;
@@ -9,10 +10,9 @@
   display: flex;
   justify-content: space-between;
   .name-logo{
-
-    padding: 5px 40px;
+    padding: 4px 70px;
   }
   .star-logo{
-    padding: 10px 40px;
+    padding: 15px 40px;
   }
 }
