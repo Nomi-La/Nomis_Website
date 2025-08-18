@@ -1,8 +1,10 @@
+@use '../../colors' as *;
+
 .header-sec{
   //background: linear-gradient(102deg, #f4a804, #595302);
-  //background: linear-gradient(102deg, #0eaf8d, #04c5d6);
-  background-color: #029797;
-  box-shadow: 0px 5px 10px gray;
+  //background: linear-gradient(102deg, rgba(255, 239, 213, 0.77), #029797);
+  background-color: $turquoise;
+  box-shadow: 0px 5px 10px $gray;
   //background-image: url("public/backg.jpg");
   //background-repeat: no-repeat;
   //background-size: cover;
@@ -15,7 +17,7 @@
   top: 0px;
   left: 0px;
   .name-logo{
-    padding: 10px 70px;
+    padding: 0.9vh 70px;
     cursor: pointer;
   }
   .star-logo{

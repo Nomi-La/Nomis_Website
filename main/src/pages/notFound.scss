@@ -1,3 +1,5 @@
+@use '../colors' as *;
+
 .not-found{
   position: relative;
   top: 7.5vh;
@@ -27,12 +29,12 @@
     a{
       border-radius: 5px;
       text-decoration: None;
-      color: #686868;
+      color: $gray;
       font-size: x-large;
       font-weight: 600;
       padding: 5px 15px;
       margin: 0px 15px;
-      background-color: #e1e1e1;
+      background-color: $lightGray;
     }
   }
 
