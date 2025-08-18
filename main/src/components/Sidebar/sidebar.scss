@@ -52,7 +52,7 @@
   }
   .subject{
     text-align: center;
-    color: $burgundy;
+    color: black;
     padding: 10px 0px;
     border-top: 0.1px solid $turquoise;
     //box-shadow: 1px 1px 10px gray;
@@ -63,6 +63,6 @@
     font-size: large;
   }
   .active{
-    background-color: $lightGray;
+    background-color: #e5fdf6;
   }
 }

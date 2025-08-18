@@ -1,6 +1,6 @@
 .projects-page{
   display: flex;
-  align-items: center;
+  align-items: start;
   flex-direction: column;
   width: 100%;
   max-height: 92.5vh;
@@ -8,6 +8,8 @@
   overflow-y: scroll;
   h1{
     padding: 20px;
+    width: 100%;
+    text-align: center;
   }
   h2{
     text-align: left;
@@ -17,9 +19,12 @@
   .projects-container{
     background-color: #efe7cd;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 50px;
+    //display: grid;
+    //grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+    padding: 50px 2vw 50px 4vw;
   }
 }
 
