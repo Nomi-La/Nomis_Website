@@ -53,11 +53,15 @@ export default function ProjectsContainer(){
     return <>
         <div className="projects-page">
             <h1>My Projects</h1>
-        <div className="projects-container">
-        {projects.map((project)=> (
+            {categories.map((category)=> <>
+                <h2>{category}</h2>
+                <div className="projects-container">
+        {projects.filter((project)=> project.category===category)
+            .map((project)=> (
             <Project key={project.id} project={project}/>
         ))}
-            </div>
+            </div></>)}
+
             </div>
     </>
 }
