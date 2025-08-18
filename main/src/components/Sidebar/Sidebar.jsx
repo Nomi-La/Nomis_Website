@@ -21,7 +21,7 @@ export default function Sidebar(){
                 <br/>-And <span className="much-more">so much more</span>! ↓</p>
 
             <NavLink className="subject" to="/projects">Projects</NavLink>
-            <NavLink className="subject" to="/about-me">About Me</NavLink>
+            <NavLink className="subject" to="">About Me</NavLink>
             <NavLink className="subject" to="/get-lost">Get Lost ♥</NavLink>
             <p className="subject" style={{"font-size": "x-large", "font-weight": "100"}}>©</p>
 

@@ -1,0 +1,20 @@
+.projects-page{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-height: 92.5vh;
+  border: 5px solid black;
+  overflow-y: scroll;
+  h1{
+    padding: 20px;
+  }
+  .projects-container{
+    background-color: #efe7cd;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 50px;
+  }
+}
+
