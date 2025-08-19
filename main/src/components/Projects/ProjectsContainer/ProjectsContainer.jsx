@@ -43,7 +43,7 @@ const projects = [{"id": 1,
                                                 "link": "/cookbook-recipe/",
                                                 "image": "/projects-%20image.png"},
                                                 {"id": 6,
-                                                    "category": "Group Projects",
+                                                    "category": "Gro4p Projects",
                                                 "name": "cookbook",
                                                 "link": "/https://nomilang.ch/cookbook-recipe/",
                                                 "image": "/projects-%20image.png"}]
