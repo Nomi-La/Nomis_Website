@@ -29,14 +29,14 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '64.226.106.0',
+    '165.22.79.53',
     'nomilang.ch'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'https://nomilang.ch',
-    'https://64.226.106.0'
+    'https://165.22.79.53'
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
