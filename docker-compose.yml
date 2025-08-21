@@ -1,5 +1,5 @@
 services:
-  backend-cookbook:
+  backend:
     image: my_website:latest
     ports:
       - "8000:8000"

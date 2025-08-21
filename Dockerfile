@@ -1,19 +1,18 @@
 FROM continuumio/miniconda3:latest
 
-RUN mkdir -p /backend-cookbook
+RUN mkdir -p /backend
 RUN mkdir -p /scripts
 RUN mkdir -p /static-files
 RUN mkdir -p /media-files
-RUN mkdir -p /main
-RUN mkdir -p /cookbook
+RUN mkdir -p /frontend
 
-COPY ./backend-cookbook/requirements.yml /backend-cookbook/requirements.yml
+COPY ./backend/requirements.yml /backend/requirements.yml
 COPY ./scripts /scripts
 RUN chmod +x ./scripts
 
-RUN /opt/conda/bin/conda env create -f /backend-cookbook/requirements.yml
-ENV PATH /opt/conda/envs/cookbook/bin:$PATH
-RUN echo  "source activate cookbook" > ~/.bashrc
+RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
+ENV PATH /opt/conda/envs/my_website/bin:$PATH
+RUN echo  "source activate my_website" > ~/.bashrc
 
 ENV PYTHONDONTWRITEBYTECODE=1
 RUN apt-get update
@@ -21,25 +20,13 @@ RUN apt-get upgrade -y
 RUN apt-get install curl -y
 RUN curl https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
 
-WORKDIR /main
-COPY ./main/package.json /main/package.json
-COPY ./main/package-lock.json /main/package-lock.json
+WORKDIR /frontend
+COPY ./frontend/package.json /frontend/package.json
+COPY ./frontend/package-lock.json /frontend/package-lock.json
 RUN npm i
-COPY ./main /main
+COPY ./frontend /frontend
 RUN npm run build
 
-WORKDIR /cookbook
-COPY ./cookbook/package.json /cookbook/package.json
-COPY ./cookbook/package-lock.json /cookbook/package-lock.json
-RUN npm i
-COPY ./cookbook /cookbook
-RUN npm run build
+COPY ./backend /backend
 
-COPY ./backend-cookbook /backend-cookbook
-
-WORKDIR /backend-cookbook
-
-
-
-
-
+WORKDIR /backend

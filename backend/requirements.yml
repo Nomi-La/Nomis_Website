@@ -1,4 +1,4 @@
-name: cookbook
+name: my_website
 dependencies:
   - python==3.13.5
   - pip==25.1

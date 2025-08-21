@@ -21,7 +21,7 @@ x-ai-environment: &ai-environment
   OPENAI_API_KEY:
 
 services:
-  backend-cookbook:
+  backend:
 
     image: registry.gitlab.com/my_website7155632/nomi-lang:latest
     command: "sh /scripts/prod.sh"
@@ -34,8 +34,7 @@ services:
     volumes:
       - static_files:/static-files
       - media_files:/media-files
-      - cookbook_build:/cookbook/dist
-      - main_build:/main/dist
+      - frontend_build:/frontend/dist
 
   postgres:
     image: postgres:latest
@@ -50,11 +49,13 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - web
+
     volumes:
       - static_files:/static-files
       - media_files:/media-files
-      - cookbook_build:/cookbook_build
-      - main_build:/main_build
+      - frontend_build:/frontend_build
       - ./nginx:/etc/nginx/conf.d/
       - /etc/letsencrypt:/etc/letsencrypt:ro
 
@@ -62,8 +63,11 @@ volumes:
   postgres_data:
   static_files:
   media_files:
-  cookbook_build:
-  main_build:
+  frontend_build:
+
+networks:
+  web:
+    external: true
 
 
 
