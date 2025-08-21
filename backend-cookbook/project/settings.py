@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "hycx(-xb06k)ab1_==3z%u5-ljy%@a*#5yz@vyj@($s5re%0i+")
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
@@ -197,4 +197,4 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
