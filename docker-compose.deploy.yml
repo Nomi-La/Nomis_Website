@@ -25,6 +25,8 @@ services:
 
     image: registry.gitlab.com/my_website7155632/nomi-lang:latest
     command: "sh /scripts/prod.sh"
+    networks:
+      - web
     environment:
       <<:
         - *django-environment
