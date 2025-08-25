@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -24,8 +23,10 @@ class Migration(migrations.Migration):
                 ('image', models.ImageField(blank=True, null=True, upload_to='section_images/')),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='sections', to='category.category')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='sections', to=settings.AUTH_USER_MODEL)),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='sections',
+                                               to='category.category')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='sections',
+                                           to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

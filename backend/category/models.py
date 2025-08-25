@@ -4,6 +4,7 @@ from django.db.models.functions import Lower
 
 User = get_user_model()
 
+
 class Category(models.Model):
     name = models.CharField(max_length=200)
     users = models.ManyToManyField(User, related_name='categories', blank=True)

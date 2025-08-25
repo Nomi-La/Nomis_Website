@@ -1,9 +1,5 @@
-from tkinter.font import names
-
-from django.core.exceptions import ValidationError
-from django.db import transaction, IntegrityError
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
-from rest_framework.permissions import BasePermission, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from category.models import Category
 from category.serializers import CategorySerializer
@@ -22,10 +18,8 @@ class CategoryListCreateView(FilterMixin, ListCreateAPIView):
         category = serializer.save()
         category.users.add(self.request.user)
 
+
 class CategoryRetrieveView(RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-
-
-

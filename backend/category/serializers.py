@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from category.models import Category
 
 
@@ -20,12 +21,8 @@ class CategorySerializer(serializers.ModelSerializer):
     def get_projects(self, obj):
         return obj.projects.all().count()
 
-
     def validate_name(self, value):
         return value.strip()
-        # if Category.objects.filter(name__iexact=value).exists():
-        #     raise serializers.ValidationError("This category already exists")
-        # return value
 
     def create(self, validated_data):
         name = validated_data['name']

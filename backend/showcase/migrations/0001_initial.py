@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -22,8 +21,10 @@ class Migration(migrations.Migration):
                 ('image', models.ImageField(blank=True, null=True, upload_to='project_images/')),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
-                ('plan', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='projects', to='category.category')),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='projects', to='section.section')),
+                ('plan', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT,
+                                           related_name='projects', to='category.category')),
+                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='projects',
+                                              to='section.section')),
             ],
         ),
         migrations.CreateModel(
@@ -33,7 +34,8 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200)),
                 ('icon', models.ImageField(blank=True, null=True, upload_to='link_icons/')),
                 ('link', models.URLField(max_length=500)),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='links', to='showcase.project')),
+                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='links',
+                                              to='showcase.project')),
             ],
         ),
     ]

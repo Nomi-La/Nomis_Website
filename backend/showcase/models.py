@@ -15,6 +15,7 @@ class Project(models.Model):
     def __str__(self):
         return f'Project: {self.name}'
 
+
 class Link(models.Model):
     name = models.CharField(max_length=200)
     icon = models.ImageField(upload_to='link_icons/', null=True, blank=True)

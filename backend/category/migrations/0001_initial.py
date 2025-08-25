@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -22,7 +21,8 @@ class Migration(migrations.Migration):
                 ('users', models.ManyToManyField(blank=True, related_name='categories', to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'constraints': [models.UniqueConstraint(django.db.models.functions.text.Lower('name'), name='uniq_category_name_ci')],
+                'constraints': [models.UniqueConstraint(django.db.models.functions.text.Lower('name'),
+                                                        name='uniq_category_name_ci')],
             },
         ),
     ]
