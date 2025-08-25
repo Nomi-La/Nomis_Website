@@ -14,10 +14,35 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework.permissions import AllowAny
+
+from project import settings
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Django REST API",
+        default_version="v1",
+        description="My nice webshop for the Batch 32",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="academy@constructor.org"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=[AllowAny, ]
+)
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("backend/admin/", admin.site.urls),
+    path('backend/auth/', include('authentication.urls')),
+    path('backend/docs/', schema_view.with_ui('swagger', cache_timeout=0)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
