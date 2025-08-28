@@ -1,6 +1,5 @@
 from django.core.exceptions import ValidationError
 
-
 class MaxFileSizeValidator:
     def __init__(self, max_mb: float):
         self.max_mb = float(max_mb)
@@ -16,7 +15,6 @@ class MaxFileSizeValidator:
 
     def __eq__(self, other):
         return isinstance(other, MaxFileSizeValidator) and self.max_mb == other.max_mb
-
 
 def mb_size(max_mb: float):
     return MaxFileSizeValidator(max_mb)
