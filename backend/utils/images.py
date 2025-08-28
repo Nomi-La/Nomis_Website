@@ -12,7 +12,7 @@ def compress_image_to_target(upload, *, target_mb=0.5, max_side=None, q_min=40, 
     if size_bytes is not None and size_bytes <= target_bytes:
         return upload
 
-    img = Image.open(upload);
+    img = Image.open(upload)
     img.load()
     has_alpha = (img.mode in ("RGBA", "LA")) or (img.mode == "P" and "transparency" in img.info)
     img = img.convert("RGBA" if has_alpha else "RGB")

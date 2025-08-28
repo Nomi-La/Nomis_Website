@@ -1,6 +1,4 @@
 from django.db import models
-
-from category.models import Category
 from utils.validators import mb_size
 
 
