@@ -50,6 +50,7 @@ class CategoryRemoveUserView(GenericAPIView):
         category.users.remove(user)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 class CategoryRemoveProjectView(GenericAPIView):
     queryset = Category.objects.all()
     permission_classes = [IsAuthenticated]

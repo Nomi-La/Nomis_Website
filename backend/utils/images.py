@@ -1,9 +1,11 @@
 from io import BytesIO
 from pathlib import Path
+
 from PIL import Image, ImageFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+
 
 def compress_image_to_target(upload, *, target_mb=0.5, max_side=None, q_min=40, q_max=95, attempts=8):
     target_bytes = int(target_mb * 1024 * 1024)
