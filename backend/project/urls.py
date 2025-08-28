@@ -40,7 +40,10 @@ urlpatterns = [
     path("backend/admin/", admin.site.urls),
     path('backend/auth/', include('authentication.urls')),
     path('backend/docs/', schema_view.with_ui('swagger', cache_timeout=0)),
-    path('backend/categories/', include('category.urls'))
+    path('backend/categories/', include('category.urls')),
+    path('backend/sections/', include('section.urls')),
+    path('backend/projects/', include('showcase.urls'))
+
 ]
 
 if settings.DEBUG:

@@ -5,19 +5,20 @@ from section.models import Section
 
 
 class SectionSerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(default=serializers.CreateOnlyDefault(serializers.CurrentUserDefault()))
+    # user = serializers.HiddenField(default=serializers.CreateOnlyDefault(serializers.CurrentUserDefault()))
+    user = serializers.IntegerField(source='user.id', read_only=True)
     projects = serializers.SerializerMethodField()
     category_id = serializers.PrimaryKeyRelatedField(source='category', queryset=Category.objects.all(),
                                                      write_only=True)
     category = serializers.CharField(source='category.name', read_only=True)
-    owner = serializers.CharField(source='user.first_name', read_only=True)
+    username = serializers.CharField(source='user.username' or'user.first_name', read_only=True)
     created = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
     updated = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
 
     class Meta:
         model = Section
         fields = ['id', 'name', 'content', 'image', 'image2', 'created', 'updated', 'category', 'category_id', 'user',
-                  'owner', 'projects']
+                  'username', 'projects']
         extra_kwargs = {
             'content': {'required': False, 'allow_blank': True, 'allow_null': True},
             'image': {'required': False, 'allow_null': True},
@@ -26,3 +27,7 @@ class SectionSerializer(serializers.ModelSerializer):
 
     def get_projects(self, obj):
         return obj.projects.all().count()
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)

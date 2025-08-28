@@ -7,7 +7,7 @@ services:
     env_file:
       - ./envs/dev.env
     volumes:
-      - ./backend-cookbook:/backend-cookbook
+      - ./backend:/backend
     depends_on:
       - postgres
 

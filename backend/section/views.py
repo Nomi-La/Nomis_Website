@@ -1,4 +1,4 @@
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 from section.models import Section
 from section.permissions import IsOwnerOrReadOnly
@@ -12,5 +12,11 @@ class SectionListCreateView(FilterMixin, ListCreateAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     filter_fields = {
         "category": "category__name__icontains",
-        'user': "user__id"
+        'user': "user__id",
     }
+
+class SectionRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    queryset = Section.objects.all()
+    serializer_class = SectionSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+

@@ -21,3 +21,6 @@ class Link(models.Model):
     icon = models.ImageField(upload_to='link_icons/', null=True, blank=True)
     link = models.URLField(max_length=500)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='links')
+
+    def __str__(self):
+        return f'{self.name}, {self.project.section.user.first_name}'
