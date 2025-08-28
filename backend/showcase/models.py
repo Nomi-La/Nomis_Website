@@ -8,6 +8,7 @@ class Project(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     section = models.ForeignKey('section.Section', on_delete=models.CASCADE, related_name='projects')
+    plan = models.ForeignKey('category.Category', on_delete=models.PROTECT, related_name='projects', null=True, blank=True)
 
     def __str__(self):
         return f'Project: {self.name}'
