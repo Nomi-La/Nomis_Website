@@ -2,9 +2,15 @@ from rest_framework import serializers
 
 from category.models import Category
 from section.models import Section
+from utils.serializers_mixin import ImageCompressOnDemandMixin
 
 
-class SectionSerializer(serializers.ModelSerializer):
+class SectionSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer):
+
+    COMPRESS_FIELDS = ['image', 'image2']
+    TARGET_IMAGE_MB = 1.5
+    MAX_SIDE = None
+
     # user = serializers.HiddenField(default=serializers.CreateOnlyDefault(serializers.CurrentUserDefault()))
     user = serializers.IntegerField(source='user.id', read_only=True)
     projects = serializers.SerializerMethodField()
@@ -21,8 +27,8 @@ class SectionSerializer(serializers.ModelSerializer):
                   'username', 'projects']
         extra_kwargs = {
             'content': {'required': False, 'allow_blank': True, 'allow_null': True},
-            'image': {'required': False, 'allow_null': True},
-            'image2': {'required': False, 'allow_null': True},
+            'image': {'required': False, 'allow_null': True, 'use_url': True},
+            'image2': {'required': False, 'allow_null': True, 'use_url': True},
         }
 
     def get_projects(self, obj):
@@ -30,4 +36,5 @@ class SectionSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
+        self._maybe_compress(validated_data)
         return super().create(validated_data)
