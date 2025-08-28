@@ -19,7 +19,9 @@ class CategorySerializer(serializers.ModelSerializer):
         return obj.users.all().count()
 
     def get_projects(self, obj):
-        return obj.projects.all().count()
+        if hasattr(obj, 'projects'):
+            return obj.projects.all().count()
+        return None
 
     def validate_name(self, value):
         return value.strip()
