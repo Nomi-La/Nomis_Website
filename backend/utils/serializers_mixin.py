@@ -1,8 +1,10 @@
 from django.db import models
 from rest_framework import serializers
+
 from .images import compress_image_to_target
 
 BYTES_PER_MB = 1024 * 1024
+
 
 class ImageCompressOnDemandMixin:
     COMPRESS_FIELDS = None

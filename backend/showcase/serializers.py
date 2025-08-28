@@ -6,7 +6,6 @@ from utils.serializers_mixin import ImageCompressOnDemandMixin
 
 
 class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer):
-
     COMPRESS_FIELDS = ['image']
     TARGET_IMAGE_MB = 1
     MAX_SIDE = None
@@ -48,15 +47,15 @@ class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
                 icon_val = icon.url
 
             links.append({
-                    'id': link.id,
-                    'name': link.name,
-                    'icon': icon_val,
-                    'link': link.link
-                })
+                'id': link.id,
+                'name': link.name,
+                'icon': icon_val,
+                'link': link.link
+            })
         return links
 
-class LinkSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer):
 
+class LinkSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer):
     COMPRESS_FIELDS = ['icon']
     TARGET_IMAGE_MB = 0.2
     MAX_SIDE = None
@@ -77,7 +76,3 @@ class LinkSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer):
         if project.section.user != request.user:
             raise serializers.ValidationError('This is NOT your project :)')
         return project
-
-
-
-

@@ -16,8 +16,8 @@ class SectionListCreateView(FilterMixin, ListCreateAPIView):
         'project': 'project__id',
     }
 
+
 class SectionRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     queryset = Section.objects.all()
     serializer_class = SectionSerializer
     permission_classes = [IsOwnerOrReadOnly]
-

@@ -6,7 +6,6 @@ from utils.serializers_mixin import ImageCompressOnDemandMixin
 
 
 class SectionSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer):
-
     COMPRESS_FIELDS = ['image', 'image2']
     TARGET_IMAGE_MB = 1.5
     MAX_SIDE = None
@@ -18,7 +17,7 @@ class SectionSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
     category_id = serializers.PrimaryKeyRelatedField(source='category', queryset=Category.objects.all(),
                                                      write_only=True)
     category = serializers.CharField(source='category.name', read_only=True)
-    username = serializers.CharField(source='user.username' or'user.first_name', read_only=True)
+    username = serializers.CharField(source='user.username' or 'user.first_name', read_only=True)
     created = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
     updated = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
 

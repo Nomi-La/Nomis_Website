@@ -1,7 +1,9 @@
 from io import BytesIO
 from pathlib import Path
+
 from PIL import Image
 from django.core.files.uploadedfile import InMemoryUploadedFile
+
 
 def compress_image_to_target(upload, *, target_mb=0.5, max_side=None, q_min=40, q_max=95, attempts=8):
     target_bytes = int(target_mb * 1024 * 1024)
@@ -10,7 +12,8 @@ def compress_image_to_target(upload, *, target_mb=0.5, max_side=None, q_min=40, 
     if size_bytes is not None and size_bytes <= target_bytes:
         return upload
 
-    img = Image.open(upload); img.load()
+    img = Image.open(upload);
+    img.load()
     has_alpha = (img.mode in ("RGBA", "LA")) or (img.mode == "P" and "transparency" in img.info)
     img = img.convert("RGBA" if has_alpha else "RGB")
 

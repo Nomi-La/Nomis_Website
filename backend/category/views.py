@@ -10,6 +10,7 @@ from utils.filter_mixin import FilterMixin
 
 User = get_user_model()
 
+
 class CategoryListCreateView(FilterMixin, ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
@@ -28,6 +29,7 @@ class CategoryRetrieveView(RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
 
 class CategoryRemoveUserView(GenericAPIView):
     queryset = Category.objects.all()
