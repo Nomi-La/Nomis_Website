@@ -13,7 +13,7 @@ class SectionListCreateView(FilterMixin, ListCreateAPIView):
     filter_fields = {
         "category": "category__name__icontains",
         'user': "user__id",
-        'project': 'category__projects__id',
+        'project': 'project_id',
     }
 
 class SectionRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):

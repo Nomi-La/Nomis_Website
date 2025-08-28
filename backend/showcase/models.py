@@ -1,7 +1,5 @@
 from django.db import models
-
 from category.models import Category
-from section.models import Section
 
 
 class Project(models.Model):
@@ -9,8 +7,7 @@ class Project(models.Model):
     image = models.ImageField(upload_to='project_images/', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    plan = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='projects', blank=True, null=True)
-    section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='projects')
+    section = models.ForeignKey('section.Section', on_delete=models.CASCADE, related_name='projects')
 
     def __str__(self):
         return f'Project: {self.name}'
@@ -23,4 +20,4 @@ class Link(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='links')
 
     def __str__(self):
-        return f'{self.name}, {self.project.section.user.first_name}'
+        return f'{self.name}, {self.project.section.user.username or self.project.section.user.first_name}'

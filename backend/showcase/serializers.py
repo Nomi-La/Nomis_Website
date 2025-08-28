@@ -10,20 +10,24 @@ class ProjectSerializer(serializers.ModelSerializer):
     links = serializers.SerializerMethodField()
     section_id = serializers.PrimaryKeyRelatedField(source='section', queryset=Section.objects.all(), write_only=True)
     section = serializers.CharField(source='section.name', read_only=True)
-    plan = serializers.SerializerMethodField()
+    plans = serializers.SerializerMethodField()
 
     class Meta:
         model = Project
-        fields = ['id', 'name', 'image', 'created', 'updated', 'plan', 'section', 'section_id', 'links']
+        fields = ['id', 'name', 'image', 'created', 'updated', 'plans', 'section', 'section_id', 'links']
 
         extra_kwargs = {
             'image': {'required': False, 'allow_null': True},
         }
 
-    def get_plan(self, obj):
-        if hasattr(obj, 'plan'):
-            return True
-        return False
+    def get_plans(self, obj):
+        return obj.plans.objects.all().count()
+
+    def validate_section(self, section):
+        request = self.context.get("request")
+        if section.user != request.user:
+            raise serializers.ValidationError('This is NOT your section :)')
+        return section
 
     def get_links(self, obj):
         qs = getattr(obj, 'links', None)

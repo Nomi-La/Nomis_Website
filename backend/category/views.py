@@ -11,7 +11,8 @@ class CategoryListCreateView(FilterMixin, ListCreateAPIView):
     serializer_class = CategorySerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_fields = {
-        'name': 'name__icontains'
+        'name': 'name__icontains',
+        'user': 'users__id'
     }
 
     def perform_create(self, serializer):
