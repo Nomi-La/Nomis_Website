@@ -43,6 +43,8 @@ services:
 
   postgres:
     image: postgres:latest
+    depends_on:
+      - backend
     networks:
       - web
     environment:
