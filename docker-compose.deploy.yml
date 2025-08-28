@@ -33,6 +33,9 @@ services:
         - *postgres-environment
         - *mail-environment
         - *ai-environment
+    depends_on:
+      - postgres
+
     volumes:
       - static_files:/static-files
       - media_files:/media-files
@@ -40,6 +43,8 @@ services:
 
   postgres:
     image: postgres:latest
+    networks:
+      - web
     environment:
       <<:
         - *postgres-environment
