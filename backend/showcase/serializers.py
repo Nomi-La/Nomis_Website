@@ -10,6 +10,7 @@ class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
     COMPRESS_FIELDS = ['image']
     TARGET_IMAGE_MB = 1
     MAX_SIDE = None
+    HARD_MAX_MB = 6
 
     created = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
     updated = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
@@ -59,6 +60,7 @@ class LinkSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer):
     COMPRESS_FIELDS = ['icon']
     TARGET_IMAGE_MB = 0.2
     MAX_SIDE = None
+    HARD_MAX_MB = 3
 
     project = serializers.CharField(source='project.name', read_only=True)
     project_id = serializers.PrimaryKeyRelatedField(source='project', queryset=Project.objects.all())

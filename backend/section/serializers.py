@@ -10,6 +10,7 @@ class SectionSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
     COMPRESS_FIELDS = ['image', 'image2']
     TARGET_IMAGE_MB = 1.5
     MAX_SIDE = None
+    HARD_MAX_MB = 6
 
     # user = serializers.HiddenField(default=serializers.CreateOnlyDefault(serializers.CurrentUserDefault()))
     user = serializers.IntegerField(source='user.id', read_only=True)
