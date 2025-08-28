@@ -1,13 +1,13 @@
 x-postgres-environment: &postgres-environment
-  POSTGRES_DB:
-  POSTGRES_HOST:
-  POSTGRES_PORT:
-  POSTGRES_USER:
-  POSTGRES_PASSWORD:
+  POSTGRES_DB: ${POSTGRES_DB}
+  POSTGRES_HOST: ${POSTGRES_HOST:-postgres}
+  POSTGRES_PORT: ${POSTGRES_PORT:-5432}
+  POSTGRES_USER: ${POSTGRES_USER}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
 x-django-environment: &django-environment
-  DJANGO_DEBUG:
-  DJANGO_SECRET_KEY:
+  DJANGO_DEBUG: ${DJANGO_DEBUG:-false}
+  DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
 
 x-mail-environment: &mail-environment
   DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL}
@@ -18,7 +18,7 @@ x-mail-environment: &mail-environment
   EMAIL_PORT: ${EMAIL_PORT}
 
 x-ai-environment: &ai-environment
-  OPENAI_API_KEY:
+  OPENAI_API_KEY: ${OPENAI_API_KEY}
 
 services:
   backend:
