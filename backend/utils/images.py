@@ -1,9 +1,11 @@
 from io import BytesIO
 from pathlib import Path
+
 from PIL import Image, ImageFile, ImageOps, features
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+
 
 def _seek0(obj):
     try:
@@ -11,10 +13,12 @@ def _seek0(obj):
     except Exception:
         pass
 
+
 def _buf_to_upload(buf: BytesIO, upload, fmt: str, content_type: str):
     buf.seek(0)
     name = f"{Path(getattr(upload, 'name', 'image')).stem}.{fmt.lower()}"
     return InMemoryUploadedFile(buf, None, name, content_type, buf.getbuffer().nbytes, None)
+
 
 def _encode(im: Image.Image, fmt: str, quality: int | None = None):
     """Return BytesIO or None on failure."""
@@ -26,7 +30,8 @@ def _encode(im: Image.Image, fmt: str, quality: int | None = None):
             return buf
         if fmt == "JPEG":
             im_rgb = im.convert("RGB")  # JPEG has no alpha
-            im_rgb.save(buf, format="JPEG", quality=int(quality if quality is not None else 85), optimize=True, progressive=True)
+            im_rgb.save(buf, format="JPEG", quality=int(quality if quality is not None else 85), optimize=True,
+                        progressive=True)
             return buf
         if fmt == "PNG":
             im.save(buf, format="PNG", optimize=True)
@@ -34,6 +39,7 @@ def _encode(im: Image.Image, fmt: str, quality: int | None = None):
     except Exception:
         return None
     return None
+
 
 def compress_image_to_target(upload, *, target_mb=0.5, max_side=None, q_min=40, q_max=95, attempts=8):
     """

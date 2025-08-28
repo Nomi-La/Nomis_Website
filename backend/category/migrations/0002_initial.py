@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -22,6 +21,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddConstraint(
             model_name='category',
-            constraint=models.UniqueConstraint(django.db.models.functions.text.Lower('name'), name='uniq_category_name_ci'),
+            constraint=models.UniqueConstraint(django.db.models.functions.text.Lower('name'),
+                                               name='uniq_category_name_ci'),
         ),
     ]

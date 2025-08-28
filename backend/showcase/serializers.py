@@ -24,7 +24,7 @@ class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
 
         extra_kwargs = {
             'image': {'required': False, 'allow_null': True, 'use_url': True},
-            'plan': {'required': False, 'allow_null': True },
+            'plan': {'required': False, 'allow_null': True},
         }
 
     def get_plans(self, obj):

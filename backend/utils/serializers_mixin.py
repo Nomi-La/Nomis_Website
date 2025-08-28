@@ -1,14 +1,16 @@
 from django.db import models
 from rest_framework import serializers
+
 from .images import compress_image_to_target
 
 BYTES_PER_MB = 1024 * 1024
 
+
 class ImageCompressOnDemandMixin:
-    COMPRESS_FIELDS = None     # e.g. ['image', 'icon']; None → auto-detect ImageFields
-    TARGET_IMAGE_MB = None     # float MB; None → no compression
-    MAX_SIDE = None            # int px; None → no resizing
-    HARD_MAX_MB = None         # reject files bigger than this (ValidationError)
+    COMPRESS_FIELDS = None  # e.g. ['image', 'icon']; None → auto-detect ImageFields
+    TARGET_IMAGE_MB = None  # float MB; None → no compression
+    MAX_SIDE = None  # int px; None → no resizing
+    HARD_MAX_MB = None  # reject files bigger than this (ValidationError)
 
     def _image_fields(self):
         if self.COMPRESS_FIELDS is not None:
