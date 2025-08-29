@@ -17,12 +17,13 @@
     padding: 40px 0px 0px;
     .profile{
       max-width: 170px;
+      width: 30vw;
     }
-    button{
+    .arrow-small{
       color: $lightTurquoise;
       border: None;
       font-weight: 900;
-      font-size: large;
+      font-size: 1vw;
       cursor: pointer;
       background-color: $lightGray;
       padding: 2px;

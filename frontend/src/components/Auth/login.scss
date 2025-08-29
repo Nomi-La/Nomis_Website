@@ -1,0 +1,17 @@
+@use '../../colors' as *;
+
+.login-sec{
+  position: absolute;
+  background-color: #e1e1e1;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  padding: 7px;
+  right: 3.5vw;
+  top: 4vh;
+  .error-mes{
+    color: red;
+  }
+  .login-button{
+    background-color: $lightGray;
+  }
+}

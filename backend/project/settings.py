@@ -43,6 +43,21 @@ CSRF_TRUSTED_ORIGINS = [
     'https://www.nomilang.ch',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://nomilang.ch",
+    "https://www.nomilang.ch",
+]
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-language",
+    "content-type",
+    "authorization",
+    "origin",
+    "x-requested-with",
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -59,9 +74,11 @@ INSTALLED_APPS = [
     'showcase',
     'rest_framework',
     'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

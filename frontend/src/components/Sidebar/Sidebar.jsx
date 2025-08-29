@@ -9,10 +9,10 @@ export default function Sidebar(){
         <div className="sidebar-container">
             {image && <div className="image-wrapper">
                 <img className="profile" src="/casual%20(2).png" alt="profile"/>
-                <button onClick={()=>setImage(false)}>{">"}</button>
+                <button className='arrow-small' onClick={()=>setImage(false)}>{">"}</button>
             </div>}
             {!image && <div className="image-wrapper">
-                <button onClick={()=>setImage(true)}>{"<"}</button>
+                <button className='arrow-small' onClick={()=>setImage(true)}>{"<"}</button>
                 <img className="profile" src="/serious%20(2).png" alt="profile"/>
 
             </div>}
@@ -23,7 +23,7 @@ export default function Sidebar(){
             <NavLink className="subject" to="/projects">Projects</NavLink>
             <NavLink className="subject" to="">About Me</NavLink>
             <NavLink className="subject" to="/get-lost">Get Lost ♥</NavLink>
-            <p className="subject" style={{"font-size": "x-large", "font-weight": "100"}}>©</p>
+            <p className="subject" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>
 
         </div>
     </>
