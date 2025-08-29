@@ -1,9 +1,12 @@
 from io import BytesIO
 from pathlib import Path
+
 from PIL import Image, ImageFile, ImageOps, features
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+
+
 #
 # def _seek0(f):
 #     try: f.seek(0)
