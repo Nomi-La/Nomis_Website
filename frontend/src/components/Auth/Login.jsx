@@ -1,6 +1,6 @@
 import './login.scss'
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {login, logout} from "../../slices/authSlice.js";
 import {Link} from "react-router";
 import api from "../../axios/api.js";
@@ -9,10 +9,11 @@ export default function Login () {
     const [email, setEmail] = useState('')
     const [password, setPassword]= useState('')
     const [error, setError] = useState('')
+    const [log, setLog] = useState(false)
 
     const dispatch = useDispatch()
-    const user = localStorage.getItem('user')
-    const token = localStorage.getItem('access-token')
+    const token = useSelector((state) => state.auth.accessToken)
+    const user = useSelector((state) => state.auth.user)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,7 +25,7 @@ export default function Login () {
                 password,
             });
 
-            const {access, refresh, user} = response.data
+            const {access, refresh} = response.data
 
             dispatch(
                 login({
@@ -33,40 +34,72 @@ export default function Login () {
                     refreshToken: refresh
                 })
             )
-
+            setLog(false)
         } catch (err) {
-            console.error(err)
-            setError('Invalid email or password')
-        }
+          if (err.response) {
+            const data = err.response.data;
+
+            let message = "";
+            if (typeof data === "string") {
+              message = data;
+            } else if (data.detail) {
+              message = data.detail;
+            } else if (typeof data === "object") {
+              message = Object.values(data).flat().join(" ");
+            } else {
+              message = "An error occurred.";
+            }
+
+            console.error(message);
+            setError(message);
+          } else {
+            setError("Network error, please try again.");
+          }}
     };
 
+    const handleLogout = () => {
+        dispatch(logout())
+        setLog(false)
+    }
+
     return <>
-        <div className='login-sec'>
-            {!user && !token &&
-                <form className='signin-form' onSubmit={handleSubmit}>
+        {token && <img className="log-logo" src="/door2.png" alt="logo-star"
+              onClick={() => setLog(!log)}/>}
+        {!token && <img className="key-logo" src="/key2.png" alt="logo-star"
+              onClick={() => setLog(!log)}/>}
 
-                <input
-                    type='email'
-                    placeholder='email'
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+        { !token && log &&
+            <div className='login-sec'>
+            <form className='signin-form' onSubmit={handleSubmit}>
 
-                <input
-                    type='password'
-                    placeholder='password'
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+            <input
+                className='input'
+                type='email'
+                placeholder='email'
+                onChange={(e) => setEmail(e.target.value)}
+            />
 
-                {error && <p className="error-mes">{error}</p>}
+            <input
+                className='input'
+                type='password'
+                placeholder='password'
+                onChange={(e) => setPassword(e.target.value)}
+            />
 
-                <button type='submit' className="login-button">Login</button>
+            {error && <p className="error-mes">{error}</p>}
 
-                {/*<Link to='/signup'>signup</Link>*/}
-                {/*<Link to='/reset-password'>forgot password?</Link>*/}
+            <button type='submit' className="login-button">Login</button>
 
-            </form>
+            {/*<Link to='/signup'>signup</Link>*/}
+            {/*<Link to='/reset-password'>forgot password?</Link>*/}
+
+        </form>
+            </div>
             }
-            {user && token && <></>}
-        </div>
+        {token && log &&
+            <div className='login-sec'>
+            <button className='login-button' onClick={handleLogout}>logout</button>
+            </div>
+        }
     </>
 }
