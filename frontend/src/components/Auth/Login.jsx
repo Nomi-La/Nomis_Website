@@ -9,7 +9,10 @@ export default function Login () {
     const [email, setEmail] = useState('')
     const [password, setPassword]= useState('')
     const [error, setError] = useState('')
+
     const dispatch = useDispatch()
+    const user = localStorage.getItem('user')
+    const token = localStorage.getItem('access-token')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,18 +42,19 @@ export default function Login () {
 
     return <>
         <div className='login-sec'>
-            <form className='signin-form' onSubmit={handleSubmit}>
+            {!user && !token &&
+                <form className='signin-form' onSubmit={handleSubmit}>
 
                 <input
-                type='email'
-                placeholder='email'
-                onChange={(e)=> setEmail(e.target.value)}
+                    type='email'
+                    placeholder='email'
+                    onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <input
-                type='password'
-                placeholder='password'
-                onChange={(e)=> setPassword(e.target.value)}
+                    type='password'
+                    placeholder='password'
+                    onChange={(e) => setPassword(e.target.value)}
                 />
 
                 {error && <p className="error-mes">{error}</p>}
@@ -61,6 +65,8 @@ export default function Login () {
                 {/*<Link to='/reset-password'>forgot password?</Link>*/}
 
             </form>
+            }
+            {user && token && <></>}
         </div>
     </>
 }
