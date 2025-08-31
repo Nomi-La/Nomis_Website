@@ -243,7 +243,7 @@ def compress_image_to_target(upload, *, target_mb=0.5, max_side=None, q_min=40, 
 
     try:
         _seek0(upload)
-        img = Image.open(upload);
+        img = Image.open(upload)
         img.load()
         img = ImageOps.exif_transpose(img)
     except Exception:
@@ -270,7 +270,7 @@ def compress_image_to_target(upload, *, target_mb=0.5, max_side=None, q_min=40, 
             sz = buf.getbuffer().nbytes
             if sz <= target_bytes:
                 if orig_size is not None and sz >= orig_size:
-                    _seek0(upload);
+                    _seek0(upload)
                     return upload
                 return _buf_to_upload(buf, upload, ext, ctype)
     else:
@@ -278,7 +278,7 @@ def compress_image_to_target(upload, *, target_mb=0.5, max_side=None, q_min=40, 
         if r:
             sz, buf, _ = r
             if orig_size is not None and sz >= orig_size:
-                _seek0(upload);
+                _seek0(upload)
                 return upload
             return _buf_to_upload(buf, upload, ext, ctype)
 
@@ -286,7 +286,7 @@ def compress_image_to_target(upload, *, target_mb=0.5, max_side=None, q_min=40, 
     if r2:
         sz, buf, _ = r2
         if orig_size is not None and sz >= orig_size:
-            _seek0(upload);
+            _seek0(upload)
             return upload
         return _buf_to_upload(buf, upload, ext, ctype)
 
