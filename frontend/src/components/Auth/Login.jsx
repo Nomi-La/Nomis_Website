@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {login, logout} from "../../slices/authSlice.js";
 import {Link} from "react-router";
 import api from "../../axios/api.js";
+import parseError from "../../utils/parseError.js";
 
 export default function Login () {
     const [email, setEmail] = useState('')
@@ -13,9 +14,8 @@ export default function Login () {
 
     const dispatch = useDispatch()
     const token = useSelector((state) => state.auth.accessToken)
-    const user = useSelector((state) => state.auth.user)
 
-    const handleSubmit = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
 
@@ -25,7 +25,7 @@ export default function Login () {
                 password,
             });
 
-            const {access, refresh} = response.data
+            const {access, refresh, user} = response.data
 
             dispatch(
                 login({
@@ -36,25 +36,11 @@ export default function Login () {
             )
             setLog(false)
         } catch (err) {
-          if (err.response) {
-            const data = err.response.data;
-
-            let message = "";
-            if (typeof data === "string") {
-              message = data;
-            } else if (data.detail) {
-              message = data.detail;
-            } else if (typeof data === "object") {
-              message = Object.values(data).flat().join(" ");
-            } else {
-              message = "An error occurred.";
-            }
+          let message = parseError(err)
 
             console.error(message);
             setError(message);
-          } else {
-            setError("Network error, please try again.");
-          }}
+          }
     };
 
     const handleLogout = () => {
@@ -70,7 +56,7 @@ export default function Login () {
 
         { !token && log &&
             <div className='login-sec'>
-            <form className='signin-form' onSubmit={handleSubmit}>
+            <form className='signin-form' onSubmit={handleLogin}>
 
             <input
                 className='input'
