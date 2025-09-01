@@ -1,9 +1,11 @@
 import './sidebar.scss'
 import {useState} from "react";
 import {NavLink} from "react-router";
+import {useSelector} from "react-redux";
 
 export default function Sidebar(){
     const [image, setImage] = useState(true)
+    const user = useSelector((s)=> s.auth.user)
 
     return <>
         <div className="sidebar-container">
