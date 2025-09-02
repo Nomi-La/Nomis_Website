@@ -1,11 +1,19 @@
 import './sidebar.scss'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {NavLink} from "react-router";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCategories} from "../../slices/categorySlice.js";
 
 export default function Sidebar(){
+
     const [image, setImage] = useState(true)
-    const user = useSelector((s)=> s.auth.user) || null
+    const dispatch = useDispatch()
+
+    const categories = useSelector((s) => s.categories.items)
+
+    useEffect(() => {
+        dispatch(fetchCategories())
+    }, [])
 
     return <>
         <div className="sidebar-container">
@@ -21,10 +29,9 @@ export default function Sidebar(){
             <p><span className="welcome">Welcome:)</span>
                 <br/><br/>I am <b>Nomi Lang</b>, a <b>Full-Stack developer</b>
                 <br/>-And <span className="much-more">so much more</span>! ↓</p>
-
-            <NavLink className="subject" to="/projects">Projects</NavLink>
-            <NavLink className="subject" to="">About Me</NavLink>
-            <NavLink className="subject" to="/get-lost">Get Lost ♥</NavLink>
+            {[...(categories ?? [])].sort((a, b) => a.id - b.id).map((category)=> <>
+                <NavLink className="subject" key={`Category: ${category.id}`} to={`/${category.name}`}>{category.name}</NavLink>
+            </>)}
             <p className="subject" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>
 
         </div>

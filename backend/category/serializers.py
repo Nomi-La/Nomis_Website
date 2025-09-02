@@ -13,10 +13,21 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'users', 'sections', 'projects']
 
     def get_sections(self, obj):
-        return obj.sections.all().count()
+        qs = getattr(obj, 'sections', None)
+        if qs is None:
+            return []
+        sections = []
+        for section in qs.all():
+
+            sections.append({
+                'id': section.id,
+                'name': section.name,
+            })
+        return sections
+
 
     def get_users(self, obj):
-        return obj.users.all().count()
+            return obj.users.all().count()
 
     def get_projects(self, obj):
         if hasattr(obj, 'projects'):
