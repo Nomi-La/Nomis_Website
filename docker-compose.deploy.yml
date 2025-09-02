@@ -23,7 +23,7 @@ x-ai-environment: &ai-environment
 services:
   backend:
 
-    image: registry.gitlab.com/my_website7155632/nomi-lang:latest
+    image: registry.gitlab.com/nomila/nomis_website:latest
     command: "sh /scripts/prod.sh"
     networks:
       - web

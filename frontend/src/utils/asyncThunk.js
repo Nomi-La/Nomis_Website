@@ -1,7 +1,8 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import api from "../axios/api.js";
 import parseError from "./parseError.js";
+import api from "./api.js";
 
+//get
 export const fetchModels = (modelName, endPoint) => {
 
     return createAsyncThunk(
@@ -16,7 +17,7 @@ export const fetchModels = (modelName, endPoint) => {
         }
     )
 }
-
+//post
 export const createModel = (modelName, endPoint) => {
     return createAsyncThunk(
         `${modelName}/create`,
@@ -30,7 +31,7 @@ export const createModel = (modelName, endPoint) => {
         }
     )
 }
-
+//delete
 export const deleteModel = (modelName, endPoint) => {
     return createAsyncThunk(
         `${modelName}/delete`,
@@ -44,7 +45,7 @@ export const deleteModel = (modelName, endPoint) => {
         }
     )
 }
-
+//getId
 export const fetchModel = (modelName, endPoint) => {
     return createAsyncThunk(
         `${modelName}/fetchById`,
@@ -58,7 +59,7 @@ export const fetchModel = (modelName, endPoint) => {
         }
     )
 }
-
+//patch
 export const editModel = (modelName, endPoint) => {
     return createAsyncThunk(
         `${modelName}/edit`,

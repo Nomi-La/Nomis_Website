@@ -33,7 +33,7 @@ export default function generalSlice (sliceName, get, getId, post, patch, del){
                 })
                 .addCase(get.fulfilled, (state, action) => {
                     state.fetchStatus = 'succeeded';
-                    state.items = action.payload.results;
+                    state.items = Array.isArray(action.payload) ? action.payload : (action.payload.results ?? action.payload);
                 })
                 .addCase(get.rejected, (state, action) => {
                     state.fetchStatus = 'failed';

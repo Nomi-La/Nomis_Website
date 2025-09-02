@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 
 export default function Sidebar(){
     const [image, setImage] = useState(true)
-    const user = useSelector((s)=> s.auth.user)
+    const user = useSelector((s)=> s.auth.user) || null
 
     return <>
         <div className="sidebar-container">

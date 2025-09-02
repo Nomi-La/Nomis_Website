@@ -2,9 +2,8 @@ import './login.scss'
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {login, logout} from "../../slices/authSlice.js";
-import {Link} from "react-router";
-import api from "../../axios/api.js";
 import parseError from "../../utils/parseError.js";
+import api from "../../utils/api.js";
 
 export default function Login () {
     const [email, setEmail] = useState('')
