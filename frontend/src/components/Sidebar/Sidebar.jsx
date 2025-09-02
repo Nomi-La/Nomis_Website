@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {NavLink} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCategories} from "../../slices/categorySlice.js";
+import SectionName from "./SectionName.jsx";
 
 export default function Sidebar(){
 
@@ -29,8 +30,11 @@ export default function Sidebar(){
             <p><span className="welcome">Welcome:)</span>
                 <br/><br/>I am <b>Nomi Lang</b>, a <b>Full-Stack developer</b>
                 <br/>-And <span className="much-more">so much more</span>! ↓</p>
-            {[...(categories ?? [])].sort((a, b) => a.id - b.id).map((category)=> <>
+            {[...(categories ?? [])].sort((a, b) => a.id - b.id)
+                .filter((category)=> category.name.toLower() !== 'plan')
+                .map((category)=> <>
                 <NavLink className="subject" key={`Category: ${category.id}`} to={`/${category.name}`}>{category.name}</NavLink>
+                <SectionName category={category.id}/>
             </>)}
             <p className="subject" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>
 

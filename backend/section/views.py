@@ -11,7 +11,7 @@ class SectionListCreateView(FilterMixin, ListCreateAPIView):
     serializer_class = SectionSerializer
     permission_classes = [IsOwnerOrReadOnly]
     filter_fields = {
-        "category": "category__name__iexact",
+        "category": "category__id",
         'user': "user__id",
         'project': 'project__id',
     }
