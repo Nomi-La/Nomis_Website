@@ -31,10 +31,10 @@ export default function Sidebar(){
                 <br/><br/>I am <b>Nomi Lang</b>, a <b>Full-Stack developer</b>
                 <br/>-And <span className="much-more">so much more</span>! ↓</p>
             {[...(categories ?? [])].sort((a, b) => a.id - b.id)
-                .filter((category)=> category.name.toLower() !== 'plan')
+                .filter((category)=> category.name.toLowerCase() !== 'plan')
                 .map((category)=> <>
                 <NavLink className="subject" key={`Category: ${category.id}`} to={`/${category.name}`}>{category.name}</NavLink>
-                <SectionName category={category.id}/>
+                <SectionName categoryId={category.id}/>
             </>)}
             <p className="subject" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>
 

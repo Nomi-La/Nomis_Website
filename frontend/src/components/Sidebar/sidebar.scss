@@ -64,6 +64,19 @@
     font-size: large;
   }
   .active{
-    background-color: #e5fdf6;
+    background-color: #dbfff9;
+  }
+  .section-name{
+    text-align: center;
+    color: black;
+    padding: 12px 0px;
+    border-top: 0.1px solid $turquoise;
+    //box-shadow: 1px 1px 10px gray inset;
+    border-radius: 0px;
+    width: 100%;
+    font-size: medium;
+    font-weight: 500;
+    background: linear-gradient(135deg, $white, $lightGray);
+    cursor: pointer;
   }
 }

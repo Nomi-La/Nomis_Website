@@ -18,16 +18,14 @@ class CategorySerializer(serializers.ModelSerializer):
             return []
         sections = []
         for section in qs.all():
-
             sections.append({
                 'id': section.id,
                 'name': section.name,
             })
         return sections
 
-
     def get_users(self, obj):
-            return obj.users.all().count()
+        return obj.users.all().count()
 
     def get_projects(self, obj):
         if hasattr(obj, 'projects'):
