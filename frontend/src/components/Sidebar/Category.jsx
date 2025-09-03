@@ -3,7 +3,6 @@ import {useSelector} from "react-redux";
 import {NavLink} from "react-router";
 import {useRef, useState} from "react";
 import Section from "./Section.jsx";
-import {useClickAway} from "react-use";
 import {useClickAnywhere} from "../../utils/eventListener.js";
 
 export default function Category({category}){
@@ -11,6 +10,7 @@ export default function Category({category}){
     const wrapperRef = useRef(null)
     const sections = useSelector((s)=> s.sections.items)
             .filter((section) => section.category === category.id)
+            .sort((a, b) => a.id - b.id)
 
     useClickAnywhere((e) => {
         if (
@@ -22,12 +22,12 @@ export default function Category({category}){
       });
 
 
-    return <>
-            <NavLink ref={wrapperRef} className="subject" onClick={()=>setOpen(!open)} key={`Category: ${category.id}`} to={`/${category.name}`}>{category.name}</NavLink>
+    return <div ref={wrapperRef} className='category-wrap' key={`1Category-div: ${category.id}`}>
+            <NavLink key={`1Category: ${category.id}`} className="category" onClick={()=>setOpen(!open)} to={`/${category.name}`}>{category.name}</NavLink>
             {open && sections.map((section)=> <>
                         <Section section={section}/>
                         </>)}
-        </>
+        </div>
 }
 
 // const [sections, setSections] = useState([]);

@@ -2,6 +2,6 @@
 
 export default function Section ({section}) {
     return <>
-            <label className='section-name' key={`Section: ${section.id}`}>{section.name}</label>
+            <a href={`#${section.id}`} className='section-name' key={`1Section: ${section.id}`}>{section.name}</a>
     </>
 }

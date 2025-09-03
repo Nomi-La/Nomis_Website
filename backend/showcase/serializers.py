@@ -7,7 +7,7 @@ from utils.serializers_mixin import ImageCompressOnDemandMixin
 
 class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer):
     COMPRESS_FIELDS = ['image']
-    TARGET_IMAGE_MB = 1
+    TARGET_IMAGE_MB = 2
     MAX_SIDE = None
     HARD_MAX_MB = 6
 

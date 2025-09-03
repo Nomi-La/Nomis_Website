@@ -12,6 +12,8 @@ export default function Sidebar(){
     const dispatch = useDispatch()
 
     const categories = useSelector((s) => s.categories.items)
+                       .filter((category)=> category.name.toLowerCase() !== 'plan')
+                        .sort((a, b) => a.id - b.id)
 
     useEffect(() => {
         dispatch(fetchCategories())
@@ -32,12 +34,12 @@ export default function Sidebar(){
             <p><span className="welcome">Welcome:)</span>
                 <br/><br/>I am <b>Nomi Lang</b>, a <b>Full-Stack developer</b>
                 <br/>-And <span className="much-more">so much more</span>! ↓</p>
-                {[...(categories ?? [])].sort((a, b) => a.id - b.id)
-                    .filter((category)=> category.name.toLowerCase() !== 'plan')
-                    .map((category)=> <>
+
+                {categories.map((category)=> <>
                     <Category category={category}/>
                 </>)}
-            <p className="subject" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>
+
+            <p className="category" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>
 
         </div>
     </>

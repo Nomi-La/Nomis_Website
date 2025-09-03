@@ -1,8 +1,7 @@
 import ProjectsContainer from "../components/Projects/ProjectsContainer/ProjectsContainer.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import Project from "../components/Projects/Project/Project.jsx";
 import {useEffect} from "react";
-import {fetchSections} from "../slices/sectionSlice.js";
+import {fetchProjects} from "../slices/projectSlice.js";
 
 export default function ProjectsPage(){
     const sections = useSelector((s)=> s.sections.items)
@@ -10,14 +9,15 @@ export default function ProjectsPage(){
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        dispatch(fetchSections())
+        dispatch(fetchProjects())
     }, [])
 
     return <>
         <div className="projects-page">
             <h1>My Projects</h1>
-            {sections.map((section)=> <div key={`sectionD: ${section.id}`}>
-                <h2>{section.name}</h2>
+            {[...(sections ?? [])].sort((a, b) => a.id - b.id)
+                .map((section)=> <div key={`sectionD: ${section.id}`}>
+                <h2 id={section.id} className='section-title' key='section-title'>{section.name}</h2>
                 <ProjectsContainer sectionId={section.id}/>
             </div>)}
 

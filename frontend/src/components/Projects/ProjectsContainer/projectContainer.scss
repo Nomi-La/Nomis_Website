@@ -13,10 +13,15 @@
     width: 100%;
     text-align: center;
   }
-  h2{
+  .section-title{
     text-align: left;
     width: 100%;
     padding: 10px 50px;
+  }
+  .section-title:target{
+    background: #eee;          /* האפור */
+    transition: background .4s;
+    outline: none;
   }
   .projects-container{
     background-color: $wheat;
