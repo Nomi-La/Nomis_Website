@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 
 export default function SectionName({categoryId}){
     const sections = useSelector((s)=> s.sections.items)
-            .filter((section))
+            .filter((section) => section.category.id === categoryId)
 
 
     return <>

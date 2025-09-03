@@ -14,15 +14,15 @@ class SectionSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
     # user = serializers.HiddenField(default=serializers.CreateOnlyDefault(serializers.CurrentUserDefault()))
     user = serializers.IntegerField(source='user.id', read_only=True)
     projects = serializers.SerializerMethodField()
-    category_id = serializers.PrimaryKeyRelatedField(source='category', queryset=Category.objects.all())
-    category = serializers.CharField(source='category.name', read_only=True)
+    category = serializers.PrimaryKeyRelatedField(source='category', queryset=Category.objects.all())
+    category_name = serializers.CharField(source='category.name', read_only=True)
     username = serializers.CharField(source='user.username' or 'user.first_name', read_only=True)
     created = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
     updated = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
 
     class Meta:
         model = Section
-        fields = ['id', 'name', 'content', 'image', 'image2', 'created', 'updated', 'category', 'category_id', 'user',
+        fields = ['id', 'name', 'content', 'image', 'image2', 'created', 'updated', 'category', 'category_name', 'user',
                   'username', 'projects', 'project']
         extra_kwargs = {
             'content': {'required': False, 'allow_blank': True, 'allow_null': True},

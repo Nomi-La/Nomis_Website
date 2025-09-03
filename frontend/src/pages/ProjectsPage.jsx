@@ -6,7 +6,7 @@ import {fetchSections} from "../slices/sectionSlice.js";
 
 export default function ProjectsPage(){
     const sections = useSelector((s)=> s.sections.items)
-            .filter((section)=> section.category.toLowerCase() === 'projects')
+            .filter((section)=> section.category_name.toLowerCase() === 'projects')
     const dispatch = useDispatch()
 
     useEffect(()=>{
