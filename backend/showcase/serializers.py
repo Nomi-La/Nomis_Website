@@ -14,13 +14,13 @@ class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
     created = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
     updated = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
     links = serializers.SerializerMethodField()
-    section_id = serializers.PrimaryKeyRelatedField(source='section', queryset=Section.objects.all(), write_only=True)
-    section = serializers.CharField(source='section.name', read_only=True)
+    section = serializers.PrimaryKeyRelatedField(queryset=Section.objects.all(), write_only=True)
+    section_name = serializers.CharField(source='section.name', read_only=True)
     plans = serializers.SerializerMethodField()
 
     class Meta:
         model = Project
-        fields = ['id', 'name', 'image', 'created', 'updated', 'plan', 'plans', 'section', 'section_id', 'links']
+        fields = ['id', 'name', 'image', 'created', 'updated', 'plan', 'plans', 'section', 'section_name', 'links']
 
         extra_kwargs = {
             'image': {'required': False, 'allow_null': True, 'use_url': True},
