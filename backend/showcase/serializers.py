@@ -14,7 +14,7 @@ class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
     created = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
     updated = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
     links = serializers.SerializerMethodField()
-    section = serializers.PrimaryKeyRelatedField(queryset=Section.objects.all(), write_only=True)
+    section = serializers.PrimaryKeyRelatedField(queryset=Section.objects.all())
     section_name = serializers.CharField(source='section.name', read_only=True)
     plans = serializers.SerializerMethodField()
 
