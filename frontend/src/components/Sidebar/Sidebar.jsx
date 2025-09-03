@@ -3,10 +3,11 @@ import {useEffect, useState} from "react";
 import {NavLink} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCategories} from "../../slices/categorySlice.js";
-import SectionName from "./SectionName.jsx";
+import SectionName from "./Category.jsx";
+import Category from "./Category.jsx";
+import {fetchSections} from "../../slices/sectionSlice.js";
 
 export default function Sidebar(){
-
     const [image, setImage] = useState(true)
     const dispatch = useDispatch()
 
@@ -14,6 +15,7 @@ export default function Sidebar(){
 
     useEffect(() => {
         dispatch(fetchCategories())
+        dispatch(fetchSections())
     }, [])
 
     return <>
@@ -30,12 +32,11 @@ export default function Sidebar(){
             <p><span className="welcome">Welcome:)</span>
                 <br/><br/>I am <b>Nomi Lang</b>, a <b>Full-Stack developer</b>
                 <br/>-And <span className="much-more">so much more</span>! ↓</p>
-            {[...(categories ?? [])].sort((a, b) => a.id - b.id)
-                .filter((category)=> category.name.toLowerCase() !== 'plan')
-                .map((category)=> <>
-                <NavLink className="subject" key={`Category: ${category.id}`} to={`/${category.name}`}>{category.name}</NavLink>
-                <SectionName categoryId={category.id}/>
-            </>)}
+                {[...(categories ?? [])].sort((a, b) => a.id - b.id)
+                    .filter((category)=> category.name.toLowerCase() !== 'plan')
+                    .map((category)=> <>
+                    <Category category={category}/>
+                </>)}
             <p className="subject" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>
 
         </div>

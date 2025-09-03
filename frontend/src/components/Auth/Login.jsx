@@ -1,18 +1,21 @@
 import './login.scss'
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {login, logout} from "../../slices/authSlice.js";
 import parseError from "../../utils/parseError.js";
 import api from "../../utils/api.js";
+import {useClickAway} from "react-use";
 
 export default function Login () {
     const [email, setEmail] = useState('')
     const [password, setPassword]= useState('')
     const [error, setError] = useState('')
     const [log, setLog] = useState(false)
-
+    const loginRef = useRef(null)
     const dispatch = useDispatch()
     const token = useSelector((state) => state.auth.accessToken)
+
+    useClickAway(loginRef, ()=> setLog(false))
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -48,13 +51,13 @@ export default function Login () {
     }
 
     return <>
-        {token && <img className="log-logo" src="/door2.png" alt="logo-star"
+        {token && <img ref={loginRef} className="log-logo" src="/door2.png" alt="logo-star"
               onClick={() => setLog(!log)}/>}
-        {!token && <img className="key-logo" src="/key2.png" alt="logo-star"
+        {!token && <img ref={loginRef} className="key-logo" src="/key2.png" alt="logo-star"
               onClick={() => setLog(!log)}/>}
 
         { !token && log &&
-            <div className='login-sec'>
+            <div className='login-sec' ref={loginRef}>
             <form className='signin-form' onSubmit={handleLogin}>
 
             <input
@@ -82,7 +85,7 @@ export default function Login () {
             </div>
             }
         {token && log &&
-            <div className='login-sec'>
+            <div className='login-sec' ref={loginRef}>
             <button className='login-button' onClick={handleLogout}>logout</button>
             </div>
         }

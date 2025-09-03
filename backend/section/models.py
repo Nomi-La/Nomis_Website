@@ -20,4 +20,4 @@ class Section(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='plans', null=True, blank=True)
 
     def __str__(self):
-        return f'{self.name} ({self.category.name})'
+        return f'{self.id} {self.name} ({self.category.name})'

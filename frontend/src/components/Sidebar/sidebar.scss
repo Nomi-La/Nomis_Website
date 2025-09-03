@@ -64,19 +64,21 @@
     font-size: large;
   }
   .active{
-    background-color: #dbfff9;
+    background-color: $midTurquoise;
   }
   .section-name{
     text-align: center;
-    color: black;
+    color: $darkGray;
     padding: 12px 0px;
-    border-top: 0.1px solid $turquoise;
+    border-bottom: 6px solid $midTurquoise;
+    border-right: 10px solid $midTurquoise;
+    border-left: 10px solid $midTurquoise;
     //box-shadow: 1px 1px 10px gray inset;
     border-radius: 0px;
     width: 100%;
-    font-size: medium;
     font-weight: 500;
-    background: linear-gradient(135deg, $white, $lightGray);
+    //background: linear-gradient(135deg, $white, $lightGray);
+    background-color: $white;
     cursor: pointer;
   }
 }

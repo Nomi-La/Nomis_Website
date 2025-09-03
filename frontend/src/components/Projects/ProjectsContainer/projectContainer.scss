@@ -1,3 +1,5 @@
+@use '../../../colors' as *;
+
 .projects-page{
   display: flex;
   align-items: start;
@@ -17,7 +19,7 @@
     padding: 10px 50px;
   }
   .projects-container{
-    background-color: #efe7cd;
+    background-color: $wheat;
 
     //display: grid;
     //grid-template-columns: 1fr 1fr 1fr 1fr;
