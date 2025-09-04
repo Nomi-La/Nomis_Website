@@ -16,7 +16,7 @@
   .section-title{
     text-align: left;
     width: 100%;
-    border: 1px solid $lightTurquoise;
+    border-top: 1px solid $turquoise;
     padding: 10px 50px;
   }
   .section-title[id] { scroll-margin-top: 60px; }
@@ -31,11 +31,14 @@
     //display: grid;
     //grid-template-columns: 1fr 1fr 1fr 1fr;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    //justify-content: center;
     //max-width: 1300px;
     width: 100%;
     flex-wrap: wrap;
-    padding: 50px 2vw 50px 2vw;
+    //padding: 50px 2vw 50px 2vw;
+    padding: 50px 0px;
+    padding-left: 3vw;
   }
 }
 
