@@ -1,7 +1,7 @@
 @use '../../colors' as *;
 
 .sidebar-container{
-  width: 40%;
+  width: 30%;
   max-width: 500px;
   height: 100%;
   min-height: 92.5vh;
@@ -9,7 +9,8 @@
   flex-direction: column;
   align-items: center;
   background-color: $lightTurquoise;
-  box-shadow: 1px 1px 10px $gray;
+  box-shadow: 1px 1px 5px $gray;
+  z-index: 2;
   .image-wrapper{
     display: flex;
     align-items: center;

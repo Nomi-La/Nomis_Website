@@ -14,3 +14,12 @@
     border-radius: 5px;
   }
 }
+
+html { font-size: 16px; }            // desktop
+
+@media (max-width: 768px) {
+  html { font-size: 15px; }          // tablet
+}
+@media (max-width: 480px) {
+  html { font-size: 14px; }          // mobile
+}

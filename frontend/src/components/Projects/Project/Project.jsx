@@ -1,12 +1,14 @@
 import './project.scss'
-import {useNavigate} from "react-router";
-
+import {useState} from "react";
+import LinksContainer from "../../Links/LinksContainer.jsx";
 export default function Project({project}){
-    const navigate = useNavigate()
+    const [open, setOpen] = useState(false)
 
     return <div className="project">
-        <img src={project.image} alt={project.name}
-             onClick={()=>navigate(project.link)}/>
+        <div className='image-frame'>
+        <img className="project-image" src={project.image} alt={project.name} onClick={()=>setOpen(!open)}/>
+            </div>
         <h3>{project.name}</h3>
+        {open && <LinksContainer projectId={project.id}/>}
     </div>
 }

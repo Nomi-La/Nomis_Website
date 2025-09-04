@@ -1,14 +1,45 @@
+@use '../../../colors' as *;
+
 .project{
+  max-width: 200px;
+  min-width: 100px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  padding-right: 1.5vw;
-  img{
-    max-width: 200px;
-    width: 17vw;
-    cursor: pointer;
-  }
+  align-items: center;
+  margin: 3vh 4vw;
+  width: 28vw;
+  box-shadow: 2px 2px 4px $gray;
+  border-radius: 10px;
+  height: auto;
+
+
+
+  .image-frame{
+      box-shadow: 0px 1px 3px $gray;
+
+
+      width: 100%;
+      aspect-ratio: 12 / 12.5;
+      overflow: hidden;
+      //border: 2px dashed $midTurquoise;
+      //background-color: $midTurquoise;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .project-image{
+        display: block;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px;
+      }
+    }
+
   h3{
+    padding: 15px 0px;
     text-align: center;
     width: 100%;
   }

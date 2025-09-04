@@ -1,0 +1,31 @@
+@use '../../colors' as *;
+
+.links-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+
+  .singlink-container{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    width: 90%;
+    padding: 10px;
+
+    .icon{
+      width: 25px;
+      margin-left: 9px;
+    }
+
+    .singlink{
+      color: $white;
+      text-decoration: none;
+      width: 65%;
+      font-size: large;
+    }
+  }
+}
