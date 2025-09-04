@@ -1,19 +1,34 @@
 @use '../../../colors' as *;
 
 .project{
+  position: relative;
   max-width: 200px;
   min-width: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 3vh 4vw 5vh;
+  margin: 3vh 4vw 150px;
   width: 23vw;
   //width: 28vw;
   box-shadow: 2px 2px 4px $gray;
   border-radius: 10px;
   height: auto;
 
+  @media (max-width: 1250px){
+    width: 15vw;
+    margin-bottom: 90px;
+  }
 
+  @media (max-width: 800px){
+    width: 15vw;
+    margin: 3vh 4vw 0.5vh;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px $gray;
+  }
+
+  @media (max-width: 800px) and (min-width: 580px){
+      margin: 3vh 3vw 6vh 10vw;
+  }
 
   .image-frame{
       box-shadow: 0px 1px 3px $gray;
@@ -43,5 +58,51 @@
     padding: 15px 0px;
     text-align: center;
     width: 100%;
+    font-size: 1.2rem;
+
+    @media (max-width: 1007px){
+      padding: 1vh 0px;
+    }
+  }
+
+  .actions{
+    box-shadow: 2px 2px 4px $gray;
+    border-radius: 0px 0px 10px 10px;
+      z-index: 50;
+      max-width: 200px;
+      min-width: 120px;
+      width: 23vw;
+      padding-top: 15px;
+      position: absolute;
+      top: 100%;
+      background-color: rgba(239, 231, 205, 1);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: max-height 300ms ease, opacity 200ms ease, transform 300ms ease;
+
+      @media (max-width: 1250px) {
+        width: 15vw;
+      }
+      @media (max-width: 800px){
+        position: static;
+        box-shadow: none;
+        padding-top: 0px;
+      }
   }
 }
+
+.project.open{
+  border-radius: 10px 10px 0px 0px;
+  @media (max-width: 800px) {
+    border-radius: 10px;
+  }
+  .actions{
+    max-height: 999px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

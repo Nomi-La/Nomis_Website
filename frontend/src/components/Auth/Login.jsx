@@ -4,7 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {login, logout} from "../../slices/authSlice.js";
 import parseError from "../../utils/parseError.js";
 import api from "../../utils/api.js";
-// import {useClickAway} from "react-use";
+import useClickAway from "../../utils/eventListener.js";
+
 
 export default function Login () {
     const [email, setEmail] = useState('')
@@ -15,7 +16,7 @@ export default function Login () {
     const dispatch = useDispatch()
     const token = useSelector((state) => state.auth.accessToken)
 
-    // useClickAway(loginRef, ()=> setLog(false))
+    useClickAway(loginRef, ()=> setLog(false))
 
     const handleLogin = async (e) => {
         e.preventDefault();

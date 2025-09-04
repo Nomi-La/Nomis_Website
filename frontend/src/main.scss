@@ -23,3 +23,15 @@ html { font-size: 16px; }            // desktop
 @media (max-width: 480px) {
   html { font-size: 14px; }          // mobile
 }
+
+.edit-buttons{
+  background-color: black;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  @media (max-width: 700px) {
+     padding: 1vh 3vw;
+  }
+}
