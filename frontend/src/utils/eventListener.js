@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import {RefObject, useEffect} from "react";
 
 export function useClickAnywhere(handler) {
   useEffect(() => {
@@ -9,3 +9,5 @@ export function useClickAnywhere(handler) {
     return () => document.removeEventListener("click", listener);
   }, [handler]);
 }
+
+
