@@ -1,4 +1,4 @@
-@use 'colors';
+@use 'colors' as *;
 
 *{
   padding: 0;
@@ -26,10 +26,13 @@ html { font-size: 16px; }            // desktop
 
 .edit-buttons{
   background-color: black;
-  color: white;
+  color: $white;
+  //border: 1px solid $white;
+  border: none;
   padding: 15px 25px;
   border-radius: 30px;
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   @media (max-width: 700px) {
      padding: 1vh 3vw;

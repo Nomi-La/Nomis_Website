@@ -1,24 +1,15 @@
 import './sidebar.scss'
-import {useEffect, useState} from "react";
-import {NavLink} from "react-router";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchCategories} from "../../slices/categorySlice.js";
-import SectionName from "./Category.jsx";
-import Category from "./Category.jsx";
-import {fetchSections} from "../../slices/sectionSlice.js";
+import { useState} from "react";
+import { useSelector} from "react-redux";
+import CategorySide from "./CategorySide.jsx";
+
 
 export default function Sidebar(){
     const [image, setImage] = useState(true)
-    const dispatch = useDispatch()
 
     const categories = useSelector((s) => s.categories.items)
                        .filter((category)=> category.name.toLowerCase() !== 'plan')
                         .sort((a, b) => a.id - b.id)
-
-    useEffect(() => {
-        dispatch(fetchCategories())
-        dispatch(fetchSections())
-    }, [])
 
     return <>
         <div className="sidebar-container">
@@ -36,7 +27,7 @@ export default function Sidebar(){
                 <br/>-And <span className="much-more">so much more</span>! ↓</p>
 
                 {categories.map((category)=> <>
-                    <Category category={category}/>
+                    <CategorySide category={category}/>
                 </>)}
 
             <p className="category" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>

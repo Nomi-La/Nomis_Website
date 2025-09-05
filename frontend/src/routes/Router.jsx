@@ -3,12 +3,23 @@ import Layout from "../layouts/Layout.jsx";
 import NotFound from "../pages/NotFound.jsx";
 import MainPage from "../pages/MainPage.jsx";
 import ProjectsPage from "../pages/ProjectsPage.jsx";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import CategoryPage from "../pages/CategoryPage.jsx";
+import {useEffect} from "react";
+import {fetchCategories} from "../slices/categorySlice.js";
+import {fetchSections} from "../slices/sectionSlice.js";
+
+const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
 
 export default function Router () {
-
+    const dispatch = useDispatch()
     const categories = useSelector((s) => s.categories.items)
+            .filter((category)=> category.name.toLowerCase()!=='projects')
+
+    useEffect(()=>{
+        dispatch(fetchCategories())
+        dispatch(fetchSections())
+    }, [])
 
     return <BrowserRouter>
         <Routes>
@@ -17,7 +28,7 @@ export default function Router () {
                 <Route path='' element={<MainPage/>}/>
                 <Route path='projects/' element={<ProjectsPage/>}/>
                 {categories.map((category)=><>
-                <Route path={`${category.name}/`} element={<CategoryPage category={category}/>}/>
+                <Route path={`${slug(category.name)}/`} element={<CategoryPage category={category}/>}/>
                 </>)}
             </Route>
 

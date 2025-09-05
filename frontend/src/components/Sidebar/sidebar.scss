@@ -2,15 +2,23 @@
 
 .sidebar-container{
   width: 30%;
-  max-width: 500px;
-  height: 100%;
-  min-height: 92.5vh;
+  max-width: 440px;
+  //height: 100%;
+  height: 92.5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: $lightTurquoise;
   box-shadow: 1px 1px 5px $gray;
   z-index: 2;
+  overflow-y: auto;
+
+  @media (max-width: 900px) {
+    width: 40%;
+  }
+ @media (max-width: 700px) {
+    width: 40%;
+  }
   .image-wrapper{
     display: flex;
     align-items: center;
@@ -41,7 +49,7 @@
       b{
         font-weight: 900;
       }
-    }
+      }
     .welcome{
       font-size: 1.5rem;
       font-weight: bold;
@@ -62,6 +70,7 @@
 
 
 }
+
 .category{
     text-align: center;
     color: black;
@@ -72,22 +81,36 @@
     width: 100%;
     text-decoration: None;
     font-weight: bold;
-    font-size: large;
+    font-size: 1.2rem;
 
   }
-.section-name{
+.section-container{
+    width: 100%;
+    background-color: $midTurquoise;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //padding-bottom: 10px;
+    .section-name{
+      border: 0.2px solid $lightGray;
+      font-size: 1.15rem;
       text-decoration: none;
       text-align: center;
       color: $darkGray;
-      padding: 12px 0px;
-      border-bottom: 8px solid $midTurquoise;
-      border-right: 10px solid $midTurquoise;
-      border-left: 10px solid $midTurquoise;
+      padding: 8px 0px;
+      margin-bottom: 9px;
+      //border-bottom: 1px solid $turquoise;
       //box-shadow: 1px 1px 10px gray inset;
-      border-radius: 0px;
-      width: 100%;
+      border-radius: 5px;
+      width: 90%;
       font-weight: 500;
       //background: linear-gradient(135deg, $white, $lightGray);
       background-color: $white;
       cursor: pointer;
     }
+    .section-name.activeA{
+  background-color: $lightTurquoise;
+  font-weight: bold;
+  color: $gray
+  }
+}

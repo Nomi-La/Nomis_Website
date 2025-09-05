@@ -3,10 +3,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {fetchProjects} from "../slices/projectSlice.js";
 import {fetchLinks} from "../slices/linkSlice.js";
+import {sortApiAscending} from "../utils/aids.js";
 
 export default function ProjectsPage(){
     const sections = useSelector((s)=> s.sections.items)
             .filter((section)=> section.category_name.toLowerCase() === 'projects')
+        .sort(sortApiAscending())
+
     const dispatch = useDispatch()
 
     useEffect(()=>{
