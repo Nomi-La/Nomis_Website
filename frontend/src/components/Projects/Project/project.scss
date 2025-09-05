@@ -15,7 +15,7 @@
   height: auto;
 
   @media (max-width: 1250px){
-    width: 15vw;
+    width: 23vw;
     margin-bottom: 90px;
   }
 
@@ -83,7 +83,7 @@
       transition: max-height 300ms ease, opacity 200ms ease, transform 300ms ease;
 
       @media (max-width: 1250px) {
-        width: 15vw;
+        width: 23vw;
       }
       @media (max-width: 800px){
         position: static;

@@ -23,6 +23,7 @@
   width: 100%;
   margin: 0px;
 
+
   .content-wrap{
     padding-bottom: 4vh;
     .section-content{
@@ -74,15 +75,13 @@
   .content-wrap{
     padding-right: 4vw;
     width: 55%;
-    .section-content{
-    }
   }
   .image-wrap{
     padding-top: 0px;
     width: 45%;
     flex-direction: column;
     .frame-image{
-      width: 90%;
+      width: 80%;
       .section-image{
 
       }
@@ -94,10 +93,6 @@
 @media (max-width: 1300px){
   .section-wrap{
 
-  .content-wrap{
-    .section-content{
-    }
-  }
   .image-wrap{
 
     flex-direction: column;
