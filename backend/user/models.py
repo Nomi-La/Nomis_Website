@@ -18,6 +18,6 @@ class User(AbstractUser):
 
     def __str__(self):
         if hasattr(self, 'username') and self.username:
-            return self.username
+            return f'{self.id} {self.username}'
         else:
-            return f'{self.first_name} {self.last_name}'
+            return f'{self.id} {self.first_name} {self.last_name}'

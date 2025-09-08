@@ -10,7 +10,7 @@ class Category(models.Model):
     users = models.ManyToManyField(User, related_name='categories', blank=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.id} {self.name}'
 
     # name should be unique
     class Meta:

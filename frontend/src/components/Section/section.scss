@@ -8,12 +8,14 @@
     border-bottom: 1px solid $lightTurquoise;
     padding: 10px 4vw;
   background-color: $lightGray;
+  box-shadow: 2px 2px 10px $midTurquoise;
 }
 .category-section[id] { scroll-margin-top: 60px; }
 .category-section:target{
     background: $midTurquoise;
     transition: background .4s;
     outline: none;
+    box-shadow: 2px 2px 10px $lightGray;
   }
 
 .section-wrap{

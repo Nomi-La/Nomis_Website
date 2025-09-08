@@ -8,6 +8,7 @@ import CategoryPage from "../pages/CategoryPage.jsx";
 import {useEffect} from "react";
 import {fetchCategories} from "../slices/categorySlice.js";
 import {fetchSections} from "../slices/sectionSlice.js";
+import AuthInit from "../components/Auth/AuthInit.jsx";
 
 const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
 
@@ -22,6 +23,8 @@ export default function Router () {
     }, [])
 
     return <BrowserRouter>
+        <AuthInit/>
+
         <Routes>
 
             <Route path='/' element={<Layout/>}>

@@ -4,7 +4,7 @@ import LinksContainer from "../../Links/LinksContainer.jsx";
 export default function Project({project}){
     const [open, setOpen] = useState(false)
 
-    return <div className={`project ${open ? 'open' : ''}`}>
+    return <span className={`project ${open ? 'open' : ''}`}>
         <div className='image-frame'>
         <img className="project-image" src={project.image} alt={project.name} onClick={()=>setOpen(!open)}/>
             </div>
@@ -12,5 +12,5 @@ export default function Project({project}){
           <div className="actions">
                 <LinksContainer projectId={project.id}/>
           </div>
-    </div>
+    </span>
 }
