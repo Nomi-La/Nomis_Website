@@ -9,7 +9,6 @@ export default function ProjectsPage(){
     const sections = useSelector((s)=> s.sections.items)
             .filter((section)=> section.category_name.toLowerCase() === 'projects')
         .sort(sortApiAscending())
-
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -25,6 +24,7 @@ export default function ProjectsPage(){
                 <h2 id={section.id} className='section-title' key='section-title'>{section.name}</h2>
                 <ProjectsContainer sectionId={section.id}/>
             </div>)}
+
 
             </div>
     </>

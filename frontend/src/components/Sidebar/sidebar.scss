@@ -1,6 +1,7 @@
 @use '../../colors' as *;
 
 .sidebar-container{
+  position: relative;
   width: 30%;
   max-width: 440px;
   //height: 100%;

@@ -1,8 +1,15 @@
 .layout-main{
+
   position: relative;
   top: 7.5vh;
   display: flex;
   height: 92.5vh;
+  .sidebar-control{
+    position: absolute;
+    font-size: xx-large;
+    z-index: 101;
+    cursor: pointer;
+  }
   .right-layout{
     flex: 1 1 0;
     min-width: 0;

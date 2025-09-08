@@ -2,6 +2,7 @@ import api from "../../utils/api.js";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {logout, refresh} from "../../slices/authSlice.js";
+import {loggedInState} from "../../slices/stateSlice.js";
 
 
 export default function AuthInit(){
@@ -18,6 +19,7 @@ export default function AuthInit(){
             try {
                     await api.post('auth/verify/', {token: accessToken})
                      console.log('You are logged in successfully!')
+                    dispatch(loggedInState())
             } catch (err) {
 
                  try {
@@ -28,7 +30,7 @@ export default function AuthInit(){
                      window.location.reload()
                  } catch (err2) {
                      dispatch(logout())
-                     console.log('You token is expired. Please log in again')
+                     console.log('Your token is expired. Please log in again')
                      window.location.reload()
                  }
 

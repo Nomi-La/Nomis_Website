@@ -1,12 +1,12 @@
 import './sidebar.scss'
 import { useState} from "react";
-import { useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import CategorySide from "./CategorySide.jsx";
+import {sideBarState} from "../../slices/stateSlice.js";
 
 
 export default function Sidebar(){
     const [image, setImage] = useState(true)
-
     const categories = useSelector((s) => s.categories.items)
                        .filter((category)=> category.name.toLowerCase() !== 'plan')
                         .sort((a, b) => a.id - b.id)

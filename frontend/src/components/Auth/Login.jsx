@@ -5,6 +5,7 @@ import {login, logout} from "../../slices/authSlice.js";
 import parseError from "../../utils/parseError.js";
 import api from "../../utils/api.js";
 import useClickAway from "../../utils/eventListener.js";
+import {loggedInState} from "../../slices/stateSlice.js";
 
 
 export default function Login () {
@@ -38,6 +39,8 @@ export default function Login () {
                 })
             )
             setLog(false)
+            dispatch(loggedInState())
+
         } catch (err) {
           let message = parseError(err)
 
@@ -49,6 +52,7 @@ export default function Login () {
     const handleLogout = () => {
         dispatch(logout())
         setLog(false)
+        dispatch(loggedInState())
     }
 
     return <>

@@ -8,8 +8,8 @@ export default function LinksContainer({projectId}){
                  .sort((a, b) => a.id - b.id)
 
     return <>
-        <div className='links-container'>
-            {links.map((link)=> <LinkSingle link={link}/> )}
-        </div>
+        {links && <div className='links-container'>
+            {links.map((link) => <LinkSingle link={link}/>)}
+        </div>}
     </>
 }
