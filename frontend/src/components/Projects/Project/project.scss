@@ -8,19 +8,19 @@
   flex-direction: column;
   align-items: center;
   margin: 3vh 1.5vw 100px;
-  width: 23vw;
+  width: 18vw;
   //width: 28vw;
   box-shadow: 2px 2px 4px $gray;
   border-radius: 10px;
   height: auto;
 
   @media (max-width: 1250px){
-    width: 23vw;
+    //width: 23vw;
     margin-bottom: 90px;
   }
 
   @media (max-width: 800px){
-    width: 15vw;
+    //width: 15vw;
     margin: 1vh 4vw 6vh;
     border-radius: 10px;
     box-shadow: 2px 2px 4px $gray;
@@ -71,7 +71,7 @@
       z-index: 50;
       max-width: 210px;
       min-width: 120px;
-      width: 23vw;
+      width: 18vw;
       padding-top: 15px;
       position: absolute;
       top: 100%;
@@ -83,7 +83,7 @@
       transition: max-height 300ms ease, opacity 200ms ease, transform 300ms ease;
 
       @media (max-width: 1250px) {
-        width: 23vw;
+        //width: 23vw;
       }
       @media (max-width: 800px){
         position: static;
