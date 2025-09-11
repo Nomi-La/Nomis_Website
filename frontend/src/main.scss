@@ -38,3 +38,23 @@ html { font-size: 16px; }            // desktop
      padding: 1vh 3vw;
   }
 }
+
+.submit-button{
+  background-color: $turquoise;
+  border: 1px solid $turquoise;
+  font-weight: 600;
+  color: $white;
+}
+.cancel-button{
+  background-color: $white;
+  border: 1px solid $turquoise;
+  color: $turquoise;
+}
+
+button{
+  padding: 7px 14px;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  margin: 5px;
+}

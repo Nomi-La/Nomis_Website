@@ -9,8 +9,8 @@ export default function EditProject({sectionId, close}){
     return <>
         <section className='edit-project'>
             <form onSubmit={handleSubmit}>
-                <button type='submit'>Add Project</button>
-                <button type='reset' onClick={close}>Cancel</button>
+                <button type='submit' className='submit-button'>Add Project</button>
+                <button type='reset' onClick={close} className='cancel-button'>Cancel</button>
             </form>
         </section>
     </>
