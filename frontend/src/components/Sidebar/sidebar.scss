@@ -20,6 +20,15 @@
  @media (max-width: 700px) {
     width: 40%;
   }
+  .hide-sidebar{
+    position: absolute;
+    top: 5px;
+    color: $turquoise;
+    padding: 8px;
+    right: 5px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
   .image-wrapper{
     display: flex;
     align-items: center;

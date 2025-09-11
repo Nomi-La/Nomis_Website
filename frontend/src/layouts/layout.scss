@@ -6,9 +6,11 @@
   height: 92.5vh;
   .sidebar-control{
     position: absolute;
-    font-size: xx-large;
-    z-index: 101;
+    width: 6vw;
+    max-width: 32px;
     cursor: pointer;
+    margin: 1rem;
+    z-index: 5;
   }
   .right-layout{
     flex: 1 1 0;

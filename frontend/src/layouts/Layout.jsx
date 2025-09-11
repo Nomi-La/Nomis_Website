@@ -11,7 +11,7 @@ export default function Layout(){
     return <>
         <Header/>
         <div className="layout-main">
-            <p className='sidebar-control' onClick={() => dispatch(sideBarState())}>☺</p>
+            {!sideBar && <img src='/menu11.png' className='sidebar-control' alt='menu' onClick={() => dispatch(sideBarState())}/>}
             {sideBar && <Sidebar/>}
             <div className="right-layout">
         <Outlet/>

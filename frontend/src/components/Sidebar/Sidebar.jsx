@@ -10,9 +10,13 @@ export default function Sidebar(){
     const categories = useSelector((s) => s.categories.items)
                        .filter((category)=> category.name.toLowerCase() !== 'plan')
                         .sort((a, b) => a.id - b.id)
+    const dispatch = useDispatch()
+    const hide = 'Hide <'
 
     return <>
         <div className="sidebar-container">
+            <p className='hide-sidebar'
+            onClick={()=>dispatch(sideBarState())}>{hide}</p>
             {image && <div className="image-wrapper">
                 <img className="profile" src="/casual%20(2).png" alt="profile"/>
                 <button className='arrow-small' onClick={()=>setImage(false)}>{">"}</button>
