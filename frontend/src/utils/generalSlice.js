@@ -26,6 +26,7 @@ export default function generalSlice (sliceName, get, getId, post, patch, del){
         },
         reducers: {},
         extraReducers: (builder) => {
+
             //get
             builder
                 .addCase(get.pending, (state) => {
@@ -34,6 +35,7 @@ export default function generalSlice (sliceName, get, getId, post, patch, del){
                 .addCase(get.fulfilled, (state, action) => {
                     state.fetchStatus = 'succeeded';
                     state.items = Array.isArray(action.payload) ? action.payload : (action.payload.results ?? action.payload);
+                    state.fetchError = null;
                 })
                 .addCase(get.rejected, (state, action) => {
                     state.fetchStatus = 'failed';
@@ -47,6 +49,7 @@ export default function generalSlice (sliceName, get, getId, post, patch, del){
                 .addCase(getId.fulfilled, (state, action) => {
                     state.fetchIdStatus = 'succeeded';
                     state.item = action.payload;
+                    state.fetchIdError = null;
                 })
                 .addCase(getId.rejected, (state, action) => {
                     state.fetchIdStatus = 'failed';
@@ -63,7 +66,9 @@ export default function generalSlice (sliceName, get, getId, post, patch, del){
                     if (state.created && Array.isArray(state.items)) {
                            state.items.unshift(state.created);
                          }
+                    state.createError = null;
                 })
+
                 .addCase(post.rejected, (state, action) => {
                     state.createStatus = 'failed';
                     state.createError = action.payload ?? action.error?.message ?? 'Failed'
@@ -84,6 +89,7 @@ export default function generalSlice (sliceName, get, getId, post, patch, del){
                      if (state.item && state.edited && state.item.id === state.edited.id) {
                        state.item = state.edited;
                      }
+                     state.editError = null;
 
                 })
                 .addCase(patch.rejected, (state, action) => {
@@ -102,7 +108,9 @@ export default function generalSlice (sliceName, get, getId, post, patch, del){
                       state.items = state.items.filter(x => x.id !== removedId);
                     }
                     if (state.item && state.item.id === removedId) state.item = null;
+                    state.deleteError = null;
                 })
+
                 .addCase(del.rejected, (state, action) => {
                     state.deleteStatus = 'failed';
                     state.deleteError = action.payload ?? action.error?.message ?? 'Failed'

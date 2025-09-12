@@ -23,6 +23,9 @@ html { font-size: 16px; }            // desktop
 @media (max-width: 480px) {
   html { font-size: 14px; }          // mobile
 }
+.error-mes{
+    color: red;
+  }
 
 .edit-buttons{
   background-color: black;

@@ -1,0 +1,56 @@
+@use '../../colors' as *;
+
+.main-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $midTurquoise;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  .image-wrapper{
+    box-sizing: content-box;
+    max-width: 250px;
+    width: 40vw;
+    border-radius: 50%;
+    border: 10px solid rgba(2, 151, 151, 0.51);
+    z-index: 30;
+
+    margin: 40px;
+    .profile{
+      max-width: 250px;
+      width: 40vw;
+      border-radius: 50%;
+    }
+
+  }
+  .intro-side{
+
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 30px;
+    .much-more{
+      b{}
+      }
+    .welcome{
+      text-align: center;
+      display: block;
+      font-size: 3rem;
+      font-weight: bold;
+      padding-bottom: 2px;
+    }
+  }
+  .welcome-links{
+    display: flex;
+    .submit-button{
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 550;
+      margin: 5vh 2vw 0px;
+      padding: 1vh 3vw;
+      border-radius: 15px;
+    }
+  }
+}

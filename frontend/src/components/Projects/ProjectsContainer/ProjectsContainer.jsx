@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import {sortApiAscending} from "../../../utils/aids.js";
 import EditProject from "../EditProject/EditProject.jsx";
 import {useState} from "react";
+import {data} from "react-router";
 
 
 
@@ -25,7 +26,7 @@ export default function ProjectsContainer({sectionId}){
                 <button
                     className='edit-buttons' id='add-project'
                     onClick={handleAddProject}>Add Project</button>
-                {editProject && <EditProject sectionId={sectionId} close={handleAddProject}/>}
+                {editProject && <EditProject data={{...data, section: sectionId}} close={handleAddProject} actionProject={'Add Project'}/>}
             </div>
             }
 
