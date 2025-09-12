@@ -38,27 +38,29 @@ export default function EditProject({sectionId, close}){
                 required
                     /></div>
 
-                <div className='input-wrapper'>
-                    <label htmlFor='project-image' className='input-label'>Image</label>
-                    <input
+                <div className='image-upload-wrapper'>
+
+                    {!formData.image_url && <label htmlFor='project-image' className='edit-buttons'>Upload Image</label>}
+
+                    <div className='image-button-wrapper'>
+                    {formData.image_url && <label htmlFor='project-image' className='edit-buttons'>Replace</label>}
+                    {formData.image_url && <button id='remove-image' onClick={()=>setFormData({...formData, image_url: ''})} className='edit-buttons'>Remove</button>}
+                    </div>
+                        <input
                         className='Image-Upload'
                       id="project-image"
                       type="file"
                       accept="image/*"
                       onChange={handleImageUpload}
                     />
+                    {formData.image_url && (
+                  <img
+                    src={formData.image_url}
+                    alt="preview"
+                    className='project-image-preview'
+                  />
+                )}
                 </div>
-
-                {formData.image_url && (
-          <img
-            src={formData.image_url}
-            alt="preview"
-            className='project-image-preview'
-          />
-        )}
-
-
-
 
                 <div className='button-wrapper'>
                 <button type='submit' className='submit-button'>Add Project</button>
