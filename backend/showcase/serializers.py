@@ -26,14 +26,14 @@ class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
         extra_kwargs = {
             'image': {'required': False, 'allow_null': True, 'use_url': True},
             'plan': {'required': False, 'allow_null': True},
-            'view': {'required': False, 'allow_null': True, 'allow_blank': True},
-            'view_code': {'required': False, 'allow_null': True, 'allow_blank': True},
+            'view': {'required': False, 'allow_blank': True},
+            'view_code': {'required': False, 'allow_blank': True},
         }
 
     def get_plans(self, obj):
         return obj.plans.all().count()
 
-    def validate_section_id(self, section):
+    def validate_section(self, section):
         request = self.context.get("request")
         if section.user != request.user:
             raise serializers.ValidationError('This is NOT your section :)')
