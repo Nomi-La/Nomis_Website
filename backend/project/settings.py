@@ -45,6 +45,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost",
     "https://nomilang.ch",
     "https://www.nomilang.ch",
 ]
