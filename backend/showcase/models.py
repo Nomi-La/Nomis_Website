@@ -6,7 +6,7 @@ from utils.validators import mb_size
 class Project(models.Model):
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='project_images/', validators=[mb_size(5)], null=True, blank=True)
-    view = models.URLField(max_length=500)
+    view = models.URLField(max_length=500, blank=True, null=True)
     view_code = models.URLField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

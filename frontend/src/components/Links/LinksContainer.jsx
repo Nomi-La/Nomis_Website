@@ -1,12 +1,13 @@
 import './linksContainer.scss'
 import LinkSingle from "./Link/LinkSingle.jsx";
 
-export default function LinksContainer({links}){
+export default function LinksContainer({project}){
 
 
     return <>
         <div className='links-container'>
-            {links.map((link) => <LinkSingle link={link}/>)}
+            {project.view && <LinkSingle name={'View'} link={project.view}/>}
+            {project.view_code && <LinkSingle name={'View Code'} link={project.view_code}/>}
         </div>
     </>
 }

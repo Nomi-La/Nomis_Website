@@ -2,7 +2,6 @@ import ProjectsContainer from "../components/Projects/ProjectsContainer/Projects
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {fetchProjects} from "../slices/projectSlice.js";
-import {fetchLinks} from "../slices/linkSlice.js";
 import {sortApiAscending} from "../utils/aids.js";
 import {sideBarState} from "../slices/stateSlice.js";
 
@@ -14,7 +13,6 @@ export default function ProjectsPage(){
 
     useEffect(()=>{
         dispatch(fetchProjects())
-        dispatch(fetchLinks())
         dispatch(sideBarState('open'))
     }, [])
 

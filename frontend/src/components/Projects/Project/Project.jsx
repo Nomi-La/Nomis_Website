@@ -10,9 +10,6 @@ export default function Project({project}){
     const [editProject, setEditProject] = useState(false)
     const [open, setOpen] = useState(false)
     const user = useSelector((s) => s.auth.user)
-    const links = useSelector((s)=>s.links.items)
-                 .filter((link)=> link.project_id===project.id)
-                 .sort((a, b) => a.id - b.id)
 
     const projectRef = useRef(null)
     useClickAway(projectRef, ()=> {
@@ -26,8 +23,8 @@ export default function Project({project}){
         <img className="project-image" src={project.image} alt={project.name} onClick={()=>setOpen(!open)}/>
             </div>
         <h3>{project.name}</h3>
-        {links && <div className="actions">
-            <LinksContainer links={links}/>
+        {project.view || project.view_code && <div className="actions">
+            <LinksContainer project={project}/>
         </div>}
         {editProject && <EditProject close={()=>setEditProject(false)}
                                      actionProject={'Edit Project'}
