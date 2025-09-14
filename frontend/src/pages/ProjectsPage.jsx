@@ -4,6 +4,7 @@ import {useEffect} from "react";
 import {fetchProjects} from "../slices/projectSlice.js";
 import {fetchLinks} from "../slices/linkSlice.js";
 import {sortApiAscending} from "../utils/aids.js";
+import {sideBarState} from "../slices/stateSlice.js";
 
 export default function ProjectsPage(){
     const sections = useSelector((s)=> s.sections.items)
@@ -14,6 +15,7 @@ export default function ProjectsPage(){
     useEffect(()=>{
         dispatch(fetchProjects())
         dispatch(fetchLinks())
+        dispatch(sideBarState('open'))
     }, [])
 
     return <>

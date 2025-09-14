@@ -44,10 +44,10 @@
     max-width: 40px;
     border: 2px solid $midGray;
 
-    //opacity: 0;
-    //transform: translateY(-2px);
-    //transition: opacity .2s ease, transform .2s ease;
-    //pointer-events: none;
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: opacity .2s ease, transform .2s ease;
+    pointer-events: none;
   }
 
   h3{
@@ -127,12 +127,12 @@
       }
     }
 
-//.project:hover .edit-icon,
-//.project:focus-within .edit-icon,
-//.project.open .edit-icon {
-//  opacity: 1;
-//  transform: none;
-//  pointer-events: auto;
-//}
+.project:hover .edit-icon,
+.project:focus-within .edit-icon,
+.project.open .edit-icon {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
 
 

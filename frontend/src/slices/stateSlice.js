@@ -1,15 +1,15 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 function changeState(value){
-    return (state) => {
-        state[value] = !state[value]
+    return (state, action = undefined) => {
+        state[value] = action.payload === 'open'? true: action.payload === 'close'? false: !state[value]
     }
 }
 
 const stateSlice = createSlice({
     name: 'global-state',
     initialState: {
-        sideBar: true,
+        sideBar: false,
         loggedIn: false
     },
     reducers: {

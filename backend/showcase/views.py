@@ -1,8 +1,8 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
-from showcase.models import Project, Link
+from showcase.models import Project
 from showcase.permissions import IsProjectLinkOwnerOrReadOnly
-from showcase.serializers import ProjectSerializer, LinkSerializer
+from showcase.serializers import ProjectSerializer
 from utils.filter_mixin import FilterMixin
 
 
@@ -21,17 +21,16 @@ class ProjectRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     serializer_class = ProjectSerializer
     permission_classes = [IsProjectLinkOwnerOrReadOnly]
 
+# class LinkListCreateView(FilterMixin, ListCreateAPIView):
+#     queryset = Link.objects.all()
+#     serializer_class = LinkSerializer
+#     permission_classes = [IsProjectLinkOwnerOrReadOnly]
+#     filter_fields = {
+#         'project': 'project__id'
+#     }
 
-class LinkListCreateView(FilterMixin, ListCreateAPIView):
-    queryset = Link.objects.all()
-    serializer_class = LinkSerializer
-    permission_classes = [IsProjectLinkOwnerOrReadOnly]
-    filter_fields = {
-        'project': 'project__id'
-    }
 
-
-class LinkRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
-    queryset = Link.objects.all()
-    serializer_class = LinkSerializer
-    permission_classes = [IsProjectLinkOwnerOrReadOnly]
+# class LinkRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+#     queryset = Link.objects.all()
+#     serializer_class = LinkSerializer
+#     permission_classes = [IsProjectLinkOwnerOrReadOnly]

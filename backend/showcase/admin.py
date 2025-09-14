@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from showcase.models import Project, Link
+from showcase.models import Project
 
 admin.site.register(Project)
-admin.site.register(Link)
+# admin.site.register(Link)

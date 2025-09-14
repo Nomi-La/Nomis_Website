@@ -2,6 +2,7 @@ import './editProject.scss'
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteProject, editProject, postProject} from "../../../slices/projectSlice.js";
+import DeleteProject from "../DeleteProject/DeleteProject.jsx";
 
 function changeProject (action){
     if (action === 'Add Project') {
@@ -51,7 +52,9 @@ export default function EditProject({close, actionProject, data = {
 
 
     return <>
-        <section className='edit-project'>
+        <section className={`edit-project ${deleteSession ? 'modal-open' : ''}`}>
+            <button type='button' className='x' id='x-edit-project'
+                                    onClick={close}>X</button>
             <h2 className='project-edit-title'>{actionProject}</h2>
             <form className='project-form' onSubmit={handleSubmit}>
                 <div className='main-section'>
@@ -103,29 +106,12 @@ export default function EditProject({close, actionProject, data = {
                     {actionProject === 'Edit Project' &&
                 <button type='button' className='delete-project' id='delete-uniqu' onClick={()=>setDeleteProject(true)}>Delete Project</button> }
 
-                {deleteSession && <div className='are-you-sure'>
-                    <div className='delete-rec'>
 
-                        <div className='top-delete'>
-                            <p>project deletion</p>
-                            <button type='button' className='delete-project'
-                                    id='x' onClick={()=>setDeleteProject(false)}>X</button>
-                        </div>
-
-                        <p className='delete-text'>Are you sure you want to delete this project?</p>
-
-                        <div className='bottom-delete'>
-                            <button type='button' className='delete-project' onClick={()=>dispatch(deleteProject(data.projectId))}>Delete</button>
-                            <button type='button' className='delete-project'
-                                    id='cancel' onClick={()=>setDeleteProject(false)}>Cancel</button>
-                        </div>
-
-                        </div>
-
-                    </div> }
 
                 </div>
             </form>
+
+            {deleteSession && <DeleteProject projectId={data.projectId} closeSession={() => setDeleteProject(false)}/> }
         </section>
     </>
 }
