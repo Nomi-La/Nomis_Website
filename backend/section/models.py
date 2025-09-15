@@ -3,7 +3,6 @@ from django.db import models
 from django.db.models import Max
 
 from category.models import Category
-from showcase.models import Project
 from utils.validators import mb_size
 
 User = get_user_model()

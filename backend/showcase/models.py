@@ -12,7 +12,8 @@ class Project(models.Model):
     position = models.PositiveIntegerField(default=0, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    category = models.OneToOneField('category.Category', on_delete=models.PROTECT, related_name='project', null=True,  blank=True)
+    category = models.OneToOneField('category.Category', on_delete=models.PROTECT, related_name='project', null=True,
+                                    blank=True)
     section = models.ForeignKey('section.Section', on_delete=models.CASCADE, related_name='projects')
 
     def __str__(self):

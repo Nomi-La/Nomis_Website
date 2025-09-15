@@ -22,7 +22,8 @@ class SectionSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
 
     class Meta:
         model = Section
-        fields = ['id', 'name', 'content', 'image', 'image2', 'position', 'created', 'updated', 'category', 'category_name', 'user',
+        fields = ['id', 'name', 'content', 'image', 'image2', 'position', 'created', 'updated', 'category',
+                  'category_name', 'user',
                   'username', 'projects']
         extra_kwargs = {
             'content': {'required': False, 'allow_blank': True, 'allow_null': True},

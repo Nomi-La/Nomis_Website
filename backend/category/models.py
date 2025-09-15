@@ -21,5 +21,3 @@ class Category(models.Model):
             last = Category.objects.filter(user=self.user).aggregate(m=Max('position'))['m'] or 0
             self.position = last + 1
         super().save(*args, **kwargs)
-
-

@@ -10,7 +10,7 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ['id', 'name', 'user', 'position', 'sections', 'project']
 
-        extra_kwargs = {"position": {"required": False}}
+        extra_kwargs = {"position": {"required": False}, "user": {"read_only": True}, "project": {"required": False}, }
 
     def get_sections(self, obj):
         qs = getattr(obj, 'sections', None)
@@ -29,3 +29,7 @@ class CategorySerializer(serializers.ModelSerializer):
         if user != request.user:
             raise serializers.ValidationError('This is NOT your category :)')
         return user
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)
