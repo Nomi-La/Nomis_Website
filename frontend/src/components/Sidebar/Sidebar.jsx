@@ -4,13 +4,14 @@ import {useDispatch, useSelector} from "react-redux";
 import CategorySide from "./CategorySide.jsx";
 import {sideBarState} from "../../slices/stateSlice.js";
 import {NavLink, useNavigate} from "react-router";
+import {sortApiAscending} from "../../utils/aids.js";
 
 
 export default function Sidebar(){
     const [image, setImage] = useState(true)
     const categories = useSelector((s) => s.categories.items)
                        .filter((category)=> category.name.toLowerCase() !== 'plan')
-                        .sort((a, b) => a.id - b.id)
+                        .sort(sortApiAscending())
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const hide = 'Hide <'

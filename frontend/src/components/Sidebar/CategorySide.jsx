@@ -4,6 +4,7 @@ import {NavLink} from "react-router";
 import {useRef, useState} from "react";
 import SectionSide from "./SectionSide.jsx";
 import {useClickAnywhere} from "../../utils/eventListener.js";
+import {sortApiAscending} from "../../utils/aids.js";
 
 const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
 
@@ -12,7 +13,7 @@ export default function CategorySide({category}){
     const wrapperRef = useRef(null)
     const sections = useSelector((s)=> s.sections.items)
             .filter((section) => section.category === category.id)
-            .sort((a, b) => a.id - b.id)
+            .sort(sortApiAscending())
 
     useClickAnywhere((e) => {
         if (
