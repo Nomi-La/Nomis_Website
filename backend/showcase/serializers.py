@@ -20,7 +20,7 @@ class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
 
     class Meta:
         model = Project
-        fields = ['id', 'name', 'image', 'view', 'view_code', 'created', 'updated', 'plan', 'plans', 'section',
+        fields = ['id', 'position', 'name', 'image', 'view', 'view_code', 'created', 'updated', 'plan', 'plans', 'section',
                   'section_name', ]
 
         extra_kwargs = {
@@ -28,6 +28,7 @@ class ProjectSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
             'plan': {'required': False, 'allow_null': True},
             'view': {'required': False, 'allow_blank': True},
             'view_code': {'required': False, 'allow_blank': True},
+            "position": {"required": False},
         }
 
     def get_plans(self, obj):
