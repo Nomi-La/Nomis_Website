@@ -10,8 +10,8 @@ class Project(models.Model):
     view_code = models.URLField(max_length=500, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    section = models.ForeignKey('section.Section', on_delete=models.CASCADE, related_name='projects')
     position = models.PositiveIntegerField(default=0, db_index=True)
+    section = models.ForeignKey('section.Section', on_delete=models.CASCADE, related_name='projects')
     plan = models.ForeignKey('category.Category', on_delete=models.PROTECT, related_name='projects', null=True,
                              blank=True)
 

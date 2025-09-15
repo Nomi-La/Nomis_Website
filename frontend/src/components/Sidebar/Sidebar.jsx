@@ -31,6 +31,7 @@ export default function Sidebar(){
 
             </div>}
             <h1 className="username" onClick={()=>navigate('/')}>Nomi Lang</h1>
+            <h2 className='roll'>Full Stack Developer</h2>
 
 
                 <NavLink to='/' className='category'>Main</NavLink>
