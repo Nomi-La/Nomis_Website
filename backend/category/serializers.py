@@ -5,12 +5,12 @@ from category.models import Category
 
 class CategorySerializer(serializers.ModelSerializer):
     sections = serializers.SerializerMethodField()
-    users = serializers.SerializerMethodField()
-    projects = serializers.SerializerMethodField()
 
     class Meta:
         model = Category
-        fields = ['id', 'name', 'users', 'sections', 'projects']
+        fields = ['id', 'name', 'user', 'position', 'sections', 'project']
+
+        extra_kwargs = {"position": {"required": False}}
 
     def get_sections(self, obj):
         qs = getattr(obj, 'sections', None)
@@ -24,21 +24,8 @@ class CategorySerializer(serializers.ModelSerializer):
             })
         return sections
 
-    def get_users(self, obj):
-        return obj.users.all().count()
-
-    def get_projects(self, obj):
-        if hasattr(obj, 'projects'):
-            return obj.projects.all().count()
-        return None
-
-    def validate_name(self, value):
-        return value.strip()
-
-    def create(self, validated_data):
-        name = validated_data['name']
-        category, _ = Category.objects.get_or_create(
-            name__iexact=name,
-            defaults={'name': name}
-        )
-        return category
+    def validate_user(self, user):
+        request = self.context.get("request")
+        if user != request.user:
+            raise serializers.ValidationError('This is NOT your category :)')
+        return user

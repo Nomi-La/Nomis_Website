@@ -12,28 +12,28 @@ class SectionSerializer(ImageCompressOnDemandMixin, serializers.ModelSerializer)
     HARD_MAX_MB = 6
 
     # user = serializers.HiddenField(default=serializers.CreateOnlyDefault(serializers.CurrentUserDefault()))
-    user = serializers.IntegerField(source='user.id', read_only=True)
+    user = serializers.IntegerField(source='category.user.id', read_only=True)
     projects = serializers.SerializerMethodField()
     category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
     category_name = serializers.CharField(source='category.name', read_only=True)
-    username = serializers.CharField(source='user.username' or 'user.first_name', read_only=True)
+    username = serializers.CharField(source='category.user.username' or 'user.first_name', read_only=True)
     created = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
     updated = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
 
     class Meta:
         model = Section
-        fields = ['id', 'name', 'content', 'image', 'image2', 'created', 'updated', 'category', 'category_name', 'user',
-                  'username', 'projects', 'project']
+        fields = ['id', 'name', 'content', 'image', 'image2', 'position', 'created', 'updated', 'category', 'category_name', 'user',
+                  'username', 'projects']
         extra_kwargs = {
             'content': {'required': False, 'allow_blank': True, 'allow_null': True},
             'image': {'required': False, 'allow_null': True, 'use_url': True},
             'image2': {'required': False, 'allow_null': True, 'use_url': True},
+            "position": {"required": False},
         }
 
     def get_projects(self, obj):
         return obj.projects.all().count()
 
     def create(self, validated_data):
-        validated_data['user'] = self.context['request'].user
         self._maybe_compress(validated_data)
         return super().create(validated_data)
