@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Max
 
 from utils.validators import mb_size
 
@@ -21,11 +22,9 @@ class Project(models.Model):
     def __str__(self):
         return f'{self.id} Project: {self.name}'
 
-# class Link(models.Model):
-#     name = models.CharField(max_length=200)
-#     icon = models.ImageField(upload_to='link_icons/', validators=[mb_size(3)], null=True, blank=True)
-#     link = models.URLField(max_length=500)
-#     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='links')
-#
-#     def __str__(self):
-#         return f'{self.id} {self.name}, {self.project.section.user.username or self.project.section.user.first_name}'
+    def save(self, *args, **kwargs):
+        if self._state.adding and (not self.position or self.position <= 0) and self.section_id:
+            last = Project.objects.filter(section_id=self.section_id).aggregate(m=Max('position'))['m'] or 0
+            self.position = last + 1
+        super().save(*args, **kwargs)
+
