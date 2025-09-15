@@ -12,6 +12,6 @@ class IsProjectLinkOwnerOrReadOnly(BasePermission):
             return True
         else:
             if hasattr(obj, 'section'):
-                return request.user == obj.section.user
+                return request.user == obj.section.category.user
 
-            return request.user == obj.project.section.user
+            return request.user == obj.project.section.category.user
