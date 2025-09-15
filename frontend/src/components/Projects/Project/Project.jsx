@@ -5,8 +5,8 @@ import useClickAway from "../../../utils/eventListener.js";
 import {useDispatch, useSelector} from "react-redux";
 import EditProject from "../EditProject/EditProject.jsx";
 import {data} from "react-router";
-import {upModel} from "../../../utils/aids.js";
 import {editProject} from "../../../slices/projectSlice.js";
+import {moveModel} from "../../../utils/aids.js";
 
 export default function Project({project, projects, index}){
     const [editTheProject, setEditProject] = useState(false)
@@ -14,8 +14,8 @@ export default function Project({project, projects, index}){
 
     const user = useSelector((s) => s.auth.user)
     const dispatch = useDispatch()
-    const projectUp = upModel(projects, editProject, dispatch)
-    const projectDown = upModel(projects, editProject, dispatch)
+    const moveProject = moveModel(projects, editProject, dispatch)
+
 
     const projectRef = useRef(null)
     useClickAway(projectRef, ()=> {
@@ -31,8 +31,10 @@ export default function Project({project, projects, index}){
         <img className="project-image" src={project.image} alt={project.name} onClick={()=>setOpen(!open)}/>
             </div>
         <h3>{project.name}</h3>
-        {index > 0 && <button type='button' onClick={() => projectUp(index)}>←</button>}
-        {(index < projects.length-1) && <button type='button' onClick={() => projectDown(index)}>→</button>}
+        {index > 0 &&
+            <button type='button' className='index-buttons' onClick={() => moveProject(index, 0)}>←</button>}
+        {(index < projects.length-1) &&
+            <button type='button' className='index-buttons' onClick={() => moveProject(index, projects.length-1)}>→</button>}
 
         {project.view || project.view_code && <div className="actions">
             <LinksContainer project={project}/>

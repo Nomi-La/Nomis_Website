@@ -1,19 +1,23 @@
 
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from "react-router";
 import {useRef, useState} from "react";
 import SectionSide from "./SectionSide.jsx";
 import {useClickAnywhere} from "../../utils/eventListener.js";
-import {sortApiAscending} from "../../utils/aids.js";
+import {moveModel, sortApiAscending} from "../../utils/aids.js";
+import {editCategory} from "../../slices/categorySlice.js";
 
 const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
 
-export default function CategorySide({category}){
+export default function CategorySide({category, categories, index}){
+    const user = useSelector((s)=>s.auth.user)
     const [open, setOpen] = useState(false)
     const wrapperRef = useRef(null)
     const sections = useSelector((s)=> s.sections.items)
             .filter((section) => section.category === category.id)
             .sort(sortApiAscending())
+    const dispatch = useDispatch()
+    const moveCategory = moveModel(categories, editCategory, dispatch)
 
     useClickAnywhere((e) => {
         if (
@@ -27,6 +31,10 @@ export default function CategorySide({category}){
 
     return <div ref={wrapperRef} className='category-wrap' key={`1Category-div: ${category.id}`}>
             <NavLink key={`1Category: ${category.id}`} className="category" onClick={()=>setOpen(!open)} to={`/${slug(category.name)}`}>{category.name}</NavLink>
+
+        {user && <button className='index-buttons' type='button' onClick={() => moveCategory(index, 0)}>↑</button>}
+        {user && <button className='index-buttons' type='button' onClick={() => moveCategory(index, sections.length-1)}>↓</button>}
+
         {open && <SectionSide sections={sections}/>}
         </div>
 }

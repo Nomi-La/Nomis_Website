@@ -20,27 +20,17 @@ export function changeModel(action, postModel, editModel){
     return (data, id)=> editModel({modelData: data, id})
 }
 
-export function upModel(models, editModel, dispatch){
+export function moveModel(models, editModel, dispatch){
 
-    return (modelIndex) => {
-        if (modelIndex <= 0) return;
+    return (modelIndex, limit) => {
+        const indexUp = limit !== 0? 1: null;
+        const indexDown = limit === 0? -1: null;
+
+       if (!limit && modelIndex === 0) return;
+       if ( limit && modelIndex > models.length - 1) return;
 
         const model = models[modelIndex]
-        const modelB = models[modelIndex-1]
-        const modelId = model.id
-        const modelBId = modelB.id
-        console.log('model:', modelId)
-        dispatch(editModel({modelData: {position: modelB.position}, id: modelId}))
-        dispatch(editModel({modelData: {position: model.position}, id: modelBId}))
-    }
-}
-
-export function downModel(models, editModel, dispatch){
-
-    return (modelIndex) => {
-        if (modelIndex >= (models.length-1)) return;
-        const model = models[modelIndex]
-        const modelB = models[modelIndex+1]
+        const modelB = models[modelIndex+(indexUp||indexDown)]
         const modelId = model.id
         const modelBId = modelB.id
 
@@ -48,3 +38,4 @@ export function downModel(models, editModel, dispatch){
         dispatch(editModel({modelData: {position: model.position}, id: modelBId}))
     }
 }
+

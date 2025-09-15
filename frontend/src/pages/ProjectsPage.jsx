@@ -2,7 +2,7 @@ import ProjectsContainer from "../components/Projects/ProjectsContainer/Projects
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {fetchProjects} from "../slices/projectSlice.js";
-import {downModel, sortApiAscending, upModel} from "../utils/aids.js";
+import {moveModel, sortApiAscending} from "../utils/aids.js";
 import {sideBarState} from "../slices/stateSlice.js";
 import AddProjectSection from "../components/Section/AddProjectSection.jsx";
 import {editSection} from "../slices/sectionSlice.js";
@@ -15,8 +15,7 @@ export default function ProjectsPage({index}){
 
     const dispatch = useDispatch()
     const [addSection, setAddSection] = useState(false)
-    const sectionUp = upModel(sections, editSection, dispatch)
-    const sectionDown = downModel(sections, editSection, dispatch)
+    const moveSection = moveModel(sections, editSection, dispatch)
 
     useEffect(()=>{
         dispatch(fetchProjects())
@@ -31,8 +30,10 @@ export default function ProjectsPage({index}){
                 <div className='section-wrapper'>
                 <h2 id={section.id} className='section-title' key='section-title'>{section.name}</h2>
                     {user && <>
-                        {index > 0 && <button type='button' onClick={() => sectionUp(index)}>↑</button>}
-                        {index < sections.length-1 && <button type='button' onClick={() => sectionDown(index)}>↓</button>}
+                        {index > 0 &&
+                            <button className='index-buttons' type='button' onClick={() => moveSection(index, 0)}>↑</button>}
+                        {index < sections.length-1 &&
+                            <button className='index-buttons' type='button' onClick={() => moveSection(index, sections.length-1)}>↓</button>}
                     </>}
                     </div>
                 <ProjectsContainer sectionId={section.id}/>
@@ -42,7 +43,7 @@ export default function ProjectsPage({index}){
                 <><button type='button' onClick={()=>setAddSection(true)}>Start adding your project sections</button>
                     <p>group projects section, solo projects section, etc</p></>}
 
-            {user && sections.length &&
+            {user && sections.length && !addSection &&
             <button type='button' onClick={()=>setAddSection(true)}>Add a Section</button>}
 
             {addSection && <AddProjectSection projectsIndex={index} close={()=>setAddSection(false)}/>}

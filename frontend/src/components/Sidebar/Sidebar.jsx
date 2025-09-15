@@ -36,8 +36,8 @@ export default function Sidebar(){
 
 
                 <NavLink to='/' className='category'>Main</NavLink>
-                {categories.map((category)=> <>
-                    <CategorySide category={category}/>
+                {categories.map((category, index)=> <>
+                    <CategorySide category={category} categories={categories} index={index}/>
                 </>)}
 
             <p className="category" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>
