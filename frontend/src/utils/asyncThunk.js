@@ -1,6 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import parseError from "./parseError.js";
 import api from "./api.js";
+import {sortApiAscending} from "./aids.js";
 
 //get
 export const fetchModels = (modelName, endPoint) => {
@@ -73,4 +74,55 @@ export const editModel = (modelName, endPoint) => {
         }
     )
 }
+//model up
+export const modelUp = (modelName, endPoint) => {
+    return createAsyncThunk(
+  `${modelName}/moveUp`,
+      async ({ id, sectionId }, { getState, rejectWithValue }) => {
+            try {
+              const items = (getState()[modelName]?.items || [])
+                .filter(p => p.section === sectionId)
+                .sort(sortApiAscending);
 
+              const i = items.findIndex(x => x.id === id);
+              if (i <= 0) return { updates: [] };
+
+              const a = items[i];
+              const b = items[i - 1];
+
+              await api.patch(`${endPoint}${a.id}/`, { position: b.position });
+              await api.patch(`${endPoint}${b.id}/`, { position: a.position });
+
+              return { updates: [{ id: a.id, position: b.position }, { id: b.id, position: a.position }] };
+            } catch (err) {
+              return rejectWithValue(parseError(err));
+            }
+          }
+        );
+}
+//model down
+export const modelDown = (modelName, endPoint) => {
+    return createAsyncThunk(
+  `${modelName}/moveDown`,
+      async ({ id, sectionId }, { getState, rejectWithValue }) => {
+            try {
+              const items = (getState()[modelName]?.items || [])
+                .filter(p => p.section === sectionId)
+                .sort(sortApiAscending);
+
+              const i = items.findIndex(x => x.id === id);
+              if (i === -1 || i >= items.length - 1) return { updates: [] };
+
+              const a = items[i];
+              const b = items[i + 1];
+
+              await api.patch(`${endPoint}${a.id}/`, { position: b.position });
+              await api.patch(`${endPoint}${b.id}/`, { position: a.position });
+
+              return { updates: [{ id: a.id, position: b.position }, { id: b.id, position: a.position }] };
+            } catch (err) {
+              return rejectWithValue(parseError(err));
+            }
+          }
+        );
+}

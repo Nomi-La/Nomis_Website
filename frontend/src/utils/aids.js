@@ -1,4 +1,5 @@
 
+
 export function sortApiAscending(){
-    return (a, b) => a.id - b.id
+    return (a, b) => ((a.position - b.position) || (a.id - b.id))
  }
