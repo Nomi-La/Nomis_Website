@@ -17,6 +17,10 @@ export default function Router () {
     const categories = useSelector((s) => s.categories.items)
             .filter((category)=> category.name.toLowerCase()!=='projects')
 
+    const projectsCategory = useSelector((s) => s.categories.items)
+            .find((category)=> category.name.toLowerCase()==='projects')
+
+
     useEffect(()=>{
         dispatch(fetchCategories())
         dispatch(fetchSections())
@@ -29,9 +33,9 @@ export default function Router () {
 
             <Route path='/' element={<Layout/>}>
                 <Route path='' element={<MainPage/>}/>
-                <Route path='projects/' element={<ProjectsPage/>}/>
+                {projectsCategory && <Route path='projects/' element={<ProjectsPage index={projectsCategory.id}/>}/>}
                 {categories.map((category)=><>
-                <Route path={`${slug(category.name)}/`} element={<CategoryPage category={category}/>}/>
+                <Route key={category.id} path={`${slug(category.name)}/`} element={<CategoryPage category={category}/>}/>
                 </>)}
             </Route>
 

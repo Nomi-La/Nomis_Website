@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-export default function generalSlice (sliceName, get, getId, post, patch, del, moveUp, moveDown) {
+export default function generalSlice (sliceName, get, getId, post, patch, del) {
     return createSlice ({
         name: sliceName,
         initialState: {
@@ -112,44 +112,6 @@ export default function generalSlice (sliceName, get, getId, post, patch, del, m
                 .addCase(del.rejected, (state, action) => {
                     state.deleteStatus = 'failed';
                     state.deleteError = action.payload ?? action.error?.message ?? 'Failed'
-                })
-            //move up
-            builder
-                .addCase(moveUp.pending, (state) => {
-                    state.editStatus = 'loading'
-                })
-                .addCase(moveUp.fulfilled, (state, action) => {
-  state.editStatus = 'succeeded';
-  const updates = action.payload?.updates || [];
-  for (const { id, position } of updates) {
-    const idx = state.items.findIndex(x => x.id === id);
-    if (idx !== -1) state.items[idx].position = position;
-    if (state.item && state.item.id === id) state.item.position = position;
-  }
-  state.editError = null;
-})
-                .addCase(moveUp.rejected, (state, action) => {
-                    state.editStatus = 'failed';
-                    state.editError = action.payload ?? action.error?.message ?? 'Failed'
-                })
-            //move down
-            builder
-                .addCase(moveDown.pending, (state) => {
-                    state.editStatus = 'loading'
-                })
-                .addCase(moveDown.fulfilled, (state, action) => {
-  state.editStatus = 'succeeded';
-  const updates = action.payload?.updates || [];
-  for (const { id, position } of updates) {
-    const idx = state.items.findIndex(x => x.id === id);
-    if (idx !== -1) state.items[idx].position = position;
-    if (state.item && state.item.id === id) state.item.position = position;
-  }
-  state.editError = null;
-})
-                .addCase(moveDown.rejected, (state, action) => {
-                    state.editStatus = 'failed';
-                    state.editError = action.payload ?? action.error?.message ?? 'Failed'
                 })
         }
     })

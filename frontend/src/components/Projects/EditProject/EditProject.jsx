@@ -1,15 +1,9 @@
 import './editProject.scss'
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteProject, editProject, postProject} from "../../../slices/projectSlice.js";
+import {editProject, postProject} from "../../../slices/projectSlice.js";
 import DeleteProject from "../DeleteProject/DeleteProject.jsx";
-
-function changeProject (action){
-    if (action === 'Add Project') {
-        return (data, id) => postProject(data)
-    }
-    return (data, id)=> editProject({modelData: data, id})
-}
+import {changeModel, newData} from "../../../utils/aids.js";
 
 export default function EditProject({close, actionProject, data = {
     section: '', image: null, name: '', image_url: '', projectId: ''}}){
@@ -24,20 +18,12 @@ export default function EditProject({close, actionProject, data = {
     })
     const error = useSelector((s) => s.projects.createError)
     const error2 = useSelector((s)=> s.projects.editError)
-    const projectAction = changeProject(actionProject)
+    const projectAction = changeModel(actionProject, postProject, editProject)
     const [deleteSession, setDeleteProject] = useState(false)
 
     const handleSubmit = (e) => {
-
-        const newProject = new FormData();
-
-       newProject.append('name', formData.name);
-       newProject.append('section', formData.section);
-          if (formData.image) newProject.append('image', formData.image);
-
-
         e.preventDefault()
-        dispatch(projectAction(newProject, formData.projectId))
+        dispatch(projectAction(newData(formData), formData.projectId))
 
     }
 

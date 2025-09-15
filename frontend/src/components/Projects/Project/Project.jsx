@@ -5,13 +5,17 @@ import useClickAway from "../../../utils/eventListener.js";
 import {useDispatch, useSelector} from "react-redux";
 import EditProject from "../EditProject/EditProject.jsx";
 import {data} from "react-router";
-import {projectDown, projectUp} from "../../../slices/projectSlice.js";
+import {upModel} from "../../../utils/aids.js";
+import {editProject} from "../../../slices/projectSlice.js";
 
-export default function Project({project}){
-    const [editProject, setEditProject] = useState(false)
+export default function Project({project, projects, index}){
+    const [editTheProject, setEditProject] = useState(false)
     const [open, setOpen] = useState(false)
+
     const user = useSelector((s) => s.auth.user)
     const dispatch = useDispatch()
+    const projectUp = upModel(projects, editProject, dispatch)
+    const projectDown = upModel(projects, editProject, dispatch)
 
     const projectRef = useRef(null)
     useClickAway(projectRef, ()=> {
@@ -27,14 +31,14 @@ export default function Project({project}){
         <img className="project-image" src={project.image} alt={project.name} onClick={()=>setOpen(!open)}/>
             </div>
         <h3>{project.name}</h3>
-        <button type='button' onClick={()=> dispatch(projectUp({id: project.id, sectionId: project.section}))}>←</button>
-        <button type='button' onClick={()=> dispatch(projectDown({id: project.id, sectionId: project.section}))}>→</button>
+        {index > 0 && <button type='button' onClick={() => projectUp(index)}>←</button>}
+        {(index < projects.length-1) && <button type='button' onClick={() => projectDown(index)}>→</button>}
 
         {project.view || project.view_code && <div className="actions">
             <LinksContainer project={project}/>
         </div>}
-        {editProject && <EditProject close={()=>setEditProject(false)}
-                                     actionProject={'Edit Project'}
+        {editTheProject && <EditProject close={()=>setEditProject(false)}
+                                     actionProject={'edit'}
                                     data={{...data,  name: project.name,
                                         projectId: project.id,
                                         image_url: project.image,

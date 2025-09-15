@@ -19,14 +19,14 @@ export default function ProjectsContainer({sectionId}){
 
     return <>
         <div className="projects-container">
-        {projects.map((project)=> (
-            <Project key={`Project: ${project.id}`} project={project}/>
+        {projects.map((project, index)=> (
+            <Project key={`Project: ${project.id}`} project={project} projects={projects} index={index}/>
         ))}
             {user && <div>
                 <button
                     className='edit-buttons' id='add-project'
                     onClick={handleAddProject}>Add Project</button>
-                {editProject && <EditProject data={{...data, section: sectionId}} close={handleAddProject} actionProject={'Add Project'}/>}
+                {editProject && <EditProject data={{...data, section: sectionId}} close={handleAddProject} actionProject={'add'}/>}
             </div>
             }
 
