@@ -14,23 +14,7 @@
     width: 100%;
     text-align: center;
   }
-  .section-wrapper{
-    position: relative;
-    width: 100%;
-    .direct-wrapper{}
-  }
-  .section-title{
-    font-size: 1.5rem;
-    text-align: left;
-    border-top: 1px solid $turquoise;
-    padding: 10px 50px;
-  }
-  .section-title[id] { scroll-margin-top: 60px; }
-  .section-title:target{
-    background: $lightTurquoise;
-    transition: background .4s;
-    outline: none;
-  }
+
 }
 
 .projects-container{
@@ -47,6 +31,24 @@
     //padding: 50px 2vw 50px 2vw;
     padding: 50px 0px;
     padding-left: 3vw;
+
+    .no-projects{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button{
+        font-weight: 540;
+        color: $midGray;
+        text-align: center;
+        border: none;
+        background-color: rgba(106, 43, 43, 0);
+        font-size: 1.4rem;
+        padding: 0;
+      }
+    }
+
     #add-project{
       position: absolute;
       right: 0px;
@@ -65,10 +67,5 @@
     }
   }
 
-.section-wrapper:hover .direct-wrapper,
-.section-wrapper:focus-within .direct-wrapper {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-}
+
 

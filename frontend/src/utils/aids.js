@@ -6,10 +6,12 @@ export function sortApiAscending(){
 
 export function newData (formData, filterItems=[]){
     const data = new FormData();
-    for (let key in formData){
-        if (key in filterItems){continue}
-        data.append(key, formData[key])
-    }
+    Object.entries(formData).forEach(([key, value]) => {
+        if (filterItems.includes(key)) return;
+        if (value === undefined || value === null) return;
+        data.append(key, value);
+      });
+
     return data
 }
 

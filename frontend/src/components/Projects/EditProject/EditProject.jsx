@@ -23,8 +23,9 @@ export default function EditProject({close, actionProject, data = {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(projectAction(newData(formData), formData.projectId))
 
+        dispatch(projectAction(newData(formData, ['image_url', 'projectId']), formData.projectId))
+        close();
     }
 
 
@@ -35,13 +36,13 @@ export default function EditProject({close, actionProject, data = {
         const imageUrl = URL.createObjectURL(file);
         setFormData((prev) => ({ ...prev, image_url: imageUrl }));
       };
-
+    const actionName = actionProject === 'add'? 'Add Project': 'Edit Project';
 
     return <>
         <section className={`edit-project ${deleteSession ? 'modal-open' : ''}`}>
             <button type='button' className='x' id='x-edit-project'
                                     onClick={close}>X</button>
-            <h2 className='project-edit-title'>{actionProject}</h2>
+            <h2 className='project-edit-title'>{actionName}</h2>
             <form className='project-form' onSubmit={handleSubmit}>
                 <div className='main-section'>
                 <div className='input-wrapper'>
@@ -85,11 +86,11 @@ export default function EditProject({close, actionProject, data = {
                 <div className='lower-section'>
 
                 <div className='button-wrapper'>
-                <button type='submit' className='submit-button'>{actionProject === 'Edit Project' && 'Save' || actionProject}</button>
+                <button type='submit' className='submit-button'>{actionProject === 'edit' && 'Save' || actionName}</button>
                 <button type='reset' onClick={close} className='cancel-button'>Cancel</button>
                 </div>
 
-                    {actionProject === 'Edit Project' &&
+                    {actionProject === 'edit' &&
                 <button type='button' className='delete-project' id='delete-uniqu' onClick={()=>setDeleteProject(true)}>Delete Project</button> }
 
 

@@ -17,15 +17,22 @@ export default function ProjectsContainer({sectionId}){
 
     const handleAddProject = () => setEditProject(!editProject)
 
+    if (!user && projects.length === 0) return null;
+
     return <>
         <div className="projects-container">
+
+            {!projects.length && user && <div className='no-projects'>
+            <button type='button' onClick={()=>setEditProject(true)}>Add your projects here</button>
+            </div>}
+
         {projects.map((project, index)=> (
             <Project key={`Project: ${project.id}`} project={project} projects={projects} index={index}/>
         ))}
             {user && <div>
-                <button
+                { (projects.length > 0) && <button
                     className='edit-buttons' id='add-project'
-                    onClick={handleAddProject}>Add Project</button>
+                    onClick={handleAddProject}>Add Project</button>}
                 {editProject && <EditProject data={{...data, section: sectionId}} close={handleAddProject} actionProject={'add'}/>}
             </div>
             }

@@ -33,7 +33,7 @@ export default function Router () {
 
             <Route path='/' element={<Layout/>}>
                 <Route path='' element={<MainPage/>}/>
-                {projectsCategory && <Route path='projects/' element={<ProjectsPage index={projectsCategory.id}/>}/>}
+                {projectsCategory && <Route path='projects/' element={<ProjectsPage categoryId={projectsCategory.id}/>}/>}
                 {categories.map((category)=><>
                 <Route key={category.id} path={`${slug(category.name)}/`} element={<CategoryPage category={category}/>}/>
                 </>)}

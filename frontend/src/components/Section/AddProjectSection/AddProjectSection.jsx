@@ -1,28 +1,33 @@
 import './addProjectSections.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {postSection} from "../../slices/sectionSlice.js";
-import {newData} from "../../utils/aids.js";
+import {editSection, postSection} from "../../../slices/sectionSlice.js";
+import {changeModel, newData} from "../../../utils/aids.js";
+import {editProject, postProject} from "../../../slices/projectSlice.js";
 
 
 
-export default function AddProjectSection({projectsIndex, close, data = {name: ''}}) {
+export default function AddProjectSection({close, sectionAction, data = {name: '', category: null, sectionId: null}}) {
 
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({
-        category: projectsIndex,
-        name: data.name
+        category: data.category,
+        name: data.name,
+        sectionId: data.sectionId
     })
 
     const createError = useSelector((s) => s.sections.createError)
     const updateError = useSelector((s) => s.sections.createError)
 
+    const createSection = changeModel(sectionAction, postSection, editSection)
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(postSection(newData(formData)))
+        dispatch(createSection(newData(formData, ['sectionId']), formData.sectionId))
         close()
     }
 
+    const sectionState = sectionAction === 'add'? 'Add Section': 'Save'
 
 
 
@@ -38,7 +43,7 @@ export default function AddProjectSection({projectsIndex, close, data = {name: '
                 required
                     />
                 <button type='submit'
-                    className='edit-buttons' id='add-project'>Add Section</button>
+                    className='edit-buttons' id='add-project'>{sectionState}</button>
                 </form>
 
             </div>
