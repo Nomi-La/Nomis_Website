@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-export default function generalSlice (sliceName, get, getId, post, patch, del) {
-    return createSlice ({
+export default function generalSlice(sliceName, get, getId, post, patch, del) {
+    return createSlice({
         name: sliceName,
         initialState: {
             //get
@@ -64,8 +64,8 @@ export default function generalSlice (sliceName, get, getId, post, patch, del) {
                     state.createStatus = 'succeeded';
                     state.created = action.payload;
                     if (state.created && Array.isArray(state.items)) {
-                           state.items.unshift(state.created);
-                         }
+                        state.items.unshift(state.created);
+                    }
                     state.createError = null;
                 })
                 .addCase(post.rejected, (state, action) => {
@@ -81,14 +81,14 @@ export default function generalSlice (sliceName, get, getId, post, patch, del) {
                     state.editStatus = 'succeeded';
                     state.edited = action.payload;
 
-                     if (state.edited && Array.isArray(state.items)) {
-                       const i = state.items.findIndex(x => x.id === state.edited.id);
-                       if (i !== -1) state.items[i] = state.edited;
-                     }
-                     if (state.item && state.edited && state.item.id === state.edited.id) {
-                       state.item = state.edited;
-                     }
-                     state.editError = null;
+                    if (state.edited && Array.isArray(state.items)) {
+                        const i = state.items.findIndex(x => x.id === state.edited.id);
+                        if (i !== -1) state.items[i] = state.edited;
+                    }
+                    if (state.item && state.edited && state.item.id === state.edited.id) {
+                        state.item = state.edited;
+                    }
+                    state.editError = null;
 
                 })
                 .addCase(patch.rejected, (state, action) => {
@@ -104,7 +104,7 @@ export default function generalSlice (sliceName, get, getId, post, patch, del) {
                     state.deleteStatus = 'succeeded';
                     const removedId = action.payload;
                     if (Array.isArray(state.items)) {
-                      state.items = state.items.filter(x => x.id !== removedId);
+                        state.items = state.items.filter(x => x.id !== removedId);
                     }
                     if (state.item && state.item.id === removedId) state.item = null;
                     state.deleteError = null;

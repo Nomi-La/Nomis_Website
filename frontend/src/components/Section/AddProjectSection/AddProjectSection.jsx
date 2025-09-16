@@ -3,8 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {editSection, postSection} from "../../../slices/sectionSlice.js";
 import {changeModel, newData} from "../../../utils/aids.js";
-import {editProject, postProject} from "../../../slices/projectSlice.js";
-
 
 
 export default function AddProjectSection({close, sectionAction, data = {name: '', category: null, sectionId: null}}) {
@@ -27,25 +25,24 @@ export default function AddProjectSection({close, sectionAction, data = {name: '
         close()
     }
 
-    const sectionState = sectionAction === 'add'? 'Add Section': 'Save'
-
+    const sectionState = sectionAction === 'add' ? 'Add Section' : 'Save'
 
 
     return <>
         <div className='add-section-wrapper'>
             {/*<h4 className='add-psection-title'>Add your section here (Example: 'Group Projects')</h4>*/}
-                <form className='add-psection-input' onSubmit={handleSubmit}>
+            <form className='add-psection-input' onSubmit={handleSubmit}>
                 <input type='text'
-                placeholder='Section Name'
-                className='section-title'
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-                    />
+                       placeholder='Section Name'
+                       className='section-title'
+                       value={formData.name}
+                       onChange={(e) => setFormData({...formData, name: e.target.value})}
+                       required
+                />
                 <button type='submit'
-                    className='edit-buttons' id='add-project'>{sectionState}</button>
-                </form>
+                        className='edit-buttons' id='add-project'>{sectionState}</button>
+            </form>
 
-            </div>
+        </div>
     </>
 }

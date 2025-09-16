@@ -1,24 +1,28 @@
 @use '../../colors' as *;
 
 
-.category-section{
-    font-size: 1.2rem;
-    text-align: left;
-    width: 100%;
-    border-bottom: 1px solid $lightTurquoise;
-    padding: 10px 4vw;
+.category-section {
+  font-size: 1.2rem;
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid $lightTurquoise;
+  padding: 10px 4vw;
   background-color: $lightGray;
   box-shadow: 2px 2px 10px $midTurquoise;
 }
-.category-section[id] { scroll-margin-top: 60px; }
-.category-section:target{
-    background: $midTurquoise;
-    transition: background .4s;
-    outline: none;
-    box-shadow: 2px 2px 10px $lightGray;
-  }
 
-.section-wrap{
+.category-section[id] {
+  scroll-margin-top: 60px;
+}
+
+.category-section:target {
+  background: $midTurquoise;
+  transition: background .4s;
+  outline: none;
+  box-shadow: 2px 2px 10px $lightGray;
+}
+
+.section-wrap {
   padding: 30px 3vw;
   display: flex;
   flex-direction: column;
@@ -26,9 +30,10 @@
   margin: 0px;
 
 
-  .content-wrap{
+  .content-wrap {
     padding-bottom: 4vh;
-    .section-content{
+
+    .section-content {
       font-size: 1.2rem;
       font-weight: 500;
       color: $darkGray;
@@ -39,7 +44,7 @@
     }
   }
 
-  .image-wrap{
+  .image-wrap {
     //width: 45%;
     width: 100%;
     display: flex;
@@ -48,7 +53,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    .frame-image{
+    .frame-image {
       margin: 0vh 7px 3vh;
       border-radius: 4px;
       width: 50%;
@@ -59,7 +64,7 @@
       justify-content: center;
       box-shadow: 2px 2px 10px $darkGray;
 
-      .section-image{
+      .section-image {
         display: block;
         height: 100%;
         width: 100%;
@@ -71,58 +76,66 @@
   }
 }
 
-@media (min-width: 1600px){
-  .section-wrap{
-  flex-direction: row;
-  .content-wrap{
-    padding-right: 4vw;
-    width: 55%;
-  }
-  .image-wrap{
-    padding-top: 0px;
-    width: 45%;
-    flex-direction: column;
-    .frame-image{
-      width: 80%;
-      .section-image{
+@media (min-width: 1600px) {
+  .section-wrap {
+    flex-direction: row;
 
+    .content-wrap {
+      padding-right: 4vw;
+      width: 55%;
+    }
+
+    .image-wrap {
+      padding-top: 0px;
+      width: 45%;
+      flex-direction: column;
+
+      .frame-image {
+        width: 80%;
+
+        .section-image {
+
+        }
       }
     }
   }
 }
-}
 
-@media (max-width: 1300px){
-  .section-wrap{
+@media (max-width: 1300px) {
+  .section-wrap {
 
-  .image-wrap{
+    .image-wrap {
 
-    flex-direction: column;
-    .frame-image{
-      width: 70%;
-      .section-image{
+      flex-direction: column;
 
+      .frame-image {
+        width: 70%;
+
+        .section-image {
+
+        }
       }
     }
   }
 }
-}
 
-@media (max-width: 900px){
-  .section-wrap{
+@media (max-width: 900px) {
+  .section-wrap {
 
-  .content-wrap{
-    .section-content{
+    .content-wrap {
+      .section-content {
+      }
     }
-  }
-  .image-wrap{
-    .frame-image{
-      width: 90%;
-      .section-image{
 
+    .image-wrap {
+      .frame-image {
+        width: 90%;
+
+        .section-image {
+
+        }
       }
     }
   }
-}
 }
 

@@ -8,16 +8,16 @@ import AddProjectSection from "../components/Section/AddProjectSection/AddProjec
 import ProjectSection from "../components/Section/ProjectSection/ProjectSection.jsx";
 import {data} from "react-router";
 
-export default function ProjectsPage({categoryId}){
-    const user = useSelector((s)=>s.auth.user)
-    const sections = useSelector((s)=> s.sections.items)
-            .filter((section)=> section.category === categoryId)
+export default function ProjectsPage({categoryId}) {
+    const user = useSelector((s) => s.auth.user)
+    const sections = useSelector((s) => s.sections.items)
+        .filter((section) => section.category === categoryId)
         .sort(sortApiAscending())
 
     const dispatch = useDispatch()
     const [addSection, setAddSection] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(fetchProjects())
         dispatch(sideBarState('open'))
     }, [])
@@ -26,24 +26,27 @@ export default function ProjectsPage({categoryId}){
         <div className="projects-page">
             <h1>My Projects</h1>
 
-            {sections.map((section, index)=> <>
-               <div key={`sectionD: ${section.id}`}>
+            {sections.map((section, index) => <>
+                <div key={`sectionD: ${section.id}`}>
 
                     <ProjectSection section={section} index={index} sections={sections}/>
 
-                    <ProjectsContainer sectionId={section.id} />
+                    <ProjectsContainer sectionId={section.id}/>
 
                 </div>
             </>)}
 
             {user && !sections.length &&
-                <><button type='button' onClick={()=>setAddSection(true)}>Start adding your project sections</button>
+                <>
+                    <button type='button' onClick={() => setAddSection(true)}>Start adding your project sections
+                    </button>
                     <p>group projects section, solo projects section, etc</p></>}
 
             {user && sections.length && !addSection &&
-            <button type='button' onClick={()=>setAddSection(true)}>Add a Section</button>}
+                <button type='button' onClick={() => setAddSection(true)}>Add a Section</button>}
 
-            {addSection && <AddProjectSection close={()=>setAddSection(false)} sectionAction={'add'} data={{...data, category: categoryId}}/>}
-            </div>
+            {addSection && <AddProjectSection close={() => setAddSection(false)} sectionAction={'add'}
+                                              data={{...data, category: categoryId}}/>}
+        </div>
     </>
 }

@@ -1,7 +1,7 @@
 import './linksContainer.scss'
 import LinkSingle from "./Link/LinkSingle.jsx";
 
-export default function LinksContainer({project}){
+export default function LinksContainer({project}) {
 
 
     return <>

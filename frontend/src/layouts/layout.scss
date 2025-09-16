@@ -1,10 +1,11 @@
-.layout-main{
+.layout-main {
 
   position: relative;
   top: 7.5vh;
   display: flex;
   height: 92.5vh;
-  .sidebar-control{
+
+  .sidebar-control {
     position: absolute;
     width: 6vw;
     max-width: 32px;
@@ -16,7 +17,8 @@
     box-sizing: content-box;
     border-radius: 5px;
   }
-  .right-layout{
+
+  .right-layout {
     position: relative;
     flex: 1 1 0;
     min-width: 0;

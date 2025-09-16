@@ -1,6 +1,6 @@
 @use '../../../colors' as *;
 
-.are-you-sure{
+.are-you-sure {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -14,7 +14,8 @@
   justify-content: center;
   overflow-y: auto;
   z-index: 900;
-  .delete-rec{
+
+  .delete-rec {
     height: 180px;
     background-color: $midTurquoise;
     border: 1.5px solid $turquoise;
@@ -24,37 +25,43 @@
     justify-content: space-between;
     align-items: center;
     width: 80%;
-    .top-delete{
-    display: flex;
-    justify-content: space-between;
+
+    .top-delete {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid $turquoise;
       border-radius: 5px 5px 0px 0px;
       width: 100%;
       padding: 5px;
       background-color: $white;
-    p{}
 
-  }
+      p {
+      }
 
-     .delete-text{
-       width: 90%;
-       font-size: 1.15rem;
-       text-align: center;
+    }
 
-     }
-    .bottom-delete{
+    .delete-text {
+      width: 90%;
+      font-size: 1.15rem;
+      text-align: center;
+
+    }
+
+    .bottom-delete {
       width: 100%;
       display: flex;
       justify-content: flex-end;
       padding: 5px;
-      .delete-project{
+
+      .delete-project {
         margin: 5px 5px;
         padding: 4.5px 18px;
         border: 1px solid $midRed;
 
       }
-      #cancel{
+
+      #cancel {
         background-color: $white;
         color: $midRed;
         font-weight: bold;

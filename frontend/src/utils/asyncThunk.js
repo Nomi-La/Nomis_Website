@@ -1,7 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import parseError from "./parseError.js";
 import api from "./api.js";
-import {sortApiAscending} from "./aids.js";
 
 //get
 export const fetchModels = (modelName, endPoint) => {

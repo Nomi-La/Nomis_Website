@@ -1,15 +1,16 @@
 @use '../../colors' as *;
 
-.key-logo{
-    margin: 2.7vh 3vw;
-    cursor: pointer;
-  }
-  .log-logo{
-    margin: 1.5vh 3vw;
-    cursor: pointer;
-  }
+.key-logo {
+  margin: 2.7vh 3vw;
+  cursor: pointer;
+}
 
-.login-sec{
+.log-logo {
+  margin: 1.5vh 3vw;
+  cursor: pointer;
+}
+
+.login-sec {
   position: absolute;
   background-color: $lightTurquoise;
   border: 0.5px solid $turquoise;
@@ -17,12 +18,14 @@
   padding: 2vh 1vw 2.5vh;
   right: 4.2vw;
   top: 4vh;
-  .signin-form{
+
+  .signin-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    .input{
+
+    .input {
       color: $darkGray;
       border: 0.5px solid $gray;
       border-radius: 10px;
@@ -33,14 +36,14 @@
 
   }
 
-  .login-button{
-      color: $white;
-      border: none;
-      background-color: $turquoise;
-      padding: 0.5vh 3vw;
-      border-radius: 10px;
-      margin: 1.5vh 0px 0vh;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  .login-button {
+    color: $white;
+    border: none;
+    background-color: $turquoise;
+    padding: 0.5vh 3vw;
+    border-radius: 10px;
+    margin: 1.5vh 0px 0vh;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }

@@ -6,7 +6,7 @@ import projectReducer from "./slices/projectSlice.js";
 import stateReducer from "./slices/stateSlice.js";
 
 const store = configureStore({
-    reducer:{
+    reducer: {
         auth: authReducer,
         categories: categoryReducer,
         sections: sectionReducer,

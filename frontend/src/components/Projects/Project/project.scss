@@ -1,6 +1,6 @@
 @use '../../../colors' as *;
 
-.project{
+.project {
   position: relative;
   max-width: 210px;
   min-width: 120px;
@@ -14,141 +14,145 @@
   border-radius: 10px;
   height: auto;
 
-  @media (max-width: 1250px){
+  @media (max-width: 1250px) {
     //width: 23vw;
     margin-bottom: 90px;
   }
 
-  @media (max-width: 800px){
+  @media (max-width: 800px) {
     //width: 15vw;
     margin: 1vh 4vw 6vh;
     border-radius: 10px;
     box-shadow: 2px 2px 4px $gray;
   }
 
-  @media (max-width: 800px) and (min-width: 580px){
-      margin: 3vh 3vw 6vh 10vw;
+  @media (max-width: 800px) and (min-width: 580px) {
+    margin: 3vh 3vw 6vh 10vw;
   }
 
 
-  .head-wrapper{
+  .head-wrapper {
     position: relative;
     width: 100%;
-     h3{
-    padding: 15px 0px;
-    text-align: center;
-    width: 100%;
-    font-size: 1.2rem;
-    cursor: pointer;
 
-    @media (max-width: 1007px){
-      padding: 1vh 0;
+    h3 {
+      padding: 15px 0px;
+      text-align: center;
+      width: 100%;
+      font-size: 1.2rem;
+      cursor: pointer;
+
+      @media (max-width: 1007px) {
+        padding: 1vh 0;
+      }
     }
-  }
-    .direct-wrapper{
+
+    .direct-wrapper {
       width: 100%;
       align-items: center;
       justify-content: space-between;
       padding: 0 0.2rem;
       margin: 0;
-      .index-buttons{
-          background-color: $wheat;
+
+      .index-buttons {
+        background-color: $wheat;
         padding: 0 0.2rem;
-      margin: 0;
+        margin: 0;
       }
     }
   }
 
 
-  .actions{
+  .actions {
     box-shadow: 2px 2px 4px $gray;
     border-radius: 0px 0px 10px 10px;
-      z-index: 50;
-      max-width: 210px;
-      min-width: 120px;
-      width: 18vw;
-      padding-top: 15px;
-      position: absolute;
-      top: 100%;
-      background-color: rgba(239, 231, 205, 1);
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transform: translateY(-6px);
-      transition: max-height 300ms ease, opacity 200ms ease, transform 300ms ease;
+    z-index: 50;
+    max-width: 210px;
+    min-width: 120px;
+    width: 18vw;
+    padding-top: 15px;
+    position: absolute;
+    top: 100%;
+    background-color: rgba(239, 231, 205, 1);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height 300ms ease, opacity 200ms ease, transform 300ms ease;
 
-      @media (max-width: 1250px) {
-        //width: 23vw;
-      }
-      @media (max-width: 800px){
-        position: static;
-        box-shadow: none;
-        padding-top: 0px;
-      }
+    @media (max-width: 1250px) {
+      //width: 23vw;
+    }
+    @media (max-width: 800px) {
+      position: static;
+      box-shadow: none;
+      padding-top: 0px;
+    }
   }
 }
 
-.project.open{
+.project.open {
   //border-radius: 10px 10px 0px 0px;
   @media (max-width: 800px) {
     border-radius: 10px;
   }
-  .actions{
+
+  .actions {
     max-height: 999px;
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.image-frame{
-      box-shadow: 0px 1px 3px $gray;
+.image-frame {
+  box-shadow: 0px 1px 3px $gray;
 
 
-      width: 100%;
-      aspect-ratio: 12 / 12.5;
-      overflow: hidden;
-      //border: 2px dashed $midTurquoise;
-      //background-color: $midTurquoise;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px 8px 0px 0px;
+  width: 100%;
+  aspect-ratio: 12 / 12.5;
+  overflow: hidden;
+  //border: 2px dashed $midTurquoise;
+  //background-color: $midTurquoise;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px 8px 0px 0px;
 
-      .project-image{
-        display: block;
-        height: 100%;
-        width: 100%;
-        cursor: pointer;
-        object-fit: cover;
-        object-position: center;
-        border-radius: 8px 8px 0px 0px;
-      }
-    }
-
-.edit-icon{
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 3.5vw;
-    min-width: 30px;
-    background-color: rgba(255, 255, 255, 0.7);
+  .project-image {
+    display: block;
+    height: 100%;
+    width: 100%;
     cursor: pointer;
-    border-radius: 5px;
-    padding: 3px;
-    margin: 7px;
-    max-width: 40px;
-    border: 2px solid $midGray;
-
-    opacity: 0;
-    transform: translateY(-2px);
-    transition: opacity .2s ease, transform .2s ease;
-    pointer-events: none;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px 8px 0px 0px;
   }
+}
+
+.edit-icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 3.5vw;
+  min-width: 30px;
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 7px;
+  max-width: 40px;
+  border: 2px solid $midGray;
+
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity .2s ease, transform .2s ease;
+  pointer-events: none;
+}
 
 
 .project:hover,
 .project:focus-within {
-  .edit-icon, .direct-wrapper{
+  .edit-icon, .direct-wrapper {
     opacity: 1;
     transform: none;
     pointer-events: auto;

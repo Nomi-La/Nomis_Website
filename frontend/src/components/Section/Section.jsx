@@ -1,6 +1,6 @@
 import './section.scss'
 
-export default function Section({section}){
+export default function Section({section}) {
     const hasImage = !!(section.image || section.image2);
 
     return <>
@@ -12,9 +12,11 @@ export default function Section({section}){
             {hasImage &&
 
                 <div className='image-wrap'>
-                    {section.image && <div className='frame-image'> <img className='section-image' src={section.image} alt='image'/> </div>}
-            {section.image2 && <div className='frame-image'>
-                <img className='section-image' src={section.image2} alt='image'/></div> }
+                    {section.image &&
+                        <div className='frame-image'><img className='section-image' src={section.image} alt='image'/>
+                        </div>}
+                    {section.image2 && <div className='frame-image'>
+                        <img className='section-image' src={section.image2} alt='image'/></div>}
                 </div>
 
             }

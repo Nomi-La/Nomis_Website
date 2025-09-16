@@ -8,7 +8,6 @@ export const editProject = editModel('projects', 'projects/')
 export const deleteProject = deleteModel('projects', 'projects/')
 
 
-
 const projectSlice = generalSlice('projects',
     fetchProjects, fetchProject, postProject, editProject, deleteProject)
 

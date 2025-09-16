@@ -1,6 +1,6 @@
 @use '../../colors' as *;
 
-.main-page{
+.main-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,8 @@
   top: 0;
   left: 0;
   bottom: 0;
-  .image-wrapper{
+
+  .image-wrapper {
     box-sizing: content-box;
     max-width: 250px;
     width: 40vw;
@@ -19,22 +20,27 @@
     z-index: 30;
 
     margin: 40px;
-    .profile{
+
+    .profile {
       max-width: 250px;
       width: 40vw;
       border-radius: 50%;
     }
 
   }
-  .intro-side{
+
+  .intro-side {
 
     font-size: 1.5rem;
     font-weight: 500;
     padding: 30px;
-    .much-more{
-      b{}
+
+    .much-more {
+      b {
       }
-    .welcome{
+    }
+
+    .welcome {
       text-align: center;
       display: block;
       font-size: 3rem;
@@ -42,9 +48,11 @@
       padding-bottom: 2px;
     }
   }
-  .welcome-links{
+
+  .welcome-links {
     display: flex;
-    .submit-button{
+
+    .submit-button {
       text-decoration: none;
       font-size: 1.5rem;
       font-weight: 550;

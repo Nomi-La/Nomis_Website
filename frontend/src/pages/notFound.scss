@@ -1,6 +1,6 @@
 @use '../colors' as *;
 
-.not-found{
+.not-found {
   position: relative;
   top: 7.5vh;
   display: flex;
@@ -8,25 +8,27 @@
   width: 100%;
   align-items: center;
 
-  .oops-wrapper{
+  .oops-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .emoji{
-    max-height: 80px;
+    .emoji {
+      max-height: 80px;
       padding: 0px 15px 20px 15px;
     }
-    .emoji2{
+
+    .emoji2 {
       max-height: 60px;
     }
 
-    h2{
+    h2 {
       padding: 40px 0px 50px;
       font-size: xx-large;
       color: black;
     }
-    a{
+
+    a {
       border-radius: 5px;
       text-decoration: None;
       color: $gray;

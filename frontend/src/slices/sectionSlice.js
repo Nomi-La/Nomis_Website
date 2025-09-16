@@ -8,7 +8,6 @@ export const editSection = editModel('sections', 'sections/')
 export const deleteSection = deleteModel('sections', 'sections/')
 
 
-
 const sectionSlice = generalSlice('sections',
     fetchSections, fetchSection, postSection, editSection, deleteSection)
 

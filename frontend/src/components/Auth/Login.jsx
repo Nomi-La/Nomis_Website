@@ -8,16 +8,16 @@ import useClickAway from "../../utils/eventListener.js";
 import {loggedInState} from "../../slices/stateSlice.js";
 
 
-export default function Login () {
+export default function Login() {
     const [email, setEmail] = useState('')
-    const [password, setPassword]= useState('')
+    const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [log, setLog] = useState(false)
     const loginRef = useRef(null)
     const dispatch = useDispatch()
     const token = useSelector((state) => state.auth.accessToken)
 
-    useClickAway(loginRef, ()=> setLog(false))
+    useClickAway(loginRef, () => setLog(false))
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -42,11 +42,11 @@ export default function Login () {
             dispatch(loggedInState())
 
         } catch (err) {
-          let message = parseError(err)
+            let message = parseError(err)
 
             console.error(message);
             setError(message);
-          }
+        }
     };
 
     const handleLogout = () => {
@@ -57,41 +57,41 @@ export default function Login () {
 
     return <>
         {token && <img ref={loginRef} className="log-logo" src="/door2.png" alt="logo-star"
-              onClick={() => setLog(!log)}/>}
+                       onClick={() => setLog(!log)}/>}
         {!token && <img ref={loginRef} className="key-logo" src="/key2.png" alt="logo-star"
-              onClick={() => setLog(!log)}/>}
+                        onClick={() => setLog(!log)}/>}
 
-        { !token && log &&
+        {!token && log &&
             <div className='login-sec' ref={loginRef}>
-            <form className='signin-form' onSubmit={handleLogin}>
+                <form className='signin-form' onSubmit={handleLogin}>
 
-            <input
-                className='input'
-                type='email'
-                placeholder='email'
-                onChange={(e) => setEmail(e.target.value)}
-            />
+                    <input
+                        className='input'
+                        type='email'
+                        placeholder='email'
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
-            <input
-                className='input'
-                type='password'
-                placeholder='password'
-                onChange={(e) => setPassword(e.target.value)}
-            />
+                    <input
+                        className='input'
+                        type='password'
+                        placeholder='password'
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
-            {error && <p className="error-mes">{error}</p>}
+                    {error && <p className="error-mes">{error}</p>}
 
-            <button type='submit' className="login-button">Login</button>
+                    <button type='submit' className="login-button">Login</button>
 
-            {/*<Link to='/signup'>signup</Link>*/}
-            {/*<Link to='/reset-password'>forgot password?</Link>*/}
+                    {/*<Link to='/signup'>signup</Link>*/}
+                    {/*<Link to='/reset-password'>forgot password?</Link>*/}
 
-        </form>
+                </form>
             </div>
-            }
+        }
         {token && log &&
             <div className='login-sec' ref={loginRef}>
-            <button className='login-button' onClick={handleLogout}>logout</button>
+                <button className='login-button' onClick={handleLogout}>logout</button>
             </div>
         }
     </>

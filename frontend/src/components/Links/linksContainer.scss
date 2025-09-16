@@ -1,12 +1,12 @@
 @use '../../colors' as *;
 
-.links-container{
+.links-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
 
-  .singlink-container{
+  .singlink-container {
     background-color: black;
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@
     width: 90%;
     padding: 10px;
 
-    .icon{
+    .icon {
       width: 25px;
       margin-left: 15px;
       @media (max-width: 500px) {
@@ -24,15 +24,17 @@
         margin-right: 2px;
       }
     }
-    #code-icon{
+
+    #code-icon {
       margin-top: 3px;
       margin-bottom: 3px;
     }
-    #view-icon{
+
+    #view-icon {
 
     }
 
-    .singlink{
+    .singlink {
       color: $white;
       text-decoration: none;
       width: 65%;

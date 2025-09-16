@@ -1,29 +1,36 @@
 @use '../../../colors' as *;
 
-.section-wrapper{
-    position: relative;
+.section-wrapper {
+  position: relative;
+  width: 100%;
+
+  .direct-wrapper {
     width: 100%;
-    .direct-wrapper{
-      width: 100%;
-      justify-content: flex-end;
-      cursor: pointer;
-      .edit-icon{
-        border: 1.8px solid $midGray;
-        position: static;
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-      }
+    justify-content: flex-end;
+    cursor: pointer;
+
+    .edit-icon {
+      border: 1.8px solid $midGray;
+      position: static;
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
     }
   }
-.section-title{
+}
+
+.section-title {
   font-size: 1.5rem;
   text-align: left;
   border-top: 1px solid $turquoise;
   padding: 10px 50px;
 }
-.section-title[id] { scroll-margin-top: 60px; }
-.section-title:target{
+
+.section-title[id] {
+  scroll-margin-top: 60px;
+}
+
+.section-title:target {
   background: $lightTurquoise;
   transition: background .4s;
   outline: none;

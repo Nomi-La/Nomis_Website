@@ -1,12 +1,12 @@
 import './welcome.scss'
 import {Link} from "react-router";
 
-export default function Welcome(){
+export default function Welcome() {
 
 
     return <>
         <div className="main-page">
-           <div className="image-wrapper">
+            <div className="image-wrapper">
                 <img className="profile" src="/backg.jpg" alt="profile"/>
             </div>
             <p className='intro-side'><span className="welcome">Welcome:)</span>

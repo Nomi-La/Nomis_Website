@@ -7,12 +7,11 @@ import {useState} from "react";
 import {data} from "react-router";
 
 
-
-export default function ProjectsContainer({sectionId}){
-    const user = useSelector((s)=>s.auth.user)
-    const projects = useSelector((s)=> s.projects.items)
-                    .filter((project)=> project.section === sectionId)
-                    .sort(sortApiAscending())
+export default function ProjectsContainer({sectionId}) {
+    const user = useSelector((s) => s.auth.user)
+    const projects = useSelector((s) => s.projects.items)
+        .filter((project) => project.section === sectionId)
+        .sort(sortApiAscending())
     const [editProject, setEditProject] = useState(false)
 
     const handleAddProject = () => setEditProject(!editProject)
@@ -23,21 +22,22 @@ export default function ProjectsContainer({sectionId}){
         <div className="projects-container">
 
             {!projects.length && user && <div className='no-projects'>
-            <button type='button' onClick={()=>setEditProject(true)}>Add your projects here</button>
+                <button type='button' onClick={() => setEditProject(true)}>Add your projects here</button>
             </div>}
 
-        {projects.map((project, index)=> (
-            <Project key={`Project: ${project.id}`} project={project} projects={projects} index={index}/>
-        ))}
+            {projects.map((project, index) => (
+                <Project key={`Project: ${project.id}`} project={project} projects={projects} index={index}/>
+            ))}
             {user && <div>
-                { (projects.length > 0) && <button
+                {(projects.length > 0) && <button
                     className='edit-buttons' id='add-project'
                     onClick={handleAddProject}>Add Project</button>}
-                {editProject && <EditProject data={{...data, section: sectionId}} close={handleAddProject} actionProject={'add'}/>}
+                {editProject &&
+                    <EditProject data={{...data, section: sectionId}} close={handleAddProject} actionProject={'add'}/>}
             </div>
             }
 
-            </div>
+        </div>
 
     </>
 }

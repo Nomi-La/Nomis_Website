@@ -1,4 +1,3 @@
-
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from "react-router";
 import {useRef, useState} from "react";
@@ -9,41 +8,43 @@ import {editCategory} from "../../slices/categorySlice.js";
 
 const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
 
-export default function CategorySide({category, categories, index}){
-    const user = useSelector((s)=>s.auth.user)
+export default function CategorySide({category, categories, index}) {
+    const user = useSelector((s) => s.auth.user)
     const [open, setOpen] = useState(false)
     const wrapperRef = useRef(null)
-    const sections = useSelector((s)=> s.sections.items)
-            .filter((section) => section.category === category.id)
-            .sort(sortApiAscending())
+    const sections = useSelector((s) => s.sections.items)
+        .filter((section) => section.category === category.id)
+        .sort(sortApiAscending())
     const dispatch = useDispatch()
     const moveCategory = moveModel(categories, editCategory, dispatch)
 
     useClickAnywhere((e) => {
         if (
-          e.target.closest("a") &&
-          wrapperRef.current && !wrapperRef.current.contains(e.target)
+            e.target.closest("a") &&
+            wrapperRef.current && !wrapperRef.current.contains(e.target)
         ) {
-          setOpen(false);
+            setOpen(false);
         }
-      });
+    });
 
 
     return <div ref={wrapperRef} className='category-wrap' key={`1Category-div: ${category.id}`}>
         <div className="category-head">
-            <NavLink key={`1Category: ${category.id}`} className="category" onClick={()=>setOpen(!open)} to={`/${slug(category.name)}`}>{category.name}</NavLink>
+            <NavLink key={`1Category: ${category.id}`} className="category" onClick={() => setOpen(!open)}
+                     to={`/${slug(category.name)}`}>{category.name}</NavLink>
 
             <div className='direct-wrapper'>
 
-        {user && index > 0 && //↓ ˅ ▼ ▽ ↑ ˄ ▲ △
-             <button className='index-buttons' type='button' onClick={() => moveCategory(index, 0)}>↑</button>}
-        {user && index < categories.length -1 &&
-            <button className='index-buttons' type='button' onClick={() => moveCategory(index, sections.length-1)}>↓</button>}
-        </div>
+                {user && index > 0 && //↓ ˅ ▼ ▽ ↑ ˄ ▲ △
+                    <button className='index-buttons' type='button' onClick={() => moveCategory(index, 0)}>↑</button>}
+                {user && index < categories.length - 1 &&
+                    <button className='index-buttons' type='button'
+                            onClick={() => moveCategory(index, sections.length - 1)}>↓</button>}
+            </div>
         </div>
 
         {open && <SectionSide sections={sections}/>}
-        </div>
+    </div>
 }
 
 // const [sections, setSections] = useState([]);

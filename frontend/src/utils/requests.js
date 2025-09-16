@@ -1,11 +1,10 @@
-import {fetchModel} from "./asyncThunk.js";
 import api from "./api.js";
 
 const filterModels = (endPoint) => {
     return async (paramData) => {
-      const { data } = await api.get(endPoint, { params: paramData });
+        const {data} = await api.get(endPoint, {params: paramData});
 
-      return Array.isArray(data) ? data : (data.results ?? []);
+        return Array.isArray(data) ? data : (data.results ?? []);
     }
 }
 

@@ -1,6 +1,6 @@
 @use '../../colors' as *;
 
-.header-sec{
+.header-sec {
   //background: linear-gradient(102deg, #f4a804, #595302);
   //background: linear-gradient(102deg, rgba(255, 239, 213, 0.77), #029797);
   background-color: $turquoise;
@@ -16,7 +16,8 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  .name-logo{
+
+  .name-logo {
     margin: 0.9vh 5vw;
     cursor: pointer;
   }

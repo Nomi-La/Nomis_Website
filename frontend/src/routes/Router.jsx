@@ -1,4 +1,4 @@
-import {Route, Routes, BrowserRouter} from "react-router";
+import {BrowserRouter, Route, Routes} from "react-router";
 import Layout from "../layouts/Layout.jsx";
 import NotFound from "../pages/NotFound.jsx";
 import MainPage from "../pages/MainPage.jsx";
@@ -12,16 +12,16 @@ import AuthInit from "../components/Auth/AuthInit.jsx";
 
 const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
 
-export default function Router () {
+export default function Router() {
     const dispatch = useDispatch()
     const categories = useSelector((s) => s.categories.items)
-            .filter((category)=> category.name.toLowerCase()!=='projects')
+        .filter((category) => category.name.toLowerCase() !== 'projects')
 
     const projectsCategory = useSelector((s) => s.categories.items)
-            .find((category)=> category.name.toLowerCase()==='projects')
+        .find((category) => category.name.toLowerCase() === 'projects')
 
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(fetchCategories())
         dispatch(fetchSections())
     }, [])
@@ -33,9 +33,11 @@ export default function Router () {
 
             <Route path='/' element={<Layout/>}>
                 <Route path='' element={<MainPage/>}/>
-                {projectsCategory && <Route path='projects/' element={<ProjectsPage categoryId={projectsCategory.id}/>}/>}
-                {categories.map((category)=><>
-                <Route key={category.id} path={`${slug(category.name)}/`} element={<CategoryPage category={category}/>}/>
+                {projectsCategory &&
+                    <Route path='projects/' element={<ProjectsPage categoryId={projectsCategory.id}/>}/>}
+                {categories.map((category) => <>
+                    <Route key={category.id} path={`${slug(category.name)}/`}
+                           element={<CategoryPage category={category}/>}/>
                 </>)}
             </Route>
 
