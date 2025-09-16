@@ -30,27 +30,11 @@
       margin: 3vh 3vw 6vh 10vw;
   }
 
-  .edit-icon{
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 3.5vw;
-    min-width: 30px;
-    background-color: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 3px;
-    margin: 7px;
-    max-width: 40px;
-    border: 2px solid $midGray;
 
-    opacity: 0;
-    transform: translateY(-2px);
-    transition: opacity .2s ease, transform .2s ease;
-    pointer-events: none;
-  }
-
-  h3{
+  .head-wrapper{
+    position: relative;
+    width: 100%;
+     h3{
     padding: 15px 0px;
     text-align: center;
     width: 100%;
@@ -58,9 +42,23 @@
     cursor: pointer;
 
     @media (max-width: 1007px){
-      padding: 1vh 0px;
+      padding: 1vh 0;
     }
   }
+    .direct-wrapper{
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0.2rem;
+      margin: 0;
+      .index-buttons{
+          background-color: $wheat;
+        padding: 0 0.2rem;
+      margin: 0;
+      }
+    }
+  }
+
 
   .actions{
     box-shadow: 2px 2px 4px $gray;
@@ -91,7 +89,7 @@
 }
 
 .project.open{
-  border-radius: 10px 10px 0px 0px;
+  //border-radius: 10px 10px 0px 0px;
   @media (max-width: 800px) {
     border-radius: 10px;
   }
@@ -127,12 +125,34 @@
       }
     }
 
-.project:hover .edit-icon,
-.project:focus-within .edit-icon,
-.project.open .edit-icon {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
+.edit-icon{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 3.5vw;
+    min-width: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 7px;
+    max-width: 40px;
+    border: 2px solid $midGray;
+
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: opacity .2s ease, transform .2s ease;
+    pointer-events: none;
+  }
+
+
+.project:hover,
+.project:focus-within {
+  .edit-icon, .direct-wrapper{
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
 }
 
 

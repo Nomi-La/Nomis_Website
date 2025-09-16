@@ -30,10 +30,17 @@ export default function CategorySide({category, categories, index}){
 
 
     return <div ref={wrapperRef} className='category-wrap' key={`1Category-div: ${category.id}`}>
+        <div className="category-head">
             <NavLink key={`1Category: ${category.id}`} className="category" onClick={()=>setOpen(!open)} to={`/${slug(category.name)}`}>{category.name}</NavLink>
 
-        {user && <button className='index-buttons' type='button' onClick={() => moveCategory(index, 0)}>↑</button>}
-        {user && <button className='index-buttons' type='button' onClick={() => moveCategory(index, sections.length-1)}>↓</button>}
+            <div className='direct-wrapper'>
+
+        {user && index > 0 && //↓ ˅ ▼ ▽ ↑ ˄ ▲ △
+             <button className='index-buttons' type='button' onClick={() => moveCategory(index, 0)}>↑</button>}
+        {user && index < categories.length -1 &&
+            <button className='index-buttons' type='button' onClick={() => moveCategory(index, sections.length-1)}>↓</button>}
+        </div>
+        </div>
 
         {open && <SectionSide sections={sections}/>}
         </div>

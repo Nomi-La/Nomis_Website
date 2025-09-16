@@ -27,16 +27,23 @@ export default function ProjectsPage({index}){
             <h1>My Projects</h1>
 
             {sections.map((section, index)=> <div key={`sectionD: ${section.id}`}>
+
                 <div className='section-wrapper'>
-                <h2 id={section.id} className='section-title' key='section-title'>{section.name}</h2>
+                    <h2 id={section.id} className='section-title' key='section-title'>{section.name}</h2>
+
+                    <div className='direct-wrapper'>
                     {user && <>
                         {index > 0 &&
+                            //↓ ˅ ▼ ▽ ↑ ˄ ▲ △
                             <button className='index-buttons' type='button' onClick={() => moveSection(index, 0)}>↑</button>}
                         {index < sections.length-1 &&
                             <button className='index-buttons' type='button' onClick={() => moveSection(index, sections.length-1)}>↓</button>}
-                    </>}
+                    </>} </div>
+
                     </div>
+
                 <ProjectsContainer sectionId={section.id}/>
+
             </div>)}
 
             {user && !sections.length &&

@@ -25,16 +25,23 @@ export default function Project({project, projects, index}){
 
 
     return <span className={`project ${open ? 'open' : ''}`} ref={projectRef}>
+
         {user && <img src='/edit2.png' alt='edit' className='edit-icon'
         onClick={()=>setEditProject(true)}/>}
+
         <div className='image-frame'>
         <img className="project-image" src={project.image} alt={project.name} onClick={()=>setOpen(!open)}/>
             </div>
+        <div className='head-wrapper'>
         <h3>{project.name}</h3>
+
+        <div className='direct-wrapper'>
         {index > 0 &&
             <button type='button' className='index-buttons' onClick={() => moveProject(index, 0)}>←</button>}
         {(index < projects.length-1) &&
             <button type='button' className='index-buttons' onClick={() => moveProject(index, projects.length-1)}>→</button>}
+        </div>
+            </div>
 
         {project.view || project.view_code && <div className="actions">
             <LinksContainer project={project}/>

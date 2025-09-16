@@ -14,10 +14,14 @@
     width: 100%;
     text-align: center;
   }
+  .section-wrapper{
+    position: relative;
+    width: 100%;
+    .direct-wrapper{}
+  }
   .section-title{
     font-size: 1.5rem;
     text-align: left;
-    width: 100%;
     border-top: 1px solid $turquoise;
     padding: 10px 50px;
   }
@@ -60,4 +64,11 @@
       align-items: center;
     }
   }
+
+.section-wrapper:hover .direct-wrapper,
+.section-wrapper:focus-within .direct-wrapper {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
 
