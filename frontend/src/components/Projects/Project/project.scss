@@ -85,12 +85,13 @@
 }
 
 .project.open {
-  //border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
   @media (max-width: 800px) {
     border-radius: 10px;
   }
 
   .actions {
+    overflow: visible;
     max-height: 999px;
     opacity: 1;
     transform: translateY(0);

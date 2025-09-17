@@ -22,7 +22,7 @@ export default function Project({project, projects, index, user}) {
 
 
 
-    return <span className={`project ${open ? 'open' : ''}`} ref={projectRef}>
+    return <section className={`project ${open ? 'open' : ''}`} ref={projectRef}>
 
         {user && <img src='/edit2.png' alt='edit' className='edit-icon'
                       onClick={() => setEditProject(!editTheProject)}/>}
@@ -32,27 +32,24 @@ export default function Project({project, projects, index, user}) {
             </div>
         <div className='head-wrapper'>
         <h3>{project.name}</h3>
-
-            {user && <div className='direct-wrapper'>
-                {index > 0 &&
-                    <button type='button' className='index-buttons' onClick={() => moveProject(index, 0)}>←</button>}
-                {(index < projects.length - 1) &&
-                    <button type='button' className='index-buttons'
-                            onClick={() => moveProject(index, projects.length - 1)}>→</button>}
-            </div>}
             </div>
 
-        {project.view || project.view_code && <div className="actions">
+        {(project.view || project.view_code) && <div className="actions">
             <LinksContainer project={project}/>
         </div>}
+
         {editTheProject && <EditProject close={() => setEditProject(false)}
                                         actionProject={'edit'}
+                                        moveUp={[() => moveProject(index, 0), index > 0]}
+                                        moveDown={[() => moveProject(index, projects.length - 1), index < projects.length - 1]}
                                         data={{
                                             ...data, name: project.name,
                                             projectId: project.id,
                                             image_url: project.image,
-                                            section: project.section
+                                            section: project.section,
+                                            view: project.view,
+                                            view_code: project.view_code
                                         }}/>}
 
-    </span>
+    </section>
 }

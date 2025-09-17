@@ -7,6 +7,7 @@
   align-items: center;
 
   .singlink-container {
+    position: relative;
     background-color: black;
     display: flex;
     align-items: center;
@@ -18,7 +19,10 @@
 
     .icon {
       width: 25px;
-      margin-left: 15px;
+      margin: 0;
+      margin-left: 1rem;
+      margin-right: 0.8rem;
+      padding: 0;
       @media (max-width: 500px) {
         margin-left: 6px;
         margin-right: 2px;
@@ -28,10 +32,13 @@
     #code-icon {
       margin-top: 3px;
       margin-bottom: 3px;
+      margin-right: 0.5rem;
     }
 
     #view-icon {
-
+        margin-top: 0.1rem;
+      margin-bottom: 0;
+      padding: 0;
     }
 
     .singlink {
@@ -39,9 +46,34 @@
       text-decoration: none;
       width: 65%;
       font-size: 1rem;
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
       @media (max-width: 500px) {
         width: 55%;
       }
+    }
+
+    .project-link{
+      position: absolute;
+      left: 91%;
+      bottom: 80%;
+      background-color: $lightTurquoise;
+      color: $turquoise;
+      z-index: 5;
+      border: 1px solid $turquoise;
+      padding: 6px 10px 6px 25px;
+      width: 20vw;
+      overflow: hidden;
+      display: inline-block;
+      box-sizing: border-box;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      direction: ltr;
+      text-decoration: none;
+      border-radius: 5px 5px 5px 0px;
     }
   }
 }

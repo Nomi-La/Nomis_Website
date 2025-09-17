@@ -27,24 +27,17 @@ export default function ProjectSection({section, index, sections, user, setDelet
     return <>
         <div className='section-wrapper' ref={projectSectionRef}>
             {!changeSection && <h2 id={section.id} className='section-title' key='section-title'>{section.name}</h2>}
-            {changeSection &&
-                <AddProjectSection sectionAction={'edit'} data={{...data, name: section.name, sectionId: section.id}}
+            {changeSection && user &&
+                <AddProjectSection sectionAction={'edit'}
+                                   data={{...data, name: section.name, sectionId: section.id}}
+                                   moveUp={[() => moveSection(index, 0), index > 0]}
+                                   moveDown={[() => moveSection(index, sections.length - 1), index < sections.length - 1]}
                                    close={() => {
                                        setChangeSection(false)
                                        dispatch(clearSectionErrors())
                                    }} setDeleteSection={setDeleteSection}/>}
 
             {user && !changeSection && <div className='direct-wrapper'>
-
-
-                {index > 0 &&
-                    //↓ ˅ ▼ ▽ ↑ ˄ ▲ △
-                    <button className='index-buttons' type='button'
-                            onClick={() => moveSection(index, 0)}>↑</button>}
-                {index < sections.length - 1 &&
-                    <button className='index-buttons' type='button'
-                            onClick={() => moveSection(index, sections.length - 1)}>↓</button>}
-
 
                 <img src='/edit.png' alt='edit' className='edit-icon' onClick={() => (setChangeSection(true))}/>
 

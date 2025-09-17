@@ -1,22 +1,24 @@
 import './editProject.scss'
-import {useRef, useState} from "react";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteProject, editProject, postProject} from "../../../slices/projectSlice.js";
 import Delete from "../../Delete/Delete.jsx";
 import {changeModel, newData} from "../../../utils/aids.js";
-import {clickSomewhere, useClickAnywhere} from "../../../utils/eventListener.js";
+
 
 export default function EditProject({
                                         close, actionProject, data = {
-        section: '', image: null, name: '', image_url: '', projectId: ''
-    }
-                                    }) {
+        section: '', image: null, name: '', image_url: '', projectId: '', view: '', view_code: ''
+    }, moveUp = null, moveDown = null
+}) {
 
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         name: data.name,
         image_url: data.image_url,
         image: null,
+        view: data.view,
+        view_code: data.view_code,
         section: data.section,
         projectId: data.projectId
     })
@@ -44,14 +46,19 @@ export default function EditProject({
 
     return <>
         <section className={`edit-project ${deleteSession ? 'modal-open' : ''}`}>
+
             <button type='button' className='x' id='x-edit-project'
                     onClick={close}>X
             </button>
+
             <h2 className='project-edit-title'>{actionName}</h2>
+
             <form className='project-form' onSubmit={handleSubmit}>
+
                 <div className='main-section'>
+
                     <div className='input-wrapper'>
-                        <label htmlFor='project-name' className='input-label'>Name</label>
+                        <label htmlFor='project-name' className='input-label'>Name *</label>
                         <input type='text'
                                placeholder='Project Name'
                                className='input'
@@ -59,7 +66,8 @@ export default function EditProject({
                                onChange={(e) => setFormData({...formData, name: e.target.value})}
                                id='project-name'
                                required
-                        /></div>
+                        />
+                    </div>
 
                     <div className='image-upload-wrapper'>
 
@@ -92,14 +100,56 @@ export default function EditProject({
                         )}
                     </div>
 
+                    <div className='input-wrapper2'>
+                        <label htmlFor='project-url' className='input-label2'>Project URL (optional)</label>
+                        <input type='url'
+                               placeholder='add a url to view your project'
+                               className='input'
+                               value={formData.view}
+                               onChange={(e) => setFormData({...formData, view: e.target.value})}
+                               id='project-url'
+                        />
+                    </div>
+
+                    <div className='input-wrapper2'>
+                        <label htmlFor='project-url2' className='input-label2'>Code URL (optional)</label>
+                        <input type='url'
+                               placeholder="add a url to view your code"
+                               className='input'
+                               value={formData.view_code}
+                               onChange={(e) => setFormData({...formData, view_code: e.target.value})}
+                               id='project-url2'
+                        />
+                    </div>
+
                     {error || error2 && <p className="error-mes">{error || error2}</p>}
                 </div>
+
                 <div className='lower-section'>
 
+                    {actionProject === 'edit' &&
+                        <div className='move-project'>
+
+                        {moveUp && moveUp[1] &&
+                            <button type='button' className='arrow-project'
+                                    onClick={moveUp[0]}
+                            >← Move Left</button>}
+
+                        {moveDown && moveDown[1] &&
+                            <button type='button' className='arrow-project'
+                                    onClick={moveDown[0]}
+                            >→ Move Right</button>
+                        }
+
+                    </div>}
+
                     <div className='button-wrapper'>
+
                         <button type='submit'
                                 className='submit-button'>{actionProject === 'edit' && 'Save' || actionName}</button>
+
                         <button type='reset' onClick={close} className='cancel-button'>Cancel</button>
+
                     </div>
 
                     {actionProject === 'edit' &&

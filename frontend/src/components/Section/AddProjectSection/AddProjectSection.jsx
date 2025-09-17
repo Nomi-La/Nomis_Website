@@ -7,6 +7,7 @@ import useClickAway, {clickSomewhere, useClickAnywhere} from "../../../utils/eve
 
 
 export default function AddProjectSection({close, sectionAction, setDeleteSection,
+                                            moveUp = null, moveDown = null,
                                               data = {name: '', category: null, sectionId: null}}) {
 
     const dispatch = useDispatch()
@@ -54,6 +55,21 @@ export default function AddProjectSection({close, sectionAction, setDeleteSectio
                 />
 
                 <div className={'edit-section-buttons'}>
+
+                <div className='direct-wrapper'>
+
+                        {moveUp && moveUp[1] && //↓ ˅ ▼ ▽ ↑ ˄ ▲ △
+                            <button className='index-buttons' type='button'
+                                              onClick={moveUp[0]}
+                        >▲</button>}
+
+                        {moveDown && moveDown[1] &&
+                            <button className='index-buttons' type='button'
+                                                onClick={moveDown[0]}
+                        >▼</button>}
+
+                    </div>
+
                 <div className='two-buttons'>
                 <button type='submit'
                         className='edit-buttons'>{sectionState}</button>

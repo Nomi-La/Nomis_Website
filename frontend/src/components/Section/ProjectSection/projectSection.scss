@@ -26,7 +26,10 @@
   width: 100%;
   font-weight: bold;
   border-top: 1px solid $turquoise;
-  padding: 10px 50px;
+  padding: 10px 2rem;
+  @media (max-width: 440px) {
+    padding: 10px 1.5rem;
+  }
 }
 
 .section-title[id] {
