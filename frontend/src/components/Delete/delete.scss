@@ -15,6 +15,11 @@
 
 .projects-container{
   .are-you-sure{
+    @media (max-width: 850px) {
+      align-items: flex-start;
+      padding: 1rem;
+    }
+
     .delete-rec{
       .delete-text-wrap {
       .delete-text{}

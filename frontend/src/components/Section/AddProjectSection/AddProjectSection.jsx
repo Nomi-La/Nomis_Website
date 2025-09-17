@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useRef, useState} from "react";
 import {editSection, postSection} from "../../../slices/sectionSlice.js";
 import {changeModel, newData} from "../../../utils/aids.js";
-import useClickAway from "../../../utils/eventListener.js";
+import useClickAway, {clickSomewhere, useClickAnywhere} from "../../../utils/eventListener.js";
 
 
 export default function AddProjectSection({close, sectionAction, setDeleteSection,
@@ -34,11 +34,16 @@ export default function AddProjectSection({close, sectionAction, setDeleteSectio
         }
     }
 
+    const projectSectionRef = useRef(null)
+    const clickOut = clickSomewhere(projectSectionRef, [close, ()=>setDeleteSection(false)], 'input')
+    useClickAnywhere(clickOut);
+
+
     const sectionState = sectionAction === 'add' ? 'Add Section' : 'Save'
 
 
     return <>
-        <div className='add-section-wrapper'>
+        <div className='add-section-wrapper' ref={projectSectionRef}>
             <form className='add-p-section-input' onSubmit={handleSubmit}>
                 <input type='text'
                        placeholder='Section Name'
@@ -49,7 +54,7 @@ export default function AddProjectSection({close, sectionAction, setDeleteSectio
                 />
 
                 <div className={'edit-section-buttons'}>
-
+                <div className='two-buttons'>
                 <button type='submit'
                         className='edit-buttons'>{sectionState}</button>
 
@@ -58,6 +63,7 @@ export default function AddProjectSection({close, sectionAction, setDeleteSectio
                     close()
                     setDeleteSection(null)
                 }}>Cancel</button>
+                    </div>
 
                     {sectionAction === 'edit' &&
                         <img src='/delete.png' alt='delete' className='edit-icon' onClick={() => setDeleteSection(formData.sectionId)}/>}

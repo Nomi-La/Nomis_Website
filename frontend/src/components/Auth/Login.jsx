@@ -17,7 +17,10 @@ export default function Login() {
     const dispatch = useDispatch()
     const token = useSelector((state) => state.auth.accessToken)
 
-    useClickAway(loginRef, () => setLog(false))
+    useClickAway(loginRef, () => {
+        setLog(false)
+        setError('')
+    })
 
     const handleLogin = async (e) => {
         e.preventDefault();

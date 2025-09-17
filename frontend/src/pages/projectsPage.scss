@@ -1,3 +1,5 @@
+@use '../colors' as *;
+
 .projects-page {
   scroll-behavior: smooth;
   display: flex;
@@ -13,6 +15,14 @@
     padding: 20px;
     width: 100%;
     text-align: center;
+  }
+  .add-p-section{
+    border: 1px solid $turquoise;
+    background-color: $lightTurquoise;
+    width: 90%;
+    align-self: center;
+    color: black;
+    font-weight: bold;
   }
 
 }

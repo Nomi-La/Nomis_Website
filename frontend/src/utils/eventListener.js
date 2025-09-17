@@ -11,13 +11,15 @@ export function useClickAnywhere(handler) {
     }, [handler]);
 }
 
-export const clickSomewhere = (ref, close, type) => {
+export const clickSomewhere = (ref, close = [], type) => {
     return (e) => {
         if (
             e.target.closest(type) &&
             ref.current && !ref.current.contains(e.target)
         ) {
-            close();
+            for (const action of close){
+                action()
+            }
         }
     };
 }

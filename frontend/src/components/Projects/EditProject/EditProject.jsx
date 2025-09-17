@@ -1,9 +1,10 @@
 import './editProject.scss'
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteProject, editProject, postProject} from "../../../slices/projectSlice.js";
 import Delete from "../../Delete/Delete.jsx";
 import {changeModel, newData} from "../../../utils/aids.js";
+import {clickSomewhere, useClickAnywhere} from "../../../utils/eventListener.js";
 
 export default function EditProject({
                                         close, actionProject, data = {
