@@ -1,0 +1,125 @@
+@use '../../colors' as *;
+
+.edit-project{
+  .are-you-sure{
+    position: fixed;
+    border-left: 5px solid $turquoise;
+    left: auto;
+    width: min(450px, 100vw);
+    z-index: 900;
+    .delete-rec{
+        width: 80%;
+    }
+  }
+}
+
+.projects-container{
+  .are-you-sure{
+    .delete-rec{
+      .delete-text-wrap {
+      .delete-text{}
+
+    }
+    }
+  }
+}
+
+.are-you-sure {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  background-color: rgba(71, 71, 71, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  z-index: 800;
+
+  .delete-rec {
+    position: relative;
+    min-height: 180px;
+    background-color: $midTurquoise;
+    border: 1.5px solid $turquoise;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+
+
+
+    .top-delete {
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $turquoise;
+      border-radius: 5px 5px 0px 0px;
+      width: 100%;
+      padding: 5px;
+      background-color: $white;
+
+      p {
+      }
+
+    }
+
+    .delete-main-wrap{
+      padding: 2rem 1.2rem 1rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .delete-text {
+          width: 90%;
+          font-size: 1.15rem;
+          text-align: center;
+
+        }
+      span{
+        color: $midRed;
+          font-weight: 600;
+        margin: 1rem;
+        }
+      #beware{
+        margin-top: 0;
+        font-size: 1rem;
+        //color: $midRed;
+        font-weight: bold;
+        width: 90%;
+
+      }
+    }
+
+
+    .bottom-delete {
+      //position: absolute;
+      //bottom: 0;
+      //right: 0;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 5px;
+
+      .delete-project {
+        margin: 5px 5px;
+        padding: 4.5px 18px;
+        border: 1px solid $midRed;
+
+      }
+
+      #cancel {
+        background-color: $white;
+        color: $midRed;
+        font-weight: bold;
+      }
+    }
+  }
+
+}
+

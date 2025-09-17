@@ -2,27 +2,33 @@ import './projectSection.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {moveModel, sortApiAscending} from "../../../utils/aids.js";
 import {editSection} from "../../../slices/sectionSlice.js";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import AddProjectSection from "../AddProjectSection/AddProjectSection.jsx";
 import {data} from "react-router";
+import {clickSomewhere, useClickAnywhere} from "../../../utils/eventListener.js";
 
-export default function ProjectSection({section, index, sections, user}) {
+export default function ProjectSection({section, index, sections, user, setDeleteSection}) {
     const [changeSection, setChangeSection] = useState(false)
     const dispatch = useDispatch()
     const projects = useSelector((s) => s.projects.items)
         .filter((project) => project.section === section.id)
         .sort(sortApiAscending())
+    const projectSectionRef = useRef(null)
+
 
     const moveSection = moveModel(sections, editSection, dispatch)
+
+    const clickOut = clickSomewhere(projectSectionRef, ()=>setChangeSection(false), 'input')
+    useClickAnywhere(clickOut);
 
     if (!user && projects.length === 0) return null
 
     return <>
-        <div className='section-wrapper'>
+        <div className='section-wrapper' ref={projectSectionRef}>
             {!changeSection && <h2 id={section.id} className='section-title' key='section-title'>{section.name}</h2>}
             {changeSection &&
                 <AddProjectSection sectionAction={'edit'} data={{...data, name: section.name, sectionId: section.id}}
-                                   close={() => setChangeSection(false)}/>}
+                                   close={() => setChangeSection(false)} setDeleteSection={setDeleteSection}/>}
 
             {user && !changeSection && <div className='direct-wrapper'>
 

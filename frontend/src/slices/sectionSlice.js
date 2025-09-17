@@ -11,4 +11,5 @@ export const deleteSection = deleteModel('sections', 'sections/')
 const sectionSlice = generalSlice('sections',
     fetchSections, fetchSection, postSection, editSection, deleteSection)
 
+export const {clearErrors: clearSectionErrors} = sectionSlice.actions;
 export default sectionSlice.reducer

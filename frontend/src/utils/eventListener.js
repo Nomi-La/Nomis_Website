@@ -11,6 +11,17 @@ export function useClickAnywhere(handler) {
     }, [handler]);
 }
 
+export const clickSomewhere = (ref, close, type) => {
+    return (e) => {
+        if (
+            e.target.closest(type) &&
+            ref.current && !ref.current.contains(e.target)
+        ) {
+            close();
+        }
+    };
+}
+
 export default function useClickAway(refOrRefs, onAway, options = {}) {
     const {events = ["pointerdown", "touchstart"], disabled = false} = options;
 

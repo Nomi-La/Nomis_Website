@@ -24,7 +24,15 @@ export default function generalSlice(sliceName, get, getId, post, patch, del) {
             deleteStatus: 'idle',
             deleteError: null,
         },
-        reducers: {},
+        reducers: {
+            clearErrors: (state) => {
+                state.fetchError = null
+                state.fetchIdError = null
+                state.createError = null
+                state.editError = null
+                state.deleteError = null
+            }
+        },
         extraReducers: (builder) => {
 
             //get

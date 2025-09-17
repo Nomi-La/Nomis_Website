@@ -12,4 +12,5 @@ const categorySlice = generalSlice('categories',
     fetchCategories, fetchCategory, postCategory, editCategory, deleteCategory)
 
 
+export const {clearErrors: clearCategoryErrors} = categorySlice.actions;
 export default categorySlice.reducer;

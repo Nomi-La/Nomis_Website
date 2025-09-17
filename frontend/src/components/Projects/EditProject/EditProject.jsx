@@ -1,8 +1,8 @@
 import './editProject.scss'
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {editProject, postProject} from "../../../slices/projectSlice.js";
-import DeleteProject from "../DeleteProject/DeleteProject.jsx";
+import {deleteProject, editProject, postProject} from "../../../slices/projectSlice.js";
+import Delete from "../../Delete/Delete.jsx";
 import {changeModel, newData} from "../../../utils/aids.js";
 
 export default function EditProject({
@@ -109,7 +109,10 @@ export default function EditProject({
                 </div>
             </form>
 
-            {deleteSession && <DeleteProject projectId={data.projectId} closeSession={() => setDeleteProject(false)}/>}
+            {deleteSession &&
+                <Delete modelId={data.projectId}
+                        closeSession={() => setDeleteProject(false)} deleteModel={deleteProject}
+                modelName={'project'}/>}
         </section>
     </>
 }

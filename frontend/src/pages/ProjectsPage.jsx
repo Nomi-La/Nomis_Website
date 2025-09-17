@@ -1,3 +1,4 @@
+import './projectsPage.scss'
 import ProjectsContainer from "../components/Projects/ProjectsContainer/ProjectsContainer.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
@@ -16,6 +17,8 @@ export default function ProjectsPage({categoryId}) {
 
     const dispatch = useDispatch()
     const [addSection, setAddSection] = useState(false)
+    const [deleteSection, setDeleteSection] = useState(null)
+
 
     useEffect(() => {
         dispatch(fetchProjects())
@@ -29,9 +32,10 @@ export default function ProjectsPage({categoryId}) {
             {sections.map((section, index) => <>
                 <div key={`sectionD: ${section.id}`}>
 
-                    <ProjectSection section={section} index={index} sections={sections} user={user}/>
+                    <ProjectSection section={section} index={index} sections={sections} user={user} setDeleteSection={(value)=>setDeleteSection(value)}/>
 
-                    <ProjectsContainer sectionId={section.id} user={user}/>
+                    <ProjectsContainer sectionId={section.id} user={user} deleteSectionSession={deleteSection}
+                    setDeleteSection={()=>setDeleteSection(null)}/>
 
                 </div>
             </>)}

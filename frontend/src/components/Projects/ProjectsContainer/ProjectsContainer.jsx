@@ -5,9 +5,11 @@ import {sortApiAscending} from "../../../utils/aids.js";
 import EditProject from "../EditProject/EditProject.jsx";
 import {useState} from "react";
 import {data} from "react-router";
+import Delete from "../../Delete/Delete.jsx";
+import {deleteSection} from "../../../slices/sectionSlice.js";
 
 
-export default function ProjectsContainer({sectionId, user}) {
+export default function ProjectsContainer({sectionId, user, deleteSectionSession, setDeleteSection}) {
     const projects = useSelector((s) => s.projects.items)
         .filter((project) => project.section === sectionId)
         .sort(sortApiAscending())
@@ -35,6 +37,10 @@ export default function ProjectsContainer({sectionId, user}) {
                     <EditProject data={{...data, section: sectionId}} close={handleAddProject} actionProject={'add'}/>}
             </div>
             }
+
+            {deleteSectionSession === sectionId && user &&
+                <Delete modelId={sectionId} closeSession={setDeleteSection}
+                        deleteModel={deleteSection} modelName={'section'} noProjects={projects.length === 0}/>}
 
         </div>
 

@@ -32,19 +32,22 @@
     }
 
     .edit-icon {
-      border: none;
-      position: static;
-      opacity: 1;
-      transform: none;
-      pointer-events: auto;
-      padding: 0;
-      width: 2.3rem;
+        border: none;
+        position: static;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        padding: 0;
+        width: 2.3rem;
 
+      }
     }
-
-
-
-    }
+  .error-mes{
+     width: 100%;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0.5rem;
+   }
 
 }
 

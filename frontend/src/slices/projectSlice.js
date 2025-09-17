@@ -11,4 +11,5 @@ export const deleteProject = deleteModel('projects', 'projects/')
 const projectSlice = generalSlice('projects',
     fetchProjects, fetchProject, postProject, editProject, deleteProject)
 
+export const {clearErrors: clearProjectErrors} = projectSlice.actions;
 export default projectSlice.reducer
