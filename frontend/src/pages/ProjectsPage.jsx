@@ -29,9 +29,9 @@ export default function ProjectsPage({categoryId}) {
             {sections.map((section, index) => <>
                 <div key={`sectionD: ${section.id}`}>
 
-                    <ProjectSection section={section} index={index} sections={sections}/>
+                    <ProjectSection section={section} index={index} sections={sections} user={user}/>
 
-                    <ProjectsContainer sectionId={section.id}/>
+                    <ProjectsContainer sectionId={section.id} user={user}/>
 
                 </div>
             </>)}

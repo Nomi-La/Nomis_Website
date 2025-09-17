@@ -6,10 +6,9 @@ import {useState} from "react";
 import AddProjectSection from "../AddProjectSection/AddProjectSection.jsx";
 import {data} from "react-router";
 
-export default function ProjectSection({section, index, sections}) {
+export default function ProjectSection({section, index, sections, user}) {
     const [changeSection, setChangeSection] = useState(false)
     const dispatch = useDispatch()
-    const user = useSelector((s) => s.auth.user)
     const projects = useSelector((s) => s.projects.items)
         .filter((project) => project.section === section.id)
         .sort(sortApiAscending())

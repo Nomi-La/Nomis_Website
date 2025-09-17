@@ -43,24 +43,10 @@ export default function CategorySide({category, categories, index}) {
             </div>
         </div>
 
-        {open && <SectionSide sections={sections}/>}
+        {open && <div className='section-container'>
+            {sections.map((section)=><SectionSide section={section} categoryName={category.name.toLowerCase()}/>)}
+        </div>}
+
     </div>
 }
 
-// const [sections, setSections] = useState([]);
-//     const [loading, setLoading] = useState(false);
-//     const [err, setErr] = useState(null);
-//
-//     useEffect(()=>{
-//
-//         if (!categoryId) return;
-//         setLoading(true);
-//         setErr(null);
-//
-//         filterSections({category: categoryId})
-//             .then(setSections)
-//             .catch((e) => setErr(parseError(e)))
-//             .finally(() => setLoading(false))
-//
-//
-//     }, [categoryId])

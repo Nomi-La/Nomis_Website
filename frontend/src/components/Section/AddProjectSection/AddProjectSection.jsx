@@ -31,7 +31,7 @@ export default function AddProjectSection({close, sectionAction, data = {name: '
     return <>
         <div className='add-section-wrapper'>
             {/*<h4 className='add-psection-title'>Add your section here (Example: 'Group Projects')</h4>*/}
-            <form className='add-psection-input' onSubmit={handleSubmit}>
+            <form className='add-p-section-input' onSubmit={handleSubmit}>
                 <input type='text'
                        placeholder='Section Name'
                        className='section-title'
@@ -39,8 +39,22 @@ export default function AddProjectSection({close, sectionAction, data = {name: '
                        onChange={(e) => setFormData({...formData, name: e.target.value})}
                        required
                 />
+
+                <div className={'edit-section-buttons'}>
+
                 <button type='submit'
-                        className='edit-buttons' id='add-project'>{sectionState}</button>
+                        className='edit-buttons'>{sectionState}</button>
+
+                <button type='reset'
+                        className='edit-buttons' id='cancel-section' onClick={close}>Cancel</button>
+
+                <img src='/delete.png' alt='delete' className='edit-icon'/>
+
+                    </div>
+
+
+
+
             </form>
 
         </div>

@@ -7,8 +7,7 @@ import {useState} from "react";
 import {data} from "react-router";
 
 
-export default function ProjectsContainer({sectionId}) {
-    const user = useSelector((s) => s.auth.user)
+export default function ProjectsContainer({sectionId, user}) {
     const projects = useSelector((s) => s.projects.items)
         .filter((project) => project.section === sectionId)
         .sort(sortApiAscending())
@@ -26,7 +25,7 @@ export default function ProjectsContainer({sectionId}) {
             </div>}
 
             {projects.map((project, index) => (
-                <Project key={`Project: ${project.id}`} project={project} projects={projects} index={index}/>
+                <Project key={`Project: ${project.id}`} project={project} projects={projects} index={index} user={user}/>
             ))}
             {user && <div>
                 {(projects.length > 0) && <button

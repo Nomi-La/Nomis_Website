@@ -10,7 +10,7 @@ export default function Welcome() {
                 <img className="profile" src="/backg.jpg" alt="profile"/>
             </div>
             <p className='intro-side'><span className="welcome">Welcome:)</span>
-                <br/><br/>I am <b>Nomi Lang</b>, a <b>Full-Stack developer</b>
+                <br/>I am <b>Nomi Lang</b>, a <b>Full-Stack developer</b>
                 <br/>-And <span className="much-more">so much more</span>! ↓</p>
 
             <section className='welcome-links'>

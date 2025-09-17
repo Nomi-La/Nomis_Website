@@ -10,6 +10,9 @@
   top: 0;
   left: 0;
   bottom: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+;
 
   .image-wrapper {
     box-sizing: content-box;
@@ -17,9 +20,9 @@
     width: 40vw;
     border-radius: 50%;
     border: 10px solid rgba(2, 151, 151, 0.51);
-    z-index: 30;
+    z-index: 2;
 
-    margin: 40px;
+    margin: 5vh 5vw;
 
     .profile {
       max-width: 250px;
@@ -30,11 +33,13 @@
   }
 
   .intro-side {
-
+    max-width: 85%;
     font-size: 1.5rem;
     font-weight: 500;
-    padding: 30px;
-
+    padding: 0 3vw 3vh;
+    @media (max-width: 380px) {
+        font-size: 1.3rem;
+      }
     .much-more {
       b {
       }
@@ -45,20 +50,36 @@
       display: block;
       font-size: 3rem;
       font-weight: bold;
-      padding-bottom: 2px;
+      padding-bottom: 0;
+      margin: 0;
+      @media (max-width: 1200px) {
+        font-size: 2.5rem;
+      }
+      @media (max-width: 380px) {
+        font-size: 2rem;
+      }
     }
   }
 
   .welcome-links {
     display: flex;
-
+    padding-bottom: 3vh;
+    padding-top: 1vh;
+    @media (max-width: 660px) {
+      flex-direction: column;
+    }
     .submit-button {
+      text-align: center;
       text-decoration: none;
       font-size: 1.5rem;
       font-weight: 550;
-      margin: 5vh 2vw 0px;
+      margin: 1.4vh 1rem 0;
       padding: 1vh 3vw;
       border-radius: 15px;
+      @media (max-width: 350px) {
+        font-weight: 100;
+        font-size: 1.3rem;
+      }
     }
   }
 }

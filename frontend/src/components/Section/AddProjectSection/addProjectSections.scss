@@ -1,0 +1,50 @@
+@use '../../../colors' as *;
+.add-p-section-input{
+  position: relative;
+  border-bottom: 1px solid $turquoise;
+
+
+  .section-title{
+    //font-weight: 500;
+    color: $darkGray;
+  }
+  .edit-section-buttons{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-right: 3rem;
+
+  .edit-buttons{
+      padding: 0.3rem 1.3rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      border: 1px solid black;
+      }
+  #cancel-section{
+      background-color: $white;
+      border: 1px solid $turquoise;
+      color: $turquoise;
+    }
+
+    .edit-icon {
+      border: none;
+      position: static;
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+      padding: 0;
+      width: 2.3rem;
+
+    }
+
+
+
+    }
+
+}
+

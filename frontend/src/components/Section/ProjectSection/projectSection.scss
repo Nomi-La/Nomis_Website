@@ -22,6 +22,9 @@
 .section-title {
   font-size: 1.5rem;
   text-align: left;
+  border: none;
+  width: 100%;
+  font-weight: bold;
   border-top: 1px solid $turquoise;
   padding: 10px 50px;
 }
