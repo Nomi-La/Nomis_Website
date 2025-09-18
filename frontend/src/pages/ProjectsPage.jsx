@@ -47,7 +47,7 @@ export default function ProjectsPage({categoryId}) {
                     <p>group projects section, solo projects section, etc</p></>}
 
             {user && sections.length && !addSection &&
-                <button type='button' onClick={() => setAddSection(true)} className='add-p-section'>Add a Section</button>}
+                <button type='button' onClick={() => setAddSection(true)} className='edit-buttons' id='add-p-section'>+ Add Section</button>}
 
             {addSection && <AddProjectSection close={() => setAddSection(false)} sectionAction={'add'}
                                               data={{...data, category: categoryId}}/>}

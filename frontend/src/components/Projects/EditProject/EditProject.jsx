@@ -57,8 +57,8 @@ export default function EditProject({
 
                 <div className='main-section'>
 
-                    <div className='input-wrapper'>
-                        <label htmlFor='project-name' className='input-label'>Name *</label>
+                    <div className='input-wrapper2'>
+                        <label htmlFor='project-name' className='input-label2'>» Name *</label>
                         <input type='text'
                                placeholder='Project Name'
                                className='input'
@@ -66,6 +66,28 @@ export default function EditProject({
                                onChange={(e) => setFormData({...formData, name: e.target.value})}
                                id='project-name'
                                required
+                        />
+                    </div>
+
+                    <div className='input-wrapper2'>
+                        <label htmlFor='project-url' className='input-label2'>» Project URL</label>
+                        <input type='url'
+                               placeholder='add a url to view your project'
+                               className='input'
+                               value={formData.view}
+                               onChange={(e) => setFormData({...formData, view: e.target.value})}
+                               id='project-url'
+                        />
+                    </div>
+
+                    <div className='input-wrapper2'>
+                        <label htmlFor='project-url2' className='input-label2'>» Code URL</label>
+                        <input type='url'
+                               placeholder="add a url to view your code"
+                               className='input'
+                               value={formData.view_code}
+                               onChange={(e) => setFormData({...formData, view_code: e.target.value})}
+                               id='project-url2'
                         />
                     </div>
 
@@ -98,28 +120,6 @@ export default function EditProject({
                                     className='project-image'
                                 /></div>
                         )}
-                    </div>
-
-                    <div className='input-wrapper2'>
-                        <label htmlFor='project-url' className='input-label2'>Project URL (optional)</label>
-                        <input type='url'
-                               placeholder='add a url to view your project'
-                               className='input'
-                               value={formData.view}
-                               onChange={(e) => setFormData({...formData, view: e.target.value})}
-                               id='project-url'
-                        />
-                    </div>
-
-                    <div className='input-wrapper2'>
-                        <label htmlFor='project-url2' className='input-label2'>Code URL (optional)</label>
-                        <input type='url'
-                               placeholder="add a url to view your code"
-                               className='input'
-                               value={formData.view_code}
-                               onChange={(e) => setFormData({...formData, view_code: e.target.value})}
-                               id='project-url2'
-                        />
                     </div>
 
                     {error || error2 && <p className="error-mes">{error || error2}</p>}

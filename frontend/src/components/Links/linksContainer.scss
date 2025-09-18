@@ -10,21 +10,28 @@
     position: relative;
     background-color: black;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: space-between;
     border-radius: 20px;
     margin-bottom: 15px;
     width: 90%;
-    padding: 10px;
+    padding: 10px 1rem;
+    gap: 1rem;
+    cursor: pointer;
 
-    .icon {
+    .upper-link{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      .icon {
       width: 25px;
       margin: 0;
-      margin-left: 1rem;
-      margin-right: 0.8rem;
       padding: 0;
       @media (max-width: 500px) {
-        margin-left: 6px;
         margin-right: 2px;
       }
     }
@@ -32,12 +39,10 @@
     #code-icon {
       margin-top: 3px;
       margin-bottom: 3px;
-      margin-right: 0.5rem;
     }
 
     #view-icon {
-        margin-top: 0.1rem;
-      margin-bottom: 0;
+       margin: 0;
       padding: 0;
     }
 
@@ -51,29 +56,51 @@
       background-color: transparent;
       box-shadow: none;
       border: none;
+      text-align: left;
+      margin-left: 1rem;
       @media (max-width: 500px) {
         width: 55%;
       }
     }
+    }
 
     .project-link{
-      position: absolute;
-      left: 91%;
-      bottom: 80%;
-      background-color: $lightTurquoise;
-      color: $turquoise;
+      //position: absolute;
+      //left: 0;
+      //bottom: 80%;
+      background-color: black;
       z-index: 5;
-      border: 1px solid $turquoise;
-      padding: 6px 10px 6px 25px;
-      width: 20vw;
+      border: 1px solid black;
+      //padding: 6px 10px 6px 25px;
+      color: white;
+      //width: 250px;
       overflow: hidden;
-      display: inline-block;
+      display: block;
       box-sizing: border-box;
       white-space: nowrap;
       text-overflow: ellipsis;
       direction: ltr;
       text-decoration: none;
       border-radius: 5px 5px 5px 0px;
-    }
+      @media (max-width: 1000px) {
+        //width: 200px;
+      }
+     @media (max-width: 640px) {
+      // width: 180px;
+      //bottom: 81%;
+      // left: 30%;
+        }
+
+      @media (max-width: 600px) {
+       //width: 150px;
+
+        }
+
+      @media (max-width: 440px) {
+       //width: 150px;
+       // left: 5%;
+
+        }
+     }
   }
 }

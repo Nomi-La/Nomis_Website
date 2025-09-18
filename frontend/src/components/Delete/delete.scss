@@ -5,10 +5,13 @@
     position: fixed;
     border-left: 5px solid $turquoise;
     left: auto;
+    align-items: center;
+    justify-content: center;
     width: min(450px, 100vw);
     z-index: 900;
     .delete-rec{
         width: 80%;
+      align-self: center;
     }
   }
 }
@@ -48,7 +51,7 @@
   .delete-rec {
     position: relative;
     min-height: 180px;
-    background-color: $midTurquoise;
+    background-color: $lightTurquoise;
     border: 1.5px solid $turquoise;
     border-radius: 5px;
     display: flex;

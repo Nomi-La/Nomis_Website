@@ -16,13 +16,12 @@
     width: 100%;
     text-align: center;
   }
-  .add-p-section{
-    border: 1px solid $turquoise;
-    background-color: $lightTurquoise;
-    width: 90%;
+  #add-p-section{
+    //margin-top: 1rem;
+    width: 20rem;
     align-self: center;
-    color: black;
-    font-weight: bold;
+    font-weight: 550;
+    font-size: 1.2rem;
   }
 
 }
