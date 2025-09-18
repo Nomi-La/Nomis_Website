@@ -28,7 +28,7 @@ export default function Project({project, projects, index, user}) {
                       onClick={() => setEditProject(!editTheProject)}/>}
 
         <div className='image-frame'>
-        <img className="project-image" src={project.image} alt={project.name} onClick={() => setOpen(true)}/>
+        <img className="project-image" src={project.image} alt={project.name} onClick={() => setOpen(!open)}/>
             </div>
         <div className='head-wrapper'>
         <h3>{project.name}</h3>
