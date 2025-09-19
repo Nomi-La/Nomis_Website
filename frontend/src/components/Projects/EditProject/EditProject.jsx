@@ -91,7 +91,20 @@ export default function EditProject({
                         />
                     </div>
 
+                    <div className='input-wrapper2' id='project-image-label'>
+                        <label className='input-label2'>» Project Image</label>
+                    </div>
+
                     <div className='image-upload-wrapper'>
+
+                        {formData.image_url && (
+                            <div className='image-frame'>
+                                <img
+                                    src={formData.image_url}
+                                    alt="preview"
+                                    className='project-image'
+                                /></div>
+                        )}
 
                         {!formData.image_url &&
                             <label htmlFor='project-image' className='edit-buttons'>Upload Image</label>}
@@ -112,14 +125,7 @@ export default function EditProject({
                             accept="image/*"
                             onChange={handleImageUpload}
                         />
-                        {formData.image_url && (
-                            <div className='image-frame'>
-                                <img
-                                    src={formData.image_url}
-                                    alt="preview"
-                                    className='project-image'
-                                /></div>
-                        )}
+
                     </div>
 
                     {error || error2 && <p className="error-mes">{error || error2}</p>}
