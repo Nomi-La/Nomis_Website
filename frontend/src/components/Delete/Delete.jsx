@@ -1,7 +1,7 @@
 import './delete.scss'
 import {useDispatch} from "react-redux";
 
-export default function Delete({closeSession, modelId, deleteModel, modelName, noProjects=false}) {
+export default function Delete({closeSession, modelId, deleteModel, modelName, noProjects = false}) {
 
     const dispatch = useDispatch()
 
@@ -17,10 +17,11 @@ export default function Delete({closeSession, modelId, deleteModel, modelName, n
                 </div>
 
                 <div className='delete-main-wrap'>
-                <p className='delete-text'>Are you sure you want to delete this {modelName}?</p>
+                    <p className='delete-text'>Are you sure you want to delete this {modelName}?</p>
 
-                {modelName === 'section' && !noProjects && <><span>Beware!</span>
-                    <p className='delete-text' id='beware'>All projects related to this section will be deleted as well.</p></>}
+                    {modelName === 'section' && !noProjects && <><span>Beware!</span>
+                        <p className='delete-text' id='beware'>All projects related to this section will be deleted as
+                            well.</p></>}
                 </div>
 
                 <div className='bottom-delete'>

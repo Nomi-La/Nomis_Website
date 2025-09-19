@@ -1,7 +1,7 @@
 import './project.scss'
 import {useRef, useState} from "react";
 import LinksContainer from "../../Links/LinksContainer.jsx";
-import useClickAway, {clickSomewhere, useClickAnywhere} from "../../../utils/eventListener.js";
+import useClickAway from "../../../utils/eventListener.js";
 import {useDispatch} from "react-redux";
 import EditProject from "../EditProject/EditProject.jsx";
 import {data} from "react-router";
@@ -21,18 +21,17 @@ export default function Project({project, projects, index, user}) {
     })
 
 
-
     return <section className={`project ${open ? 'open' : ''}`} ref={projectRef}>
 
         {user && <img src='/edit2.png' alt='edit' className='edit-icon'
                       onClick={() => setEditProject(!editTheProject)}/>}
 
         <div className='image-frame'>
-        <img className="project-image" src={project.image} alt={project.name} onClick={() => setOpen(!open)}/>
-            </div>
+            <img className="project-image" src={project.image} alt={project.name} onClick={() => setOpen(!open)}/>
+        </div>
         <div className='head-wrapper'>
-        <h3>{project.name}</h3>
-            </div>
+            <h3>{project.name}</h3>
+        </div>
 
         {(project.view || project.view_code) && <div className="actions">
             <LinksContainer project={project}/>

@@ -44,7 +44,7 @@ export default function CategorySide({category, categories, index}) {
         </div>
 
         {open && <div className='section-container'>
-            {sections.map((section)=><SectionSide section={section} categoryName={category.name.toLowerCase()}/>)}
+            {sections.map((section) => <SectionSide section={section} categoryName={category.name.toLowerCase()}/>)}
         </div>}
 
     </div>

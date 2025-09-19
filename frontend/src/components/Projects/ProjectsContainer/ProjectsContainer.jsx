@@ -1,7 +1,5 @@
 import './projectContainer.scss'
 import Project from "../Project/Project.jsx";
-import {useSelector} from "react-redux";
-import {sortApiAscending} from "../../../utils/aids.js";
 import EditProject from "../EditProject/EditProject.jsx";
 import {useState} from "react";
 import {data} from "react-router";
@@ -9,10 +7,8 @@ import Delete from "../../Delete/Delete.jsx";
 import {deleteSection} from "../../../slices/sectionSlice.js";
 
 
-export default function ProjectsContainer({sectionId, user, deleteSectionSession, setDeleteSection}) {
-    const projects = useSelector((s) => s.projects.items)
-        .filter((project) => project.section === sectionId)
-        .sort(sortApiAscending())
+export default function ProjectsContainer({sectionId, user, deleteSectionSession, setDeleteSection, projects}) {
+
     const [editProject, setEditProject] = useState(false)
 
     const handleAddProject = () => setEditProject(!editProject)
@@ -27,7 +23,8 @@ export default function ProjectsContainer({sectionId, user, deleteSectionSession
             </div>}
 
             {projects.map((project, index) => (
-                <Project key={`Project: ${project.id}`} project={project} projects={projects} index={index} user={user}/>
+                <Project key={`Project: ${project.id}`} project={project} projects={projects} index={index}
+                         user={user}/>
             ))}
             {user && <div>
                 {(projects.length > 0) && <button

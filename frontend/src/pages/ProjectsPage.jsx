@@ -1,23 +1,19 @@
-import './projectsPage.scss'
-import ProjectsContainer from "../components/Projects/ProjectsContainer/ProjectsContainer.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {fetchProjects} from "../slices/projectSlice.js";
 import {sortApiAscending} from "../utils/aids.js";
 import {sideBarState} from "../slices/stateSlice.js";
-import AddProjectSection from "../components/Section/AddProjectSection/AddProjectSection.jsx";
-import ProjectSection from "../components/Section/ProjectSection/ProjectSection.jsx";
 import {data} from "react-router";
+import EditSectionTitle from "../components/Section/EditSectionTitle/EditSectionTitle.jsx";
+import ProjectSection from '../components/Projects/ProjectSection/ProjectSection.jsx'
 
-export default function ProjectsPage({categoryId}) {
-    const user = useSelector((s) => s.auth.user)
+export default function ProjectsPage({categoryId, user}) {
     const sections = useSelector((s) => s.sections.items)
         .filter((section) => section.category === categoryId)
         .sort(sortApiAscending())
 
     const dispatch = useDispatch()
     const [addSection, setAddSection] = useState(false)
-    const [deleteSection, setDeleteSection] = useState(null)
 
 
     useEffect(() => {
@@ -27,15 +23,11 @@ export default function ProjectsPage({categoryId}) {
 
     return <>
         <div className="projects-page">
-            <h1>My Projects</h1>
+            <h1 className='category-title'>My Projects</h1>
 
             {sections.map((section, index) => <>
                 <div key={`sectionD: ${section.id}`}>
-
-                    <ProjectSection section={section} index={index} sections={sections} user={user} setDeleteSection={(value)=>setDeleteSection(value)}/>
-
-                    <ProjectsContainer sectionId={section.id} user={user} deleteSectionSession={deleteSection}
-                    setDeleteSection={()=>setDeleteSection(null)}/>
+                    <ProjectSection section={section} sections={sections} user={user} index={index}/>
 
                 </div>
             </>)}
@@ -47,10 +39,15 @@ export default function ProjectsPage({categoryId}) {
                     <p>group projects section, solo projects section, etc</p></>}
 
             {user && sections.length && !addSection &&
-                <button type='button' onClick={() => setAddSection(true)} className='edit-buttons' id='add-p-section'>+ Add Section</button>}
+                <div className={'add-section-button-wrapper'}>
+                    <button type='button' id={'add-section-general-button'}
+                            onClick={() => setAddSection(true)}
+                            className='edit-buttons'>+ Add Section
+                    </button>
+                </div>}
 
-            {addSection && <AddProjectSection close={() => setAddSection(false)} sectionAction={'add'}
-                                              data={{...data, category: categoryId}}/>}
+            {addSection && <EditSectionTitle close={() => setAddSection(false)} sectionAction={'add'}
+                                             data={{...data, category: categoryId}} id={'section-title'}/>}
         </div>
     </>
 }

@@ -17,7 +17,7 @@ export const clickSomewhere = (ref, close = [], type) => {
             e.target.closest(type) &&
             ref.current && !ref.current.contains(e.target)
         ) {
-            for (const action of close){
+            for (const action of close) {
                 action()
             }
         }

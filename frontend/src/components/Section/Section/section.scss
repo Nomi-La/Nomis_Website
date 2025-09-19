@@ -1,5 +1,15 @@
-@use '../../colors' as *;
+@use '../../../colors' as *;
 
+
+.direct-wrapper {
+  margin-top: 1px;
+
+  #edit-icon-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 2.2rem;
+  }
+}
 
 .category-section {
   font-size: 1.2rem;

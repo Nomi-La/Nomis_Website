@@ -18,7 +18,7 @@ export default function SectionSide({section, categoryName}) {
     if (!user && projects.length === 0 && categoryName === 'projects') return null
 
     return <>
-                <a href={`#${section.id}`} className={`section-name ${hash === `#${section.id}` ? "activeA" : ""}`}
-                   key={`1Section: ${section.id}`}>{section.name}</a>
-            </>
+        <a href={`#${section.id}`} className={`section-name ${hash === `#${section.id}` ? "activeA" : ""}`}
+           key={`1Section: ${section.id}`}>{section.name}</a>
+    </>
 }

@@ -1,7 +1,7 @@
 @use '../../colors' as *;
 
-.edit-project{
-  .are-you-sure{
+.edit-project {
+  .are-you-sure {
     position: fixed;
     border-left: 5px solid $turquoise;
     left: auto;
@@ -9,15 +9,16 @@
     justify-content: center;
     width: min(450px, 100vw);
     z-index: 900;
-    .delete-rec{
-        width: 80%;
+
+    .delete-rec {
+      width: 80%;
       align-self: center;
     }
   }
 }
 
-.projects-container{
-  .are-you-sure{
+.projects-container {
+  .are-you-sure {
     align-items: flex-start;
     padding: 3rem 0;
     @media (max-width: 850px) {
@@ -25,11 +26,12 @@
       padding: 1rem;
     }
 
-    .delete-rec{
+    .delete-rec {
       .delete-text-wrap {
-      .delete-text{}
+        .delete-text {
+        }
 
-    }
+      }
     }
   }
 }
@@ -61,7 +63,6 @@
     width: 400px;
 
 
-
     .top-delete {
 
       display: flex;
@@ -78,25 +79,28 @@
 
     }
 
-    .delete-main-wrap{
+    .delete-main-wrap {
       padding: 2rem 1.2rem 1rem;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      .delete-text {
-          width: 90%;
-          font-size: 1.15rem;
-          text-align: center;
 
-        }
-      span{
+      .delete-text {
+        width: 90%;
+        font-size: 1.15rem;
+        text-align: center;
+
+      }
+
+      span {
         color: $midRed;
-          font-weight: 600;
+        font-weight: 600;
         margin: 1rem;
-        }
-      #beware{
+      }
+
+      #beware {
         margin-top: 0;
         font-size: 1rem;
         //color: $midRed;

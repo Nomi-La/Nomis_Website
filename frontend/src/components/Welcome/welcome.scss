@@ -11,8 +11,7 @@
   left: 0;
   bottom: 0;
   max-height: 100vh;
-  overflow-y: auto;
-;
+  overflow-y: auto;;
 
   .image-wrapper {
     box-sizing: content-box;
@@ -38,8 +37,9 @@
     font-weight: 500;
     padding: 0 3vw 3vh;
     @media (max-width: 380px) {
-        font-size: 1.3rem;
-      }
+      font-size: 1.3rem;
+    }
+
     .much-more {
       b {
       }
@@ -68,6 +68,7 @@
     @media (max-width: 660px) {
       flex-direction: column;
     }
+
     .submit-button {
       text-align: center;
       text-decoration: none;

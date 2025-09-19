@@ -3,14 +3,14 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteProject, editProject, postProject} from "../../../slices/projectSlice.js";
 import Delete from "../../Delete/Delete.jsx";
-import {changeModel, newData} from "../../../utils/aids.js";
+import {changeModel, imageUpload, newData} from "../../../utils/aids.js";
 
 
 export default function EditProject({
                                         close, actionProject, data = {
         section: '', image: null, name: '', image_url: '', projectId: '', view: '', view_code: ''
     }, moveUp = null, moveDown = null
-}) {
+                                    }) {
 
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({
@@ -35,13 +35,8 @@ export default function EditProject({
     }
 
 
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        setFormData({...formData, image: file})
-        const imageUrl = URL.createObjectURL(file);
-        setFormData((prev) => ({...prev, image_url: imageUrl}));
-    };
+    const handleImageUpload = imageUpload(setFormData, formData)
+
     const actionName = actionProject === 'add' ? 'Add Project' : 'Edit Project';
 
     return <>
@@ -136,18 +131,18 @@ export default function EditProject({
                     {actionProject === 'edit' &&
                         <div className='move-project'>
 
-                        {moveUp && moveUp[1] &&
-                            <button type='button' className='arrow-project'
-                                    onClick={moveUp[0]}
-                            >← Move Left</button>}
+                            {moveUp && moveUp[1] &&
+                                <button type='button' className='arrow-project'
+                                        onClick={moveUp[0]}
+                                >← Move Left</button>}
 
-                        {moveDown && moveDown[1] &&
-                            <button type='button' className='arrow-project'
-                                    onClick={moveDown[0]}
-                            >→ Move Right</button>
-                        }
+                            {moveDown && moveDown[1] &&
+                                <button type='button' className='arrow-project'
+                                        onClick={moveDown[0]}
+                                >→ Move Right</button>
+                            }
 
-                    </div>}
+                        </div>}
 
                     <div className='button-wrapper'>
 
@@ -169,7 +164,7 @@ export default function EditProject({
             {deleteSession &&
                 <Delete modelId={data.projectId}
                         closeSession={() => setDeleteProject(false)} deleteModel={deleteProject}
-                modelName={'project'}/>}
+                        modelName={'project'}/>}
         </section>
     </>
 }

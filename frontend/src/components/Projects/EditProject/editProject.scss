@@ -68,18 +68,18 @@
           font-weight: 550;
 
         }
-        .input::placeholder{
-            font-weight: 500;
-          }
+
+        .input::placeholder {
+          font-weight: 500;
+        }
 
 
       }
 
-      #project-image-label{
+      #project-image-label {
         margin-bottom: 0;
         margin-top: 2rem;
       }
-
 
 
       .image-upload-wrapper {
@@ -137,8 +137,8 @@
       flex-direction: column;
       align-items: center;
 
-      .move-project{
-        .arrow-project{
+      .move-project {
+        .arrow-project {
           border: none;
           padding: 0;
           background-color: transparent;
@@ -177,16 +177,17 @@
   }
 
 }
+
 .delete-project {
-    background-color: $midRed;
-    border: none;
-    color: $white;
-    border-radius: 7px;
-    z-index: 0;
-    font-size: 0.95rem;
-    padding: 4.5px 14px;
-    text-align: center;
-    margin: 0;
-  }
+  background-color: $midRed;
+  border: none;
+  color: $white;
+  border-radius: 7px;
+  z-index: 0;
+  font-size: 0.95rem;
+  padding: 4.5px 14px;
+  text-align: center;
+  margin: 0;
+}
 
 

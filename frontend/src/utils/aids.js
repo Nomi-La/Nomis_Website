@@ -13,6 +13,16 @@ export function newData(formData, filterItems = []) {
     return data
 }
 
+export function imageUpload(setFormData, formData){
+    return (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        setFormData({...formData, image: file})
+        const imageUrl = URL.createObjectURL(file);
+        setFormData((prev) => ({...prev, image_url: imageUrl}));
+    };
+}
+
 export function changeModel(action, postModel, editModel) {
     if (action.toLowerCase() === 'add') {
         return (data, id) => postModel(data)
@@ -38,4 +48,9 @@ export function moveModel(models, editModel, dispatch) {
         dispatch(editModel({modelData: {position: model.position}, id: modelBId}))
     }
 }
+
+export function autoGrow(e) {
+        e.target.style.height = 'auto';
+        e.target.style.height = `${e.target.scrollHeight}px`;
+    }
 
