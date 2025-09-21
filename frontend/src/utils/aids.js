@@ -6,20 +6,24 @@ export function newData(formData, filterItems = []) {
     const data = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
         if (filterItems.includes(key)) return;
-        if (value === undefined || value === null) return;
-        data.append(key, value);
+        if (value === undefined || value === null) {
+            data.append(key, "");
+        } else {
+            data.append(key, value);
+        }
     });
 
     return data
 }
 
 export function imageUpload(setFormData, formData){
-    return (e) => {
+    return (e, imageName = 'image') => {
+        const image_url_name = `${imageName}_url`
         const file = e.target.files[0];
         if (!file) return;
-        setFormData({...formData, image: file})
+        setFormData({...formData, [imageName]: file})
         const imageUrl = URL.createObjectURL(file);
-        setFormData((prev) => ({...prev, image_url: imageUrl}));
+        setFormData((prev) => ({...prev, [image_url_name]: imageUrl}));
     };
 }
 

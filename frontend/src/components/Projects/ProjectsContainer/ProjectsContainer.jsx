@@ -19,7 +19,7 @@ export default function ProjectsContainer({sectionId, user, deleteSectionSession
         <div className="projects-container">
 
             {!projects.length && user && <div className='no-projects'>
-                <button type='button' onClick={() => setEditProject(true)}>Add your projects here</button>
+                <button className={'empty'} type='button' onClick={() => setEditProject(true)}>Add your projects here</button>
             </div>}
 
             {projects.map((project, index) => (

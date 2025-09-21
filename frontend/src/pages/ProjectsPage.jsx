@@ -4,7 +4,7 @@ import {fetchProjects} from "../slices/projectSlice.js";
 import {sortApiAscending} from "../utils/aids.js";
 import {sideBarState} from "../slices/stateSlice.js";
 import {data} from "react-router";
-import EditSectionTitle from "../components/Section/EditSectionTitle/EditSectionTitle.jsx";
+import EditSection from "../components/Section/EditSection/EditSection.jsx";
 import ProjectSection from '../components/Projects/ProjectSection/ProjectSection.jsx'
 
 export default function ProjectsPage({categoryId, user}) {
@@ -46,8 +46,8 @@ export default function ProjectsPage({categoryId, user}) {
                     </button>
                 </div>}
 
-            {addSection && <EditSectionTitle close={() => setAddSection(false)} sectionAction={'add'}
-                                             data={{...data, category: categoryId}} id={'section-title'}/>}
+            {addSection && <EditSection close={() => setAddSection(false)} sectionAction={'add'}
+                                        data={{...data, category: categoryId}} id={'section-title'}/>}
         </div>
     </>
 }

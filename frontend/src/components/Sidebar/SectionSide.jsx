@@ -15,7 +15,8 @@ export default function SectionSide({section, categoryName}) {
         return () => window.removeEventListener("hashchange", onHashChange);
     }, []);
 
-    if (!user && projects.length === 0 && categoryName === 'projects') return null
+    if (((categoryName.toLowerCase() !== 'projects') && !user && !section.content && !section.image && !section.image2)||
+        (!user && projects.length === 0 && categoryName === 'projects')) return null
 
     return <>
         <a href={`#${section.id}`} className={`section-name ${hash === `#${section.id}` ? "activeA" : ""}`}

@@ -188,10 +188,16 @@ textarea:focus {
   justify-content: center;
 
   #add-section-general-button {
+
     width: 20rem;
     align-self: center;
     font-weight: 550;
     font-size: 1.2rem;
     max-width: 90%;
   }
+}
+
+#add-section-wrap-id{
+  border-top: 1px solid $lightGray;
+  padding-top: 1rem;
 }
