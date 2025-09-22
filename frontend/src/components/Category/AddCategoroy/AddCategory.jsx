@@ -1,10 +1,10 @@
-import './editCategory.scss'
+import './addCategory.scss'
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {changeModel, newData} from "../../utils/aids.js";
-import {editCategory, postCategory} from "../../slices/categorySlice.js";
+import {changeModel, newData} from "../../../utils/aids.js";
+import {clearCategoryErrors, editCategory, postCategory} from "../../../slices/categorySlice.js";
 
-export default function EditCategory({close, data = {name: '', categoryId: null}}, action = 'add') {
+export default function AddCategory({close, data = {name: '', categoryId: null}}, action = 'add') {
 
     const [formData, setFormData] = useState({
         name: data.name,
@@ -23,18 +23,22 @@ export default function EditCategory({close, data = {name: '', categoryId: null}
         dispatch(categoryAction(newData(formData), formData.categoryId));
 
     }
-    if(successCreate === 'succeeded') close()
+    if(successCreate === 'succeeded') {
+        dispatch(clearCategoryErrors())
+        close()
+    }
 
     return <section className={'edit-category'}>
 
         <form className={'adit-category-wrap'} onSubmit={handleSubmit}>
+            {/*<button type='button' className='x'*/}
+            {/*                onClick={close}>X*/}
+            {/*        </button>*/}
             <div className='delete-rec'>
 
                 <div className='top-delete'>
                     <p>Add Category</p>
-                    {/*<button type='button' className='x'*/}
-                    {/*        onClick={close}>X*/}
-                    {/*</button>*/}
+
                 </div>
 
                 <div className='delete-main-wrap'>

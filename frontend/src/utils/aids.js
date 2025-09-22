@@ -1,4 +1,7 @@
 
+export const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
+
+
 export function isUrl(str) {
   if (typeof str !== 'string') return false;
   try {

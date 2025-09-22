@@ -1,6 +1,6 @@
 @use '../../../colors' as *;
 
-.add-section-wrapper{
+.add-section-wrapper, .edit-real-category{
   .direct-wrapper {
         position: static;
         opacity: 1;
@@ -71,7 +71,21 @@
       color: $midGray;
     }
 
-    .edit-section-buttons {
+
+  }
+
+
+  .error-mes {
+    width: 100%;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0.5rem;
+  }
+
+}
+
+.add-p-section-input, .edit-real-category{
+  .edit-section-buttons {
       top: 0;
       right: 0;
       height: 100%;
@@ -131,15 +145,6 @@
 
       }
     }
-  }
-
-  .error-mes {
-    width: 100%;
-    text-align: center;
-    padding-top: 0;
-    padding-bottom: 0.5rem;
-  }
-
 }
 
 #category-section {

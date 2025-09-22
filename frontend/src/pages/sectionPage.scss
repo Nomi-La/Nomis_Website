@@ -1,4 +1,42 @@
+@use '../colors' as *;
 
+.sections-page{
+  position: relative;
+  min-height: 93.5vh;
+  //overflow: hidden;
+  .are-you-sure{
+    position: absolute;
+    align-items: flex-start;
+    //min-height: 80vh;
+    .delete-rec{
+      margin: 2rem 1rem;
+
+    }
+  }
+
+  .top-category{
+    scroll-behavior: smooth;
+    #category{
+
+    .edit-icon{
+      border-width: 0.8px;
+      border-color: $lightGray;
+      box-shadow: 1px 1px 4px $midGray;
+      margin-top: 15px;
+      margin-right: 15px;
+      width: 3rem;
+      @media (max-width: 440px) {
+        width: 2rem;
+      }
+    }
+  }
+  }
+
+  .lower-sections{
+    height: 100%;
+  }
+
+}
 #first-section{
   .category-section{
     border: none;
@@ -7,4 +45,12 @@
     text-align: center;
     font-weight: bold;
   }
+}
+
+.top-category:hover #category .edit-icon,
+.top-category:hover #category {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 3;
 }

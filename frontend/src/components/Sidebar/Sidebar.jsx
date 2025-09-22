@@ -1,11 +1,12 @@
 import './sidebar.scss'
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import CategorySide from "./CategorySide.jsx";
 import {sideBarState} from "../../slices/stateSlice.js";
 import {NavLink, useNavigate} from "react-router";
 import {sortApiAscending} from "../../utils/aids.js";
-import EditCategory from "../Category/EditCategory.jsx";
+import AddCategory from "../Category/AddCategoroy/AddCategory.jsx";
+import useClickAway from "../../utils/eventListener.js";
 
 
 export default function Sidebar() {
@@ -18,7 +19,15 @@ export default function Sidebar() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const hide = 'Hide <'
+    const addCategoryRef = useRef(null)
 
+    useClickAway(addCategoryRef, () => setCategory(false))
+
+    useEffect(() => {
+          if (category && addCategoryRef.current) {
+            addCategoryRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, [category]);
     return <>
         <div className="sidebar-container">
             <p className='hide-sidebar'
@@ -48,7 +57,8 @@ export default function Sidebar() {
                 {!category &&
                     <button className={'empty'} onClick={() => setCategory(true)}>+ add category</button>
                 }
-                {category && <EditCategory close={() => setCategory(false)}/>}
+                <div ref={addCategoryRef}>
+                {category && <AddCategory close={() => setCategory(false)}/>}</div>
             </div>}
 
 

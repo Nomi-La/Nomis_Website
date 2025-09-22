@@ -33,14 +33,6 @@ export default function CategorySide({category, categories, index, user}) {
             <NavLink key={`1Category: ${category.id}`} className="category" onClick={() => setOpen(!open)}
                      to={`/${slug(category.name)}`}>{category.name}</NavLink>
 
-            <div className='direct-wrapper'>
-
-                {user && index > 0 && //↓ ˅ ▼ ▽ ↑ ˄ ▲ △
-                    <button className='index-buttons' type='button' onClick={() => moveCategory(index, 0)}>↑</button>}
-                {user && index < categories.length - 1 &&
-                    <button className='index-buttons' type='button'
-                            onClick={() => moveCategory(index, sections.length - 1)}>↓</button>}
-            </div>
         </div>
 
         {open && <div className='section-container'>

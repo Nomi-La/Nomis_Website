@@ -1,21 +1,30 @@
 import {useDispatch, useSelector} from "react-redux";
-import {sortApiAscending} from "../utils/aids.js";
+import {moveModel, sortApiAscending} from "../utils/aids.js";
 import Section from "../components/Section/Section/Section.jsx";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {sideBarState} from "../slices/stateSlice.js";
 import EditSection from "../components/Section/EditSection/EditSection.jsx";
 import {data} from "react-router";
 import './sectionPage.scss'
 import {fetchSections} from "../slices/sectionSlice.js";
+import EditCategory from "../components/Category/EditCategory/EditCategory.jsx";
+import {clearCategoryErrors, deleteCategory, editCategory} from "../slices/categorySlice.js";
+import useClickAway from "../utils/eventListener.js";
+import Delete from "../components/Delete/Delete.jsx";
 
 
-export default function SectionPage({category, user}) {
+export default function SectionPage({category, user, categories, index}) {
     const [addSection, setAddSection] = useState(false)
     const sections = useSelector((s) => s.sections.items)
         .filter((section) => section.category === category.id)
         .sort(sortApiAscending())
-    const [sectionsLength, setSectionLength] = useState(sections.length)
     const dispatch = useDispatch()
+    const [deleteTheCategory, setDeleteCategory] = useState(false)
+    const [editTheCategory, setEditCategory] = useState(null)
+    const moveCategory = moveModel(categories, editCategory, dispatch)
+    const categoryRef = useRef(null)
+
+    useClickAway(categoryRef, ()=> setEditCategory(false))
 
     useEffect(() => {
         dispatch(sideBarState('open'))
@@ -24,7 +33,35 @@ export default function SectionPage({category, user}) {
 
     return <>
         <div className="sections-page">
-            <h1 className={'category-title'}>{category.name}</h1>
+            <div className={'top-category'} ref={categoryRef}>
+                {!editTheCategory && <>
+                    <h1 className={'category-title'}>{category.name}</h1>
+
+                    <div className='direct-wrapper' id={'category'}>
+
+                        <img src='/edit.png' alt='edit' className='edit-icon' onClick={() => {
+                            (setEditCategory(true))
+                            setAddSection(false)
+                        }}/>
+
+                    </div>
+                </>}
+                {editTheCategory && <EditCategory close={()=> {
+                    setEditCategory(false)
+                    dispatch(clearCategoryErrors())
+                }} openDeleteCategory={()=>setDeleteCategory(true)}
+                                                   moveUp={[() => moveCategory(index, 0), index > 0]}
+                                                    moveDown={[() => moveCategory(index, categories.length - 1), index < categories.length - 1]}
+                                                  data={{...data, name: category.name, categoryId: category.id}}/>}
+            </div>
+
+            <div className={'lower-sections'} style={{'position': 'relative'}}>
+
+                {deleteTheCategory && <Delete modelId={category.id} closeSession={()=> {
+                    setDeleteCategory(false)
+                    dispatch(clearCategoryErrors())
+                }}
+                                              deleteModel={deleteCategory} modelName={'category'} noProjects={!(category.sections.length)}/>}
 
             {(!sections.length) && !addSection &&
                 <div className='section-wrapper' id={'first-section'}>
@@ -52,6 +89,7 @@ export default function SectionPage({category, user}) {
                                         data={{...data, category: category.id}}
                                         id={'category-section'}
             />}
+                </div>
         </div>
     </>
 }

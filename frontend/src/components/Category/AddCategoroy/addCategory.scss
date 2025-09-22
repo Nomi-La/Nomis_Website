@@ -1,21 +1,51 @@
-@use '../../colors' as *;
+@use '../../../colors' as *;
 
 .edit-category{
   position: relative;
   width: 100%;
+  padding: 0;
   .adit-category-wrap{
-    padding: 0 1rem;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    @media (max-width: 1000px) {
+      position: fixed;
+      top: 7.5vh;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(71, 71, 71, 0.9);;
+      }
+    .x{
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+      margin: 1rem;
+      background-color: $turquoise;
+      color: black;
+      border-color: black;
+    }
     .delete-rec{
       box-shadow: 2px 2px 10px $midGray;
       min-width: 0;
-      max-width: 90%;
+
       padding: 8px;
+      width: auto;
+
       margin: 0;
       background-color: $lightTurquoise;
+      margin-bottom: 20vh;
+      max-width: 90%;
+      @media (min-width: 1170px) {
+        width: 350px;
+      }
+      @media (max-width: 1000px) {
+        width: 350px;
+        max-width: 80%;
+      }
       .top-delete{
         padding: 0;
         margin: 0;
@@ -31,10 +61,13 @@
         }
       }
       .delete-main-wrap{
+        width: 100%;
         min-height: 0;
         padding: 0;
         margin: 0;
         .input-wrapper2{
+          width: 100%;
+          padding: 0 1.5rem;
           .input-label2{
             font-size: 1rem;
           }
@@ -47,6 +80,14 @@
       .bottom-delete{
         padding: 0;
         margin: 0;
+        @media (max-width: 440px) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .delete-project{
+            width: 60%;
+          }
+        }
         .delete-project{
           border-color: $turquoise;
           background-color: $turquoise;
@@ -61,4 +102,8 @@
       }
     }
   }
+}
+
+.edit-category:target{
+  transition: background .4s;
 }

@@ -1,6 +1,7 @@
 @use '../../colors' as *;
 
 .sidebar-container {
+  scroll-behavior: smooth;
   overflow-x: hidden;
   position: relative;
   width: 30%;
@@ -14,7 +15,6 @@
   box-shadow: 1px 1px 5px $gray;
   z-index: 2;
   overflow-y: auto;
-
   @media (max-width: 900px) {
     width: 30%;
   }
@@ -129,7 +129,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
     padding-top: 30px;
+
   .empty{
     color: $midGray;
     font-size: 1.2rem;
@@ -139,6 +141,7 @@
 
     opacity: 0;
     pointer-events: none;
+    margin-bottom: 17vh;
     }
   }
 }

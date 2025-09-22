@@ -9,8 +9,7 @@ import {useEffect} from "react";
 import {fetchCategories} from "../slices/categorySlice.js";
 import {fetchSections} from "../slices/sectionSlice.js";
 import AuthInit from "../components/Auth/AuthInit.jsx";
-
-const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
+import {slug} from "../utils/aids.js";
 
 export default function Router() {
     const user = useSelector((s) => s.auth.user)
@@ -43,11 +42,11 @@ export default function Router() {
 
                     }/>}
 
-                {categories.map((category) => <>
+                {categories.map((category, index) => <>
                     <Route key={category.id} path={`${slug(category.name)}/`}
                            element={
 
-                               <SectionPage category={category} user={user}/>
+                               <SectionPage category={category} user={user} categories={categories} index={index}/>
 
                            }/>
                 </>)}

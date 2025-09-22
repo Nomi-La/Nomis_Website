@@ -122,6 +122,10 @@
       justify-content: flex-end;
       padding: 5px;
 
+
+      @media (max-width: 360px) {
+          flex-direction: column;
+        }
       .delete-project {
         margin: 5px 5px;
         padding: 4.5px 18px;
