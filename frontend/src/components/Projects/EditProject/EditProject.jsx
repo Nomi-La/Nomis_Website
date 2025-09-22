@@ -16,7 +16,7 @@ export default function EditProject({
     const [formData, setFormData] = useState({
         name: data.name,
         image_url: data.image_url,
-        image: null,
+        image: data.image_url,
         view: data.view,
         view_code: data.view_code,
         section: data.section,

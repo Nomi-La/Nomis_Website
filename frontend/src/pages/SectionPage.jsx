@@ -19,7 +19,7 @@ export default function SectionPage({category, user, categories, index}) {
         .filter((section) => section.category === category.id)
         .sort(sortApiAscending())
     const dispatch = useDispatch()
-    const [deleteTheCategory, setDeleteCategory] = useState(false)
+    const [deleteTheCategory, setDeleteCategory] = useState(null)
     const [editTheCategory, setEditCategory] = useState(null)
     const moveCategory = moveModel(categories, editCategory, dispatch)
     const categoryRef = useRef(null)
@@ -30,6 +30,7 @@ export default function SectionPage({category, user, categories, index}) {
         dispatch(sideBarState('open'))
     }, [])
 
+    if (!user && (!sections.length)) return <p style={{margin: '3rem 0', width: '100%', textAlign: 'center'}}>Login to edit your page</p>
 
     return <>
         <div className="sections-page">
@@ -39,17 +40,17 @@ export default function SectionPage({category, user, categories, index}) {
 
                     <div className='direct-wrapper' id={'category'}>
 
-                        <img src='/edit.png' alt='edit' className='edit-icon' onClick={() => {
+                        {category.name.toLowerCase() !== 'about me' && <img src='/edit.png' alt='edit' className='edit-icon' onClick={() => {
                             (setEditCategory(true))
                             setAddSection(false)
-                        }}/>
+                        }}/>}
 
                     </div>
                 </>}
                 {editTheCategory && <EditCategory close={()=> {
                     setEditCategory(false)
                     dispatch(clearCategoryErrors())
-                }} openDeleteCategory={()=>setDeleteCategory(true)}
+                }} openDeleteCategory={()=>setDeleteCategory(category.id)}
                                                    moveUp={[() => moveCategory(index, 0), index > 0]}
                                                     moveDown={[() => moveCategory(index, categories.length - 1), index < categories.length - 1]}
                                                   data={{...data, name: category.name, categoryId: category.id}}/>}
@@ -57,17 +58,20 @@ export default function SectionPage({category, user, categories, index}) {
 
             <div className={'lower-sections'} style={{'position': 'relative'}}>
 
-                {deleteTheCategory && <Delete modelId={category.id} closeSession={()=> {
-                    setDeleteCategory(false)
+                {deleteTheCategory === category.id && <Delete modelId={category.id} closeSession={()=> {
+                    setDeleteCategory(null)
                     dispatch(clearCategoryErrors())
                 }}
                                               deleteModel={deleteCategory} modelName={'category'} noProjects={!(category.sections.length)}/>}
 
-            {(!sections.length) && !addSection &&
+            {(!sections.length) && !addSection && <>
                 <div className='section-wrapper' id={'first-section'}>
 
                 <button type={'button'} className='category-section' onClick={()=> setAddSection(true)}>Start Adding Your Sections here</button>
-            </div>}
+            <img className={'flower'} src='/flower6.png' alt={'flower'}/>
+                </div>
+
+            </>}
 
             {sections
                 .map((section, index) => <div key={`sectionB: ${section.id}`}>

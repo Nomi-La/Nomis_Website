@@ -8,6 +8,7 @@ export default function LinksContainer({project}) {
         <div className='links-container'>
             {project.view && <LinkSingle name={'View'} link={project.view}/>}
             {project.view_code && <LinkSingle name={'View Code'} link={project.view_code}/>}
+            <p>Updated: {project.updated}</p>
         </div>
     </>
 }

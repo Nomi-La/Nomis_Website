@@ -1,6 +1,8 @@
 import './delete.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
+import {useRef} from "react";
+import {useClickAnywhere} from "../../utils/eventListener.js";
 
 export default function Delete({closeSession, modelId, deleteModel, modelName, noProjects = false}) {
 
@@ -9,11 +11,14 @@ export default function Delete({closeSession, modelId, deleteModel, modelName, n
 
     const categoryError = useSelector((s)=>s.categories.deleteError)
     const categorySuccess = useSelector((s)=>s.categories.deleteStatus)
+    const deleteRef = useRef(null)
+
+    useClickAnywhere(deleteRef, closeSession, 'a')
 
     if (modelName === 'category' && categorySuccess==='succeeded') navigate('/')
 
     return <>
-        <div className='are-you-sure'>
+        <div className='are-you-sure' ref={deleteRef}>
             <div className='delete-rec'>
 
                 <div className='top-delete'>
