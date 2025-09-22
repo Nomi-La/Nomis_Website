@@ -7,6 +7,8 @@
         transform: none;
         margin: 0;
         padding: 0;
+        pointer-events: auto;
+
 
         @media (max-width: 440px) {
           padding-top: 7px;
@@ -15,7 +17,6 @@
           right: 0;
           width: auto;
           height: auto;
-          pointer-events: none;
           background-color: transparent;
           cursor: auto;
         }
@@ -159,13 +160,16 @@
         max-width: 80%;
       }
     }
-      .category-section::placeholder {
-      font-weight: 540;
-      color: $midGray;
-    }
-      .edit-icon {
-      background-color: white;
-    }
+        .category-section::placeholder {
+        font-weight: 540;
+        color: $midGray;
+      }
+        .edit-icon {
+        background-color: white;
+          @media (min-width: 1000px) {
+            margin-right: 45px;
+          }
+      }
     }
 
   .section-wrap{

@@ -8,8 +8,7 @@ import {editCategory} from "../../slices/categorySlice.js";
 
 const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
 
-export default function CategorySide({category, categories, index}) {
-    const user = useSelector((s) => s.auth.user)
+export default function CategorySide({category, categories, index, user}) {
     const [open, setOpen] = useState(false)
     const wrapperRef = useRef(null)
     const sections = useSelector((s) => s.sections.items)
@@ -27,6 +26,7 @@ export default function CategorySide({category, categories, index}) {
         }
     });
 
+    if (!user && !category.sections.length ) return null
 
     return <div ref={wrapperRef} className='category-wrap' key={`1Category-div: ${category.id}`}>
         <div className="category-head">
@@ -44,7 +44,7 @@ export default function CategorySide({category, categories, index}) {
         </div>
 
         {open && <div className='section-container'>
-            {sections.map((section) => <SectionSide section={section} categoryName={category.name.toLowerCase()}/>)}
+            {sections.map((section) => <SectionSide section={section} categoryName={category.name.toLowerCase()} user={user}/>)}
         </div>}
 
     </div>

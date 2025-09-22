@@ -2,8 +2,7 @@ import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 
 
-export default function SectionSide({section, categoryName}) {
-    const user = useSelector((s) => s.auth.user)
+export default function SectionSide({section, categoryName, user}) {
     const projects = useSelector((s) => s.projects.items)
         .filter((project) => project.section === section.id)
     const [hash, setHash] = useState(typeof window !== "undefined" ? window.location.hash : "");

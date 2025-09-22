@@ -5,9 +5,12 @@ import CategorySide from "./CategorySide.jsx";
 import {sideBarState} from "../../slices/stateSlice.js";
 import {NavLink, useNavigate} from "react-router";
 import {sortApiAscending} from "../../utils/aids.js";
+import EditCategory from "../Category/EditCategory.jsx";
 
 
 export default function Sidebar() {
+    const [category, setCategory] = useState(false)
+    const user = useSelector((s)=>s.auth.user)
     const [image, setImage] = useState(true)
     const categories = useSelector((s) => s.categories.items)
         .filter((category) => category.name.toLowerCase() !== 'plan')
@@ -37,10 +40,17 @@ export default function Sidebar() {
 
             <NavLink to='/' className='category'>Main</NavLink>
             {categories.map((category, index) => <>
-                <CategorySide category={category} categories={categories} index={index}/>
+                <CategorySide category={category} categories={categories} index={index} user={user}/>
             </>)}
 
-            <p className="category" style={{"fontSize": "x-large", "fontWeight": "100"}}>©</p>
+            {!user && <p className="category">©</p>}
+            {user && <div className={'add-category-wrap'}>
+                {!category &&
+                    <button className={'empty'} onClick={() => setCategory(true)}>+ add category</button>
+                }
+                {category && <EditCategory close={() => setCategory(false)}/>}
+            </div>}
+
 
         </div>
     </>

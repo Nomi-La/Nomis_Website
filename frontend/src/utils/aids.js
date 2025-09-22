@@ -1,11 +1,28 @@
+
+export function isUrl(str) {
+  if (typeof str !== 'string') return false;
+  try {
+    const u = new URL(str.trim());
+    return u.protocol === 'http:' || u.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
 export function sortApiAscending() {
     return (a, b) => ((a.position - b.position) || (a.id - b.id))
 }
 
 export function newData(formData, filterItems = []) {
     const data = new FormData();
+    const FILE_FIELDS = ['image', 'image2']
+
     Object.entries(formData).forEach(([key, value]) => {
         if (filterItems.includes(key)) return;
+        if (FILE_FIELDS.includes(key)) {
+            if (isUrl(value)) return;
+        }
+
         if (value === undefined || value === null) {
             data.append(key, "");
         } else {

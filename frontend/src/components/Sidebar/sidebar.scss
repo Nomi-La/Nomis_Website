@@ -1,6 +1,7 @@
 @use '../../colors' as *;
 
 .sidebar-container {
+  overflow-x: hidden;
   position: relative;
   width: 30%;
   max-width: 420px;
@@ -122,7 +123,24 @@
     background-color: $midTurquoise;
   }
 
+  .add-category-wrap{
+    border-top: 1px solid $turquoise;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+  .empty{
+    color: $midGray;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 0;
+    border-radius: 0;
 
+    opacity: 0;
+    pointer-events: none;
+    }
+  }
 }
 
 .category {
@@ -221,5 +239,12 @@
   opacity: 1;
   transform: none;
   pointer-events: auto;
+}
+
+.sidebar-container:hover{
+  .empty{
+    pointer-events: auto;
+    opacity: 1;
+  }
 }
 

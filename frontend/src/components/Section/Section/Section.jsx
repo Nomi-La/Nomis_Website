@@ -19,20 +19,21 @@ export default function Section({section, user, sections, index}) {
 
     return <>
 
-        {!changeSection && <>
+        {!changeSection && <div className={'whole-section'}>
+
             <div className='section-wrapper'>{/*upper section*/}
 
                 {!changeSection &&
                     <h2 id={section.id} className='category-section' key={section.name}>{section.name}</h2>}
-
-                {user && !changeSection && <div className='direct-wrapper'>
+                    {user && !changeSection && <div className='direct-wrapper'>
 
                     <img src='/edit.png' alt='edit' className='edit-icon' id={'edit-icon-section'}
                          onClick={() => (setChangeSection(true))}/>
 
                 </div>}
-
             </div>
+
+
 
             <div className='section-wrap'>
                 {!section.content && user && <div className='no-projects'>
@@ -57,7 +58,7 @@ export default function Section({section, user, sections, index}) {
 
                 }
             </div>
-        </>}
+        </div>}
 
         {changeSection && <EditSection close={()=>{
             setChangeSection(false)

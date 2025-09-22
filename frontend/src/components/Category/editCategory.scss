@@ -1,0 +1,64 @@
+@use '../../colors' as *;
+
+.edit-category{
+  position: relative;
+  width: 100%;
+  .adit-category-wrap{
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .delete-rec{
+      box-shadow: 2px 2px 10px $midGray;
+      min-width: 0;
+      max-width: 90%;
+      padding: 8px;
+      margin: 0;
+      background-color: $lightTurquoise;
+      .top-delete{
+        padding: 0;
+        margin: 0;
+        border: none;
+        background-color: transparent;
+        p{
+          font-weight: bold;
+          width: 100%;
+          font-size: 1.2rem;
+          text-align: center;
+          padding: 0;
+          margin: 0;
+        }
+      }
+      .delete-main-wrap{
+        min-height: 0;
+        padding: 0;
+        margin: 0;
+        .input-wrapper2{
+          .input-label2{
+            font-size: 1rem;
+          }
+          .input{
+            font-size: 1rem;
+            width: 100%;
+          }
+        }
+      }
+      .bottom-delete{
+        padding: 0;
+        margin: 0;
+        .delete-project{
+          border-color: $turquoise;
+          background-color: $turquoise;
+          font-weight: bold;
+        }
+        #cancel{
+          padding-left: 0.8rem;
+          padding-right: 0.8rem;
+          border-color: $turquoise;
+          color: $turquoise;
+        }
+      }
+    }
+  }
+}

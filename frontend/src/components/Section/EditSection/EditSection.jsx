@@ -1,7 +1,7 @@
 import './editSection.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {useRef, useState} from "react";
-import {deleteSection, editSection, postSection} from "../../../slices/sectionSlice.js";
+import {clearSectionErrors, deleteSection, editSection, postSection} from "../../../slices/sectionSlice.js";
 import {autoGrow, changeModel, imageUpload, newData} from "../../../utils/aids.js";
 import {clickSomewhere, useClickAnywhere} from "../../../utils/eventListener.js";
 import Delete from "../../Delete/Delete.jsx";
@@ -41,10 +41,6 @@ export default function EditSection({
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(createSection(newData(formData, ['sectionId', 'image_url', 'image2_url',]), formData.sectionId))
-        if ((sectionAction === 'add' && createSucceeded === 'succeeded') ||
-            (sectionAction === 'edit' && updateSucceeded === 'succeeded')) {
-            close()
-        }
     }
 
     const projectSectionRef = useRef(null)
@@ -58,13 +54,17 @@ export default function EditSection({
 
     const noImages = !formData.image_url && !formData.image2_url
 
+    if ((sectionAction === 'add' && createSucceeded === 'succeeded') ||
+            (sectionAction === 'edit' && updateSucceeded === 'succeeded')) {
+            clearSectionErrors()
+            close()
+        }
+
     return <section ref={projectSectionRef}>
 
         <div className='add-section-wrapper'>
 
             <form className='add-p-section-input' onSubmit={handleSubmit} id={id}>
-                {createError && sectionAction === 'add' && <p className='error-mes'>{createError}</p>}
-                {updateError && sectionAction === 'edit' && <p className='error-mes'>{updateError}</p>}
 
                 <div className='add-section-main'>
                 <textarea placeholder='Section Name'
@@ -113,13 +113,14 @@ export default function EditSection({
                     </div>
 
                 </div>
-
-
+                {createError && sectionAction === 'add' && <p className='error-mes'>{createError}</p>}
+                {updateError && sectionAction === 'edit' && <p className='error-mes'>{updateError}</p>}
                 {id === 'category-section' &&
                     <div className='section-wrap'>
 
                     <div className='content-wrap'>
                         <textarea className='section-content'
+                                  rows={7}
                                   placeholder={'Section content'}
                                   value={formData.content}
                                   onChange={(e) => setFormData({...formData, content: e.target.value})}

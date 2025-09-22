@@ -47,34 +47,7 @@
       padding: 0;
       margin: 0;
 
-      .input-wrapper2 {
-        width: 90%;
-        margin: 1rem 0;
 
-        display: flex;
-        flex-direction: column;
-
-        .input-label2 {
-          margin-bottom: 0.5rem;
-          font-size: 1.1rem;
-          font-weight: 550;
-        }
-
-        .input {
-          border: 1.5px solid black;
-          width: 85%;
-          border-radius: 5px;
-          align-self: flex-end;
-          font-weight: 550;
-
-        }
-
-        .input::placeholder {
-          font-weight: 500;
-        }
-
-
-      }
 
       #project-image-label {
         margin-bottom: 0;
@@ -187,6 +160,34 @@
         .Image-Upload {
           display: none
         }
+      }
+.input-wrapper2 {
+        width: 90%;
+        margin: 1rem 0;
+
+        display: flex;
+        flex-direction: column;
+
+        .input-label2 {
+          margin-bottom: 0.5rem;
+          font-size: 1.1rem;
+          font-weight: 550;
+        }
+
+        .input {
+          border: 1.5px solid black;
+          width: 85%;
+          border-radius: 5px;
+          align-self: flex-end;
+          font-weight: 550;
+
+        }
+
+        .input::placeholder {
+          font-weight: 500;
+        }
+
+
       }
 
 
