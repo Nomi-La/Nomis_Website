@@ -33,6 +33,7 @@ export default function generalSlice(sliceName, get, getId, post, patch, del) {
                 state.deleteError = null
                 state.createStatus = 'idle'
                 state.editStatus = 'idle'
+                state.deleteStatus = 'idle'
             }
         },
         extraReducers: (builder) => {

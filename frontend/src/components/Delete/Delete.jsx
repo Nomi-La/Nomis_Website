@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
 import {useRef} from "react";
 import {useClickAnywhere} from "../../utils/eventListener.js";
+import {clearCategoryErrors} from "../../slices/categorySlice.js";
 
 export default function Delete({closeSession, modelId, deleteModel, modelName, noProjects = false}) {
 
@@ -15,7 +16,7 @@ export default function Delete({closeSession, modelId, deleteModel, modelName, n
 
     useClickAnywhere(deleteRef, closeSession, 'a')
 
-    if (modelName === 'category' && categorySuccess==='succeeded') navigate('/')
+
 
     return <>
         <div className='are-you-sure' ref={deleteRef}>
@@ -45,6 +46,10 @@ export default function Delete({closeSession, modelId, deleteModel, modelName, n
                     <button type='button' className='delete-project'
                             onClick={() => {
                                 dispatch(deleteModel(modelId))
+                                if (modelName === 'category') {
+                                    dispatch(clearCategoryErrors())
+                                    navigate('/')
+                                }
 
                             }}>Delete
                     </button>
