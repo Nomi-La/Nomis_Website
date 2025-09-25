@@ -3,7 +3,7 @@ import {NavLink} from "react-router";
 import {useRef, useState} from "react";
 import SectionSide from "./SectionSide.jsx";
 import {useClickAnywhere} from "../../utils/eventListener.js";
-import {moveModel, sortApiAscending} from "../../utils/aids.js";
+import {hasNonLatin, moveModel, sortApiAscending} from "../../utils/aids.js";
 import {editCategory} from "../../slices/categorySlice.js";
 
 const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
@@ -26,17 +26,18 @@ export default function CategorySide({category, categories, index, user}) {
         }
     });
 
-    if (!user && !category.sections.length ) return null
+    if (!user && !category.sections.length) return null
 
     return <div ref={wrapperRef} className='category-wrap' key={`1Category-div: ${category.id}`}>
         <div className="category-head">
             <NavLink key={`1Category: ${category.id}`} className="category" onClick={() => setOpen(!open)}
-                     to={`/${slug(category.name)}`}>{category.name}</NavLink>
+                     to={hasNonLatin(category.name) ? `/sec-${category.id}` : `/${slug(category.name, category.id)}`}>{category.name}</NavLink>
 
         </div>
 
         {open && <div className='section-container'>
-            {sections.map((section) => <SectionSide section={section} categoryName={category.name.toLowerCase()} user={user}/>)}
+            {sections.map((section) => <SectionSide section={section} categoryName={category.name.toLowerCase()}
+                                                    user={user}/>)}
         </div>}
 
     </div>

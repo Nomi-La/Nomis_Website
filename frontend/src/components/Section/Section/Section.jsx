@@ -5,7 +5,6 @@ import {clearSectionErrors, editSection} from "../../../slices/sectionSlice.js";
 import {useDispatch} from "react-redux";
 import {moveModel} from "../../../utils/aids.js";
 import EditSection from "../EditSection/EditSection.jsx";
-import Delete from "../../Delete/Delete.jsx";
 
 export default function Section({section, user, sections, index}) {
 
@@ -25,7 +24,7 @@ export default function Section({section, user, sections, index}) {
 
                 {!changeSection &&
                     <h2 id={section.id} className='category-section' key={section.name}>{section.name}</h2>}
-                    {user && !changeSection && <div className='direct-wrapper'>
+                {user && !changeSection && <div className='direct-wrapper'>
 
                     <img src='/edit.png' alt='edit' className='edit-icon' id={'edit-icon-section'}
                          onClick={() => (setChangeSection(true))}/>
@@ -34,12 +33,13 @@ export default function Section({section, user, sections, index}) {
             </div>
 
 
-
             <div className='section-wrap'>
-                {!section.content && user && <div className='no-projects'>
-                    <button type='button' onClick={() => setChangeSection(true)}
-                    className={'empty'}>Add Section content here</button>
-                </div>}
+                {!section.content && user && !section.image && !section.image2 &&
+                    <div className='no-projects'>
+                        <button type='button' onClick={() => setChangeSection(true)}
+                                className={'empty'}>Add Section content here
+                        </button>
+                    </div>}
 
                 <div className='content-wrap'>
                     <p className='section-content'>{section.content}</p>
@@ -57,15 +57,18 @@ export default function Section({section, user, sections, index}) {
                     </div>
 
                 }
+
+                {user && <button type={"button"} className={'edit-buttons'} id={'edit'}
+                                 onClick={()=>setChangeSection(true)}>Edit</button> }
             </div>
         </div>}
 
-        {changeSection && <EditSection close={()=>{
+        {changeSection && <EditSection close={() => {
             setChangeSection(false)
             dispatch(clearSectionErrors())
         }} id={'category-section'} sectionAction={'edit'}
-                                   moveUp={[() => moveSection(index, 0), index > 0]}
-                                   moveDown={[() => moveSection(index, sections.length - 1), index < sections.length - 1]}
+                                       moveUp={[() => moveSection(index, 0), index > 0]}
+                                       moveDown={[() => moveSection(index, sections.length - 1), index < sections.length - 1]}
                                        data={{
                                            ...data,
                                            category: section.category,
@@ -75,6 +78,8 @@ export default function Section({section, user, sections, index}) {
                                            image2: section.image2,
                                            sectionId: section.id,
                                        }}
-                                        />}
+        />}
+
+
     </>
 }

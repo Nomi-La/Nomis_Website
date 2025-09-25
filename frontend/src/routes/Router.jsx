@@ -9,13 +9,14 @@ import {useEffect} from "react";
 import {fetchCategories} from "../slices/categorySlice.js";
 import {fetchSections} from "../slices/sectionSlice.js";
 import AuthInit from "../components/Auth/AuthInit.jsx";
-import {slug} from "../utils/aids.js";
+import {hasNonLatin, slug, sortApiAscending} from "../utils/aids.js";
 
 export default function Router() {
     const user = useSelector((s) => s.auth.user)
     const dispatch = useDispatch()
     const categories = useSelector((s) => s.categories.items)
         .filter((category) => category.name.toLowerCase() !== 'projects')
+        .sort(sortApiAscending())
 
     const projectsCategory = useSelector((s) => s.categories.items)
         .find((category) => category.name.toLowerCase() === 'projects')
@@ -43,7 +44,8 @@ export default function Router() {
                     }/>}
 
                 {categories.map((category, index) => <>
-                    <Route key={category.id} path={`${slug(category.name)}/`}
+                    <Route key={category.id}
+                           path={hasNonLatin(category.name) ? `/sec-${category.id}` : `/${slug(category.name, category.id)}`}
                            element={
 
                                <SectionPage category={category} user={user} categories={categories} index={index}/>

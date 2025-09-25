@@ -23,7 +23,7 @@ export default function AddCategory({close, data = {name: '', categoryId: null}}
         dispatch(categoryAction(newData(formData), formData.categoryId));
 
     }
-    if(successCreate === 'succeeded') {
+    if (successCreate === 'succeeded') {
         dispatch(clearCategoryErrors())
         close()
     }
@@ -61,7 +61,7 @@ export default function AddCategory({close, data = {name: '', categoryId: null}}
 
                 <div className='bottom-delete'>
                     <button type='submit' className='delete-project'
-                            >Add
+                    >Add
                     </button>
                     <button type='button' className='delete-project'
                             id='cancel' onClick={close}>Cancel

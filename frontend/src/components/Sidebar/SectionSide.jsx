@@ -14,7 +14,7 @@ export default function SectionSide({section, categoryName, user}) {
         return () => window.removeEventListener("hashchange", onHashChange);
     }, []);
 
-    if (((categoryName.toLowerCase() !== 'projects') && !user && !section.content && !section.image && !section.image2)||
+    if (((categoryName.toLowerCase() !== 'projects') && !user && !section.content && !section.image && !section.image2) ||
         (!user && projects.length === 0 && categoryName === 'projects')) return null
 
     return <>

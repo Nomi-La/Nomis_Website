@@ -1,15 +1,18 @@
+export const hasNonLatin = (s) => /[^\u0000-\u007F]/.test(s);
 
-export const slug = (s) => encodeURIComponent(s.toLowerCase().replace(/\s+/g, "-"));
+export const slug = (s) => {
+    return encodeURIComponent(s.trim().toLowerCase().replace(/\s+/g, "-"))
+};
 
 
 export function isUrl(str) {
-  if (typeof str !== 'string') return false;
-  try {
-    const u = new URL(str.trim());
-    return u.protocol === 'http:' || u.protocol === 'https:';
-  } catch {
-    return false;
-  }
+    if (typeof str !== 'string') return false;
+    try {
+        const u = new URL(str.trim());
+        return u.protocol === 'http:' || u.protocol === 'https:';
+    } catch {
+        return false;
+    }
 }
 
 export function sortApiAscending() {
@@ -36,7 +39,7 @@ export function newData(formData, filterItems = []) {
     return data
 }
 
-export function imageUpload(setFormData, formData){
+export function imageUpload(setFormData, formData) {
     return (e, imageName = 'image') => {
         const image_url_name = `${imageName}_url`
         const file = e.target.files[0];
@@ -74,7 +77,7 @@ export function moveModel(models, editModel, dispatch) {
 }
 
 export function autoGrow(e) {
-        e.target.style.height = 'auto';
-        e.target.style.height = `${e.target.scrollHeight}px`;
-    }
+    e.target.style.height = 'auto';
+    e.target.style.height = `${e.target.scrollHeight}px`;
+}
 

@@ -48,7 +48,6 @@
       margin: 0;
 
 
-
       #project-image-label {
         margin-bottom: 0;
         margin-top: 2rem;
@@ -129,65 +128,66 @@
 }
 
 .image-upload-wrapper {
-        width: 80%;
-        margin: 1rem 0 3rem;
-        display: flex;
-        justify-content: space-between;
+  width: 80%;
+  margin: 1rem 0 3rem;
+  display: flex;
+  justify-content: space-between;
 
-        align-items: center;
+  align-items: center;
 
-        .edit-buttons {
-          font-weight: 500;
-          padding: 5px 15px;
-          margin: 8px 0px;
-          border-radius: 15px;
-          border: 1px solid black;
-          background-color: black;
-        }
+  .edit-buttons {
+    font-weight: 500;
+    padding: 5px 15px;
+    margin: 8px 0px;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: black;
+  }
 
-        .image-button-wrapper {
+  .image-button-wrapper {
 
-          display: flex;
-          flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-          #remove-image {
-            border: 1px solid black;
-            background-color: $white;
-            color: black;
-          }
-        }
+    #remove-image {
+      border: 1px solid black;
+      background-color: $white;
+      color: black;
+    }
+  }
 
-        .Image-Upload {
-          display: none
-        }
-      }
+  .Image-Upload {
+    display: none
+  }
+}
+
 .input-wrapper2 {
-        width: 90%;
-        margin: 1rem 0;
+  width: 90%;
+  margin: 1rem 0;
 
-        display: flex;
-        flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-        .input-label2 {
-          margin-bottom: 0.5rem;
-          font-size: 1.1rem;
-          font-weight: 550;
-        }
+  .input-label2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 550;
+  }
 
-        .input {
-          border: 1.5px solid black;
-          width: 85%;
-          border-radius: 5px;
-          align-self: flex-end;
-          font-weight: 550;
+  .input {
+    border: 1.5px solid black;
+    width: 85%;
+    border-radius: 5px;
+    align-self: flex-end;
+    font-weight: 550;
 
-        }
+  }
 
-        .input::placeholder {
-          font-weight: 500;
-        }
+  .input::placeholder {
+    font-weight: 500;
+  }
 
 
-      }
+}
 
 

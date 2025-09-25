@@ -8,12 +8,13 @@ import Delete from "../../Delete/Delete.jsx";
 
 
 export default function EditSection({
-                                             close, sectionAction, setDeleteSection,
-                                             moveUp = null, moveDown = null, id = '',
-                                             data = {name: '', category: null, sectionId: null,
-                                                 image: null, image2: null, content: ''
-                                             }
-                                         }) {
+                                        close, sectionAction, setDeleteSection,
+                                        moveUp = null, moveDown = null, id = '',
+                                        data = {
+                                            name: '', category: null, sectionId: null,
+                                            image: null, image2: null, content: ''
+                                        }
+                                    }) {
 
     const dispatch = useDispatch()
     const [deleteTheSection, setTheDeleteSection] = useState(false)
@@ -55,10 +56,10 @@ export default function EditSection({
     const noImages = !formData.image_url && !formData.image2_url
 
     if ((sectionAction === 'add' && createSucceeded === 'succeeded') ||
-            (sectionAction === 'edit' && updateSucceeded === 'succeeded')) {
-            clearSectionErrors()
-            close()
-        }
+        (sectionAction === 'edit' && updateSucceeded === 'succeeded')) {
+        clearSectionErrors()
+        close()
+    }
 
     return <section ref={projectSectionRef}>
 
@@ -108,7 +109,7 @@ export default function EditSection({
 
                         {sectionAction === 'edit' &&
                             <img src='/delete.png' alt='delete' className='edit-icon'
-                                 onClick={() => setDeleteSection? setDeleteSection(formData.sectionId): setTheDeleteSection(true)}/>}
+                                 onClick={() => setDeleteSection ? setDeleteSection(formData.sectionId) : setTheDeleteSection(true)}/>}
 
                     </div>
 
@@ -118,95 +119,110 @@ export default function EditSection({
                 {id === 'category-section' &&
                     <div className='section-wrap'>
 
-                    <div className='content-wrap'>
+                        <div className='content-wrap'>
                         <textarea className='section-content'
-                                  rows={7}
+                                  rows={2}
                                   placeholder={'Section content'}
                                   value={formData.content}
                                   onChange={(e) => setFormData({...formData, content: e.target.value})}
                                   onClick={autoGrow}
                         />
-                    </div>
+                        </div>
 
-                    <div className='image-wrap'>
+                        <div className='image-wrap'>
 
-                        <div className='image-upload-wrapper'>
+                            <div className='image-upload-wrapper'>
 
-                            {formData.image_url && (
-                                <div className='frame-image'>
-                                    <img
-                                        src={formData.image_url}
-                                        alt="preview"
-                                        className='section-image'
-                                    /></div>
-                            )}
+                                {formData.image_url && (
+                                    <div className='frame-image'>
+                                        <img
+                                            src={formData.image_url}
+                                            alt="preview"
+                                            className='section-image'
+                                        /></div>
+                                )}
 
-                            {!formData.image_url &&
+                                {!formData.image_url &&
 
-                                <label htmlFor='section-image' className='empty'>+ upload image</label>
-                            }
+                                    <label htmlFor='section-image' className='empty'>+ upload image</label>
+                                }
 
-                            <div className='image-button-wrapper'>
-                                {formData.image_url &&
-                                    <label htmlFor='section-image' className='edit-buttons'>Replace</label>}
-                                {formData.image_url &&
-                                    <button type='button' id='remove-image' onClick={() => setFormData({
-                                        ...formData,
-                                        image_url: '',
-                                        image: null
-                                    })} className='edit-buttons'>Remove</button>}
+                                <div className='image-button-wrapper'>
+                                    {formData.image_url &&
+                                        <label htmlFor='section-image' className='edit-buttons'>Replace</label>}
+                                    {formData.image_url &&
+                                        <button type='button' id='remove-image' onClick={() => setFormData({
+                                            ...formData,
+                                            image_url: '',
+                                            image: null
+                                        })} className='edit-buttons'>Remove</button>}
+                                </div>
+                                <input
+                                    className='Image-Upload'
+                                    id="section-image"
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleImageUpload}
+                                />
+
                             </div>
-                            <input
-                                className='Image-Upload'
-                                id="section-image"
-                                type="file"
-                                accept="image/*"
-                                onChange={handleImageUpload}
-                            />
+
+                            {!noImages && <div className='image-upload-wrapper'>
+
+                                {formData.image2_url && (
+                                    <div className='frame-image'>
+                                        <img
+                                            src={formData.image2_url}
+                                            alt="preview"
+                                            className='section-image'
+                                        /></div>
+                                )}
+
+                                {!formData.image2_url && !noImages &&
+                                    <label htmlFor='section-image2'
+                                           className='empty'>+ add an image</label>}
+
+                                <div className='image-button-wrapper'>
+                                    {formData.image2_url &&
+                                        <label htmlFor='section-image2' className='edit-buttons'>Replace</label>}
+                                    {formData.image2_url &&
+                                        <button type='button' id='remove-image' onClick={() => setFormData({
+                                            ...formData,
+                                            image2_url: '',
+                                            image2: null
+                                        })} className='edit-buttons'>Remove</button>}
+                                </div>
+                                <input
+                                    className='Image-Upload'
+                                    id="section-image2"
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={(e) => handleImageUpload(e, 'image2')}
+                                />
+
+                            </div>}
 
                         </div>
 
-                        {!noImages && <div className='image-upload-wrapper'>
+                        <div className='two-buttons' id={'end'}>
 
-                            {formData.image2_url && (
-                                <div className='frame-image'>
-                                    <img
-                                        src={formData.image2_url}
-                                        alt="preview"
-                                        className='section-image'
-                                    /></div>
-                            )}
+                            <button type='submit'
+                                    className='edit-buttons'>{sectionState}</button>
 
-                            {!formData.image2_url && !noImages &&
-                                <label htmlFor='section-image2'
-                                       className='empty'>+ add an image</label>}
+                            <button type='reset'
+                                    className='edit-buttons' id='cancel-section' onClick={() => {
+                                close()
+                                setDeleteSection(null)
+                            }}>Cancel
+                            </button>
+                        </div>
 
-                            <div className='image-button-wrapper'>
-                                {formData.image2_url &&
-                                    <label htmlFor='section-image2' className='edit-buttons'>Replace</label>}
-                                {formData.image2_url &&
-                                    <button type='button' id='remove-image' onClick={() => setFormData({
-                                        ...formData,
-                                        image2_url: '',
-                                        image2: null
-                                    })} className='edit-buttons'>Remove</button>}
-                            </div>
-                            <input
-                                className='Image-Upload'
-                                id="section-image2"
-                                type="file"
-                                accept="image/*"
-                                onChange={(e) => handleImageUpload(e, 'image2')}
-                            />
+                        {deleteTheSection &&
+                            <Delete modelId={formData.sectionId} deleteModel={deleteSection} modelName={'section'}
+                                    noProjects={true}
+                                    closeSession={() => setTheDeleteSection(false)}/>}
 
-                        </div>}
-
-                    </div>
-
-                        {deleteTheSection && <Delete modelId={formData.sectionId} deleteModel={deleteSection} modelName={'section'} noProjects={true}
-                                                  closeSession={()=>setTheDeleteSection(false)}/>}
-
-                </div>}
+                    </div>}
 
             </form>
 

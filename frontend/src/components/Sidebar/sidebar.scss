@@ -123,7 +123,7 @@
     background-color: $midTurquoise;
   }
 
-  .add-category-wrap{
+  .add-category-wrap {
     border-top: 1px solid $turquoise;
     width: 100%;
     display: flex;
@@ -132,16 +132,16 @@
     padding: 0;
     padding-top: 30px;
 
-  .empty{
-    color: $midGray;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-top: 0;
-    border-radius: 0;
+    .empty {
+      color: $midGray;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 0;
+      border-radius: 0;
 
-    opacity: 0;
-    pointer-events: none;
-    margin-bottom: 17vh;
+      opacity: 0;
+      pointer-events: none;
+      margin-bottom: 17vh;
     }
   }
 }
@@ -244,8 +244,8 @@
   pointer-events: auto;
 }
 
-.sidebar-container:hover{
-  .empty{
+.sidebar-container:hover {
+  .empty {
     pointer-events: auto;
     opacity: 1;
   }

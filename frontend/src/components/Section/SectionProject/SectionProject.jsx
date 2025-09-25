@@ -28,9 +28,9 @@ export default function SectionProject({section, index, sections, user, setDelet
                              moveUp={[() => moveSection(index, 0), index > 0]}
                              moveDown={[() => moveSection(index, sections.length - 1), index < sections.length - 1]}
                              close={() => {
-                                      setChangeSection(false)
-                                      dispatch(clearSectionErrors())
-                                  }} setDeleteSection={setDeleteSection}
+                                 setChangeSection(false)
+                                 dispatch(clearSectionErrors())
+                             }} setDeleteSection={setDeleteSection}
                              id={'section-title'}
                 />}
 

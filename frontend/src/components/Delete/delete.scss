@@ -53,91 +53,92 @@
 }
 
 .delete-rec {
-    position: relative;
-    min-height: 180px;
-    background-color: $lightTurquoise;
-    border: 1.5px solid $turquoise;
-    border-radius: 5px;
+  position: relative;
+  min-height: 180px;
+  background-color: $lightTurquoise;
+  border: 1.5px solid $turquoise;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+
+
+  .top-delete {
+
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
+    border-bottom: 1px solid $turquoise;
+    border-radius: 5px 5px 0px 0px;
+    width: 100%;
+    padding: 5px;
+    background-color: $white;
 
+    p {
+    }
 
-    .top-delete {
+  }
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid $turquoise;
-      border-radius: 5px 5px 0px 0px;
-      width: 100%;
-      padding: 5px;
-      background-color: $white;
+  .delete-main-wrap {
+    padding: 2rem 1.2rem 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
-      p {
-      }
+    .delete-text {
+      width: 90%;
+      font-size: 1.15rem;
+      text-align: center;
 
     }
 
-    .delete-main-wrap {
-      padding: 2rem 1.2rem 1rem;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-
-      .delete-text {
-        width: 90%;
-        font-size: 1.15rem;
-        text-align: center;
-
-      }
-
-      span {
-        color: $midRed;
-        font-weight: 600;
-        margin: 1rem;
-      }
-
-      #beware {
-        margin-top: 0;
-        font-size: 1rem;
-        //color: $midRed;
-        font-weight: bold;
-        width: 90%;
-
-      }
+    span {
+      color: $midRed;
+      font-weight: 600;
+      margin: 1rem;
     }
 
+    #beware {
+      margin-top: 0;
+      font-size: 1rem;
+      //color: $midRed;
+      font-weight: bold;
+      width: 90%;
 
-    .bottom-delete {
-      //position: absolute;
-      //bottom: 0;
-      //right: 0;
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      padding: 5px;
-
-
-      @media (max-width: 360px) {
-          flex-direction: column;
-        }
-      .delete-project {
-        margin: 5px 5px;
-        padding: 4.5px 18px;
-        border: 1px solid $midRed;
-
-      }
-
-      #cancel {
-        background-color: $white;
-        color: $midRed;
-        font-weight: bold;
-      }
     }
   }
+
+
+  .bottom-delete {
+    //position: absolute;
+    //bottom: 0;
+    //right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+
+
+    @media (max-width: 360px) {
+      flex-direction: column;
+    }
+
+    .delete-project {
+      margin: 5px 5px;
+      padding: 4.5px 18px;
+      border: 1px solid $midRed;
+
+    }
+
+    #cancel {
+      background-color: $white;
+      color: $midRed;
+      font-weight: bold;
+    }
+  }
+}
 

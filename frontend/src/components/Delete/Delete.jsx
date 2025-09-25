@@ -10,12 +10,11 @@ export default function Delete({closeSession, modelId, deleteModel, modelName, n
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const categoryError = useSelector((s)=>s.categories.deleteError)
-    const categorySuccess = useSelector((s)=>s.categories.deleteStatus)
+    const categoryError = useSelector((s) => s.categories.deleteError)
+    const categorySuccess = useSelector((s) => s.categories.deleteStatus)
     const deleteRef = useRef(null)
 
     useClickAnywhere(deleteRef, closeSession, 'a')
-
 
 
     return <>
@@ -35,7 +34,7 @@ export default function Delete({closeSession, modelId, deleteModel, modelName, n
                     {modelName === 'section' && !noProjects && <><span>Beware!</span>
                         <p className='delete-text' id='beware'>All projects related to this section will be deleted as
                             well.</p></>}
-                {modelName === 'category' && !noProjects && <><span>Beware!</span>
+                    {modelName === 'category' && !noProjects && <><span>Beware!</span>
                         <p className='delete-text' id='beware'>All sections related to this category will be deleted as
                             well.</p></>}
                 </div>

@@ -6,7 +6,7 @@ import {sideBarState} from "../slices/stateSlice.js";
 import EditSection from "../components/Section/EditSection/EditSection.jsx";
 import {data} from "react-router";
 import './sectionPage.scss'
-import {fetchSections} from "../slices/sectionSlice.js";
+import {clearSectionErrors} from "../slices/sectionSlice.js";
 import EditCategory from "../components/Category/EditCategory/EditCategory.jsx";
 import {clearCategoryErrors, deleteCategory, editCategory} from "../slices/categorySlice.js";
 import useClickAway from "../utils/eventListener.js";
@@ -24,76 +24,81 @@ export default function SectionPage({category, user, categories, index}) {
     const moveCategory = moveModel(categories, editCategory, dispatch)
     const categoryRef = useRef(null)
 
-    useClickAway(categoryRef, ()=> setEditCategory(false))
+    useClickAway(categoryRef, () => setEditCategory(false))
 
     useEffect(() => {
         dispatch(sideBarState('open'))
     }, [])
 
-    if (!user && (!sections.length)) return <p style={{margin: '3rem 0', width: '100%', textAlign: 'center'}}>Login to edit your page</p>
+    if (!user && (!sections.length)) return <p style={{margin: '3rem 0', width: '100%', textAlign: 'center'}}>Login to
+        edit your page</p>
 
     return <>
-        <div className="sections-page">
+        <div className={`sections-page ${deleteTheCategory ? 'open' : ''}`}>
             <div className={'top-category'} ref={categoryRef}>
                 {!editTheCategory && <>
                     <h1 className={'category-title'}>{category.name}</h1>
 
-                    <div className='direct-wrapper' id={'category'}>
+                    {user && <div className='direct-wrapper' id={'category'}>
 
-                        {category.name.toLowerCase() !== 'about me' && <img src='/edit.png' alt='edit' className='edit-icon' onClick={() => {
-                            (setEditCategory(true))
-                            setAddSection(false)
-                        }}/>}
+                        {category.name.toLowerCase() !== 'about me' &&
+                            <img src='/edit.png' alt='edit' className='edit-icon' onClick={() => {
+                                (setEditCategory(true))
+                                setAddSection(false)
+                            }}/>}
 
-                    </div>
+                    </div>}
                 </>}
-                {editTheCategory && <EditCategory close={()=> {
+                {editTheCategory && <EditCategory close={() => {
                     setEditCategory(false)
                     dispatch(clearCategoryErrors())
-                }} openDeleteCategory={()=>setDeleteCategory(category.id)}
-                                                   moveUp={[() => moveCategory(index, 0), index > 0]}
-                                                    moveDown={[() => moveCategory(index, categories.length - 1), index < categories.length - 1]}
+                }} openDeleteCategory={() => setDeleteCategory(category.id)}
+                                                  moveUp={[() => moveCategory(index, 0), index > 1]}
+                                                  moveDown={[() => moveCategory(index, categories.length - 1), index < categories.length - 1]}
                                                   data={{...data, name: category.name, categoryId: category.id}}/>}
             </div>
 
             <div className={'lower-sections'} style={{'position': 'relative'}}>
 
-                {deleteTheCategory === category.id && <Delete modelId={category.id} closeSession={()=> {
+                {deleteTheCategory === category.id && <Delete modelId={category.id} closeSession={() => {
                     setDeleteCategory(null)
                     dispatch(clearCategoryErrors())
                 }}
-                                              deleteModel={deleteCategory} modelName={'category'} noProjects={!(category.sections.length)}/>}
+                                                              deleteModel={deleteCategory} modelName={'category'}
+                                                              noProjects={!(category.sections.length)}/>}
 
-            {(!sections.length) && !addSection && <>
-                <div className='section-wrapper' id={'first-section'}>
+                {(!sections.length) && !addSection && <>
+                    <div className='section-wrapper' id={'first-section'}>
 
-                <button type={'button'} className='category-section' onClick={()=> setAddSection(true)}>Start Adding Your Sections here</button>
-            <img className={'flower'} src='/flower6.png' alt={'flower'}/>
-                </div>
+                        <button type={'button'} className='category-section' onClick={() => setAddSection(true)}>Start
+                            Adding Your Sections here
+                        </button>
+                        <img className={'flower'} src='/flower6.png' alt={'flower'}/>
+                    </div>
 
-            </>}
+                </>}
 
-            {sections
-                .map((section, index) => <div key={`sectionB: ${section.id}`}>
+                {sections
+                    .map((section, index) => <div key={`sectionB: ${section.id}`}>
 
-                    <Section section={section} user={user} sections={sections} index={index}/>
-                </div>)}
-            {user && (sections.length > 0) && !addSection &&
-                <div className={'add-section-button-wrapper'} id={'add-section-wrap-id'}>
-                    <button type='button' id={'add-section-general-button'}
-                            onClick={() => setAddSection(true)}
-                            className='edit-buttons'>+ Add Section
-                    </button>
-                </div>}
+                        <Section section={section} user={user} sections={sections} index={index}/>
+                    </div>)}
+                {user && (sections.length > 0) && !addSection &&
+                    <div className={'add-section-button-wrapper'} id={'add-section-wrap-id'}>
+                        <button type='button' id={'add-section-general-button'}
+                                onClick={() => setAddSection(true)}
+                                className='edit-buttons'>+ Add Section
+                        </button>
+                    </div>}
 
-            {addSection && <EditSection close={() => {
-                setAddSection(false)
-                // if (sectionsLength === 0) window.location.reload()
-            }} sectionAction={'add'}
-                                        data={{...data, category: category.id}}
-                                        id={'category-section'}
-            />}
-                </div>
+                {addSection && <EditSection close={() => {
+                    setAddSection(false)
+                    dispatch(clearSectionErrors())
+                }} sectionAction={'add'}
+                                            data={{...data, category: category.id}}
+                                            id={'category-section'}
+                />}
+            </div>
         </div>
     </>
 }

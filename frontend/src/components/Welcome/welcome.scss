@@ -77,6 +77,9 @@
       margin: 1.4vh 1rem 0;
       padding: 1vh 3vw;
       border-radius: 15px;
+      @media (max-width: 440px) {
+        margin: 0 0 20px;
+      }
       @media (max-width: 350px) {
         font-weight: 100;
         font-size: 1.3rem;
