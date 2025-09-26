@@ -27,7 +27,7 @@ currently the website is under construction. you can see an example version at h
 
 This project was built from scratch with custom code
 
-<h3>Visuals</h3>
+## Visuals
 <h3>how it looked at the beginning:</h3>
 <img src="before.png" alt="image" width="560"/>
 
