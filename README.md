@@ -29,12 +29,10 @@ This project was built from scratch with custom code
 
 ## Visuals
 how it looked at the beginning:
-
-<img src="before.png" alt="image" width="560"/>
+<br/><img src="before.png" alt="image" width="560"/>
 
 vs how it looks now:
-
-<img src="after.png" alt="image" width="560"/>
+<br/><img src="after.png" alt="image" width="560"/>
 
 <p align="center">
   <img src="shots1.png" alt="image" width="1000"/> <img src="shots2.png" alt="image" width="1000"/> <br/>
@@ -45,11 +43,9 @@ some proper planing:
 <br/><img src="pony1.png" alt="image" width="560"/>
 
 scratch that, minimalize:
-
 <br/><img src="pony2.png" alt="image" width="560"/>
 
 brainstorming:
-
 <br/><img src="excaly.png" alt="image" width="560"/>
 
 ## Installation
