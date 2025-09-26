@@ -42,12 +42,15 @@ vs how it looks now:
 </p>
 
 some proper planing:
+
 <img src="pony1.png" alt="image" width="560"/>
 
 scratch that, minimalize:
+
 <img src="pony2.png" alt="image" width="560"/>
 
 brainstorming:
+
 <img src="excaly.png" alt="image" width="560"/>
 
 ## Installation
