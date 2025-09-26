@@ -35,9 +35,8 @@ vs how it looks now:
 <img src="after.png" alt="image" width="1000"/>
 
 <p align="center">
-  <img src="1main.png" alt="image" width="560"/> <img src="2project.png" alt="image" width="560"/> <br/>
-  <img src="3editproject.png" alt="image" width="560"/> <img src="4delete.png" alt="image" width="560"/> <br/>
-  <img src="5addcategory.png" alt="image" width="560"/> <img src="6aboutme.png" alt="image" width="560"/> <br/>
+  <img src="shots1.png" alt="image" width="560"/> <img src="shots2.png" alt="image" width="560"/> <br/>
+  
 </p>
 
 some proper planing:
