@@ -29,15 +29,13 @@ This project was built from scratch with custom code
 
 ## Visuals
 how it looked at the beginning:
-![img_1.png](img_1.png)
+<img src="before.png" alt="image" width="300"/>
 
 vs how it looks now:
 
-![img_17.png](img_17.png) ![img_11.png](img_11.png)
-![img_12.png](img_12.png) ![img_13.png](img_13.png)
-![img_14.png](img_14.png)
-![img_15.png](img_15.png)
-![img_16.png](img_16.png)
+<p align="center">
+  <img src="img.png" alt="image" width="300"/> <img src="img.png" alt="image" width="300"/> <br/>
+</p>
 
 some proper planing:
 ![img.png](img.png)
