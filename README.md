@@ -29,22 +29,25 @@ This project was built from scratch with custom code
 
 ## Visuals
 how it looked at the beginning:
-<img src="before.png" alt="image" width="300"/>
+<img src="before.png" alt="image" width="1000"/>
 
 vs how it looks now:
+<img src="after.png" alt="image" width="1000"/>
 
 <p align="center">
-  <img src="img.png" alt="image" width="300"/> <img src="img.png" alt="image" width="300"/> <br/>
+  <img src="1main.png" alt="image" width="560"/> <img src="2project.png" alt="image" width="560"/> <br/>
+  <img src="3editproject.png" alt="image" width="560"/> <img src="4delete.png" alt="image" width="560"/> <br/>
+  <img src="5addcategory.png" alt="image" width="560"/> <img src="6aboutme.png" alt="image" width="560"/> <br/>
 </p>
 
 some proper planing:
-![img.png](img.png)
+<img src="pony1.png" alt="image" width="1000"/>
 
 scratch that, minimalize:
-![img_3.png](img_3.png)
+<img src="pony2.png" alt="image" width="1000"/>
 
 brainstorming:
-![img_4.png](img_4.png)
+<img src="excaly.png" alt="image" width="1000"/>
 
 ## Installation
 The only technology required for **using** the app-folio is a browser and working internet connection
