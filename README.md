@@ -29,10 +29,10 @@ This project was built from scratch with custom code
 
 ## Visuals
 how it looked at the beginning:
-<img src="before.png" alt="image" width="1000"/>
+<img src="before.png" alt="image" width="560"/>
 
 vs how it looks now:
-<img src="after.png" alt="image" width="1000"/>
+<img src="after.png" alt="image" width="560"/>
 
 <p align="center">
   <img src="shots1.png" alt="image" width="560"/> <img src="shots2.png" alt="image" width="560"/> <br/>
@@ -40,13 +40,13 @@ vs how it looks now:
 </p>
 
 some proper planing:
-<img src="pony1.png" alt="image" width="1000"/>
+<img src="pony1.png" alt="image" width="560"/>
 
 scratch that, minimalize:
-<img src="pony2.png" alt="image" width="1000"/>
+<img src="pony2.png" alt="image" width="560"/>
 
 brainstorming:
-<img src="excaly.png" alt="image" width="1000"/>
+<img src="excaly.png" alt="image" width="560"/>
 
 ## Installation
 The only technology required for **using** the app-folio is a browser and working internet connection
