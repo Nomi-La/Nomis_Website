@@ -1,4 +1,7 @@
+## Project Name
 Space-Folio
+
+## Summarize
 A live portfolio space for developers
 Space-Folio is a simple and customizable portfolio platform for developers.
 Each user can create a personal live portfolio space, display projects, and share achievements in a clear and modern UI.
@@ -29,7 +32,12 @@ how it looked at the beginning:
 ![img_1.png](img_1.png)
 
 vs how it looks now:
-![img_2.png](img_2.png)
+![img_11.png](img_11.png)
+![img_12.png](img_12.png)
+![img_13.png](img_13.png)
+![img_14.png](img_14.png)
+![img_15.png](img_15.png)
+![img_16.png](img_16.png)
 
 some proper planing:
 ![img.png](img.png)
