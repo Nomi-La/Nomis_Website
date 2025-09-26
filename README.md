@@ -65,12 +65,15 @@ Installation process:
 3. Working directory 'frontend/' run: npm i
 4. Developing **backend** on localhost:
    - docker compose up
+   
    Go to 'http://localhost:8000/backend/admin/'.
+
    Then to stop:
    - docker compose down --remove-orphans
 5. Developing **frontend** on local:
     - npm run dev
-   Visit 'http://localhost:5173/'
+   
+    Visit 'http://localhost:5173/'
 
 ## Usage
 - Showing your achievements along your career in a light, eye-catching way. 
