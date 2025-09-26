@@ -35,7 +35,7 @@ vs how it looks now:
 <br/><img src="after.png" alt="image" width="560"/>
 
 <p align="center">
-  <img src="shots1.png" alt="image" width="1000"/> <img src="shots2.png" alt="image" width="1000"/> <br/>
+  <img src="shots1.png" alt="image" width="800"/> <img src="shots2.png" alt="image" width="800"/> <br/>
   
 </p>
 
