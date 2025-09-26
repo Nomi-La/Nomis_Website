@@ -27,11 +27,11 @@ currently the website is under construction. you can see an example version at h
 
 This project was built from scratch with custom code
 
-## Visuals
-## how it looked at the beginning:
+<h2>Visuals</h2>
+<h2>how it looked at the beginning:</h2>
 <img src="before.png" alt="image" width="560"/>
 
-## vs how it looks now:
+<h2>vs how it looks now:</h2>
 <img src="after.png" alt="image" width="560"/>
 
 <p align="center">
@@ -39,13 +39,13 @@ This project was built from scratch with custom code
   
 </p>
 
-## some proper planing:
+<h2>Some proper planing:</h2>
 <img src="pony1.png" alt="image" width="560"/>
 
-## scratch that, minimalize:
+<h2>scratch that, minimalize:</h2>
 <img src="pony2.png" alt="image" width="560"/>
 
-## brainstorming:
+<h2>brainstorming:</h2>
 <img src="excaly.png" alt="image" width="560"/>
 
 ## Installation
