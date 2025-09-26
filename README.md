@@ -29,9 +29,11 @@ This project was built from scratch with custom code
 
 ## Visuals
 how it looked at the beginning:
+
 <img src="before.png" alt="image" width="560"/>
 
 vs how it looks now:
+
 <img src="after.png" alt="image" width="560"/>
 
 <p align="center">
