@@ -20,11 +20,15 @@ export default function SectionPage({category, user, categories, index}) {
         .sort(sortApiAscending())
     const dispatch = useDispatch()
     const [deleteTheCategory, setDeleteCategory] = useState(null)
+    const [editMode, setEditMode] = useState(null)
     const [editTheCategory, setEditCategory] = useState(null)
     const moveCategory = moveModel(categories, editCategory, dispatch)
     const categoryRef = useRef(null)
 
-    useClickAway(categoryRef, () => setEditCategory(false))
+    useClickAway(categoryRef, () => {
+        setEditCategory(false)
+        setEditMode(false)
+    })
 
     useEffect(() => {
         dispatch(sideBarState('open'))
@@ -39,12 +43,13 @@ export default function SectionPage({category, user, categories, index}) {
                 {!editTheCategory && <>
                     <h1 className={'category-title'}>{category.name}</h1>
 
-                    {user && <div className='direct-wrapper' id={'category'}>
+                    {user && !editMode && <div className='direct-wrapper' id={'category'}>
 
                         {category.name.toLowerCase() !== 'about me' &&
                             <img src='/edit.png' alt='edit' className='edit-icon' onClick={() => {
                                 (setEditCategory(true))
                                 setAddSection(false)
+                                setEditMode(true)
                             }}/>}
 
                     </div>}
@@ -52,6 +57,7 @@ export default function SectionPage({category, user, categories, index}) {
                 {editTheCategory && <EditCategory close={() => {
                     setEditCategory(false)
                     dispatch(clearCategoryErrors())
+                    setEditMode(false)
                 }} openDeleteCategory={() => setDeleteCategory(category.id)}
                                                   moveUp={[() => moveCategory(index, 0), index > 1]}
                                                   moveDown={[() => moveCategory(index, categories.length - 1), index < categories.length - 1]}
@@ -81,12 +87,16 @@ export default function SectionPage({category, user, categories, index}) {
                 {sections
                     .map((section, index) => <div key={`sectionB: ${section.id}`}>
 
-                        <Section section={section} user={user} sections={sections} index={index}/>
+                        <Section section={section} user={user} sections={sections}
+                                 setEditMode={setEditMode} index={index} editMode={editMode}/>
                     </div>)}
-                {user && (sections.length > 0) && !addSection &&
+                {user && (sections.length > 0) && !addSection && !editMode &&
                     <div className={'add-section-button-wrapper'} id={'add-section-wrap-id'}>
                         <button type='button' id={'add-section-general-button'}
-                                onClick={() => setAddSection(true)}
+                                onClick={() => {
+                                    setAddSection(true)
+                                    setEditMode(true)
+                                }}
                                 className='edit-buttons'>+ Add Section
                         </button>
                     </div>}
@@ -94,6 +104,7 @@ export default function SectionPage({category, user, categories, index}) {
                 {addSection && <EditSection close={() => {
                     setAddSection(false)
                     dispatch(clearSectionErrors())
+                    setEditMode(false)
                 }} sectionAction={'add'}
                                             data={{...data, category: category.id}}
                                             id={'category-section'}

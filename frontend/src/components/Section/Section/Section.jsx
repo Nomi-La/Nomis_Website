@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {moveModel} from "../../../utils/aids.js";
 import EditSection from "../EditSection/EditSection.jsx";
 
-export default function Section({section, user, sections, index}) {
+export default function Section({section, user, sections, index, setEditMode, editMode}) {
 
     const hasImage = !!(section.image || section.image2);
     const [changeSection, setChangeSection] = useState(false)
@@ -24,10 +24,13 @@ export default function Section({section, user, sections, index}) {
 
                 {!changeSection &&
                     <h2 id={section.id} className='category-section' key={section.name}>{section.name}</h2>}
-                {user && !changeSection && <div className='direct-wrapper'>
+                {user && !changeSection && !editMode && <div className='direct-wrapper'>
 
                     <img src='/edit.png' alt='edit' className='edit-icon' id={'edit-icon-section'}
-                         onClick={() => (setChangeSection(true))}/>
+                         onClick={() => {
+                             setEditMode(true)
+                             setChangeSection(true)
+                         }}/>
 
                 </div>}
             </div>
@@ -58,14 +61,18 @@ export default function Section({section, user, sections, index}) {
 
                 }
 
-                {user && <button type={"button"} className={'edit-buttons'} id={'edit'}
-                                 onClick={()=>setChangeSection(true)}>Edit</button> }
+                {user && !editMode && <button type={"button"} className={'edit-buttons'} id={'edit'}
+                                 onClick={()=> {
+                                     setChangeSection(true)
+                                     setEditMode(true)
+                                 }}>Edit</button> }
             </div>
         </div>}
 
         {changeSection && <EditSection close={() => {
             setChangeSection(false)
             dispatch(clearSectionErrors())
+            setEditMode(false)
         }} id={'category-section'} sectionAction={'edit'}
                                        moveUp={[() => moveSection(index, 0), index > 0]}
                                        moveDown={[() => moveSection(index, sections.length - 1), index < sections.length - 1]}

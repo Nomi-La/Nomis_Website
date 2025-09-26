@@ -4,6 +4,16 @@
   top: 7.5vh;
   display: flex;
   height: 92.5vh;
+  //@media (max-width: 440px) {
+  //  flex-direction: column;
+  //  .sidebar-control{
+  //    width: auto;
+  //    position: static;
+  //    max-width: none;
+  //    margin: 0;
+  //    border-radius: 0;
+  //  }
+  //}
 
   .sidebar-control {
     position: absolute;
